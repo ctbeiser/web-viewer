@@ -94,7 +94,6 @@ class URLBar: UIView {
         textField.setContentHuggingPriority(UILayoutPriority(rawValue: UIConstants.layout.urlBarLayoutPriorityRawValue), for: .vertical)
         textField.autocompleteDelegate = self
         textField.accessibilityIdentifier = "URLBar.urlText"
-        textField.placeholder = UIConstants.strings.urlTextPlaceholder
         textField.isUserInteractionEnabled = false
         return textField
     }()
@@ -630,9 +629,6 @@ class URLBar: UIView {
 
     @objc
     public func activateTextField() {
-        urlTextField.isUserInteractionEnabled = true
-        urlTextField.becomeFirstResponder()
-        isEditing = true
     }
 
     private func displayClearButton(shouldDisplay: Bool, animated: Bool = true) {
@@ -961,14 +957,14 @@ class URLBar: UIView {
         let isHidden: Bool
 
         switch state {
-        case .default:
+        case .browsing, .editing, .default:
             isHidden = true
             showToolset = false
             centerURLBar = false
-        case .browsing, .editing:
-            isHidden = !shouldShowToolset
-            showToolset = !isHidden && inBrowsingMode
-            centerURLBar = shouldShowToolset
+//        case .browsing, .editing:
+//            isHidden = !shouldShowToolset
+//            showToolset = !isHidden && inBrowsingMode
+//            centerURLBar = shouldShowToolset
         }
 
         backButton.animateHidden(isHidden, duration: UIConstants.layout.urlBarTransitionAnimationDuration)

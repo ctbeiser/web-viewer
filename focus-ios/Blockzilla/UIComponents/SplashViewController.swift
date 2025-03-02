@@ -55,15 +55,10 @@ class SplashViewController: UIViewController {
     private func commonInit() {
         view.backgroundColor = .launchScreenBackground
         view.addSubview(authButton)
-        view.addSubview(logoImage)
 
-        logoImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-
             authButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            authButton.topAnchor.constraint(equalTo: logoImage.topAnchor, constant: .authButtonTop),
+            authButton.topAnchor.constraint(equalTo: view.topAnchor, constant: .authButtonTop),
             authButton.heightAnchor.constraint(equalToConstant: .authButtonHeight),
             authButton.widthAnchor.constraint(equalToConstant: .authButtonWidth),
             authButton.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: .authButtonInset),

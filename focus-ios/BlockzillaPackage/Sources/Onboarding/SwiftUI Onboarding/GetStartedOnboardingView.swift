@@ -97,7 +97,7 @@ struct FirstOnboardingView_Previews: PreviewProvider {
 internal extension OnboardingViewModel {
     static let dummy: OnboardingViewModel = .init(
         config: GetStartedOnboardingViewConfig(
-            title: "Welcome to Firefox Focus",
+            title: "Welcome to Web Viewer",
             subtitle: "Fast. Private. No distractions.",
             buttonTitle: "Get Started"
         ),

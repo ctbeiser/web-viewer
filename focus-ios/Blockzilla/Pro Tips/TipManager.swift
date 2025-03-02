@@ -91,12 +91,11 @@ class TipManager {
         if laContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
             tips.append(biometricTip)
         }
-        return tips
+        return []
     }
 
     private var availableTips: [Tip] {
-        guard Settings.getToggle(.showHomeScreenTips) else { return [] }
-        return tips.filter { $0.canShow() }
+        return []
     }
 
     private let laContext = LAContext()

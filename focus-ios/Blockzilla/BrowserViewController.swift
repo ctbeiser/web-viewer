@@ -79,7 +79,7 @@ class BrowserViewController: UIViewController {
 
     private var homeViewContainer = UIView()
 
-    fileprivate var showsToolsetInURLBar = false {
+    fileprivate var showsToolsetInURLBar = true {
         didSet {
             if showsToolsetInURLBar {
                 browserBottomConstraint.deactivate()
@@ -138,7 +138,6 @@ class BrowserViewController: UIViewController {
     }
 
     fileprivate func addShortcutsBackgroundConstraints() {
-        shortcutsBackground.backgroundColor = isIPadRegularDimensions ? .systemBackground.withAlphaComponent(0.85) : .foundation
         shortcutsBackground.layer.cornerRadius = isIPadRegularDimensions ? 10 : 0
 
         if isIPadRegularDimensions {
@@ -261,9 +260,9 @@ class BrowserViewController: UIViewController {
         view.addSubview(alertStackView)
         alertStackView.axis = .vertical
         alertStackView.alignment = .center
-
+        
         // true if device is an iPad or is an iPhone in landscape mode
-        showsToolsetInURLBar = (UIDevice.current.userInterfaceIdiom == .pad && (UIScreen.main.bounds.width == view.frame.size.width || view.frame.size.width > view.frame.size.height)) || (UIDevice.current.userInterfaceIdiom == .phone && view.frame.size.width > view.frame.size.height)
+        showsToolsetInURLBar = true
 
         containWebView()
         createHomeView()
@@ -864,44 +863,7 @@ class BrowserViewController: UIViewController {
     }
 
     func requestReviewIfNecessary() {
-        if AppInfo.isTesting() { return }
-        let currentLaunchCount = UserDefaults.standard.integer(forKey: UIConstants.strings.userDefaultsLaunchCountKey)
-        let threshold = UserDefaults.standard.integer(forKey: UIConstants.strings.userDefaultsLaunchThresholdKey)
-
-        if threshold == 0 {
-            UserDefaults.standard.set(14, forKey: UIConstants.strings.userDefaultsLaunchThresholdKey)
-            return
-        }
-
-        // Make sure the request isn't within 90 days of last request
-        let minimumDaysBetweenReviewRequest = 90
-        let daysSinceLastRequest: Int
-        if let previousRequest = UserDefaults.standard.object(forKey: UIConstants.strings.userDefaultsLastReviewRequestDate) as? Date {
-            daysSinceLastRequest = Calendar.current.dateComponents([.day], from: previousRequest, to: Date()).day ?? 0
-        } else {
-            // No previous request date found, meaning we've never asked for a review
-            daysSinceLastRequest = minimumDaysBetweenReviewRequest
-        }
-
-        if currentLaunchCount <= threshold ||  daysSinceLastRequest < minimumDaysBetweenReviewRequest {
-            return
-        }
-
-        UserDefaults.standard.set(Date(), forKey: UIConstants.strings.userDefaultsLastReviewRequestDate)
-
-        // Increment the threshold by 50 so the user is not constantly pestered with review requests
-        switch threshold {
-        case 14:
-            UserDefaults.standard.set(64, forKey: UIConstants.strings.userDefaultsLaunchThresholdKey)
-        case 64:
-            UserDefaults.standard.set(114, forKey: UIConstants.strings.userDefaultsLaunchThresholdKey)
-        default:
-            break
-        }
-
-        if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
-            SKStoreReviewController.requestReview(in: scene)
-        }
+        return
     }
 
     private func showSiriFavoriteSettings() {
@@ -993,7 +955,7 @@ class BrowserViewController: UIViewController {
         orientationWillChange = true
         // UIDevice.current.orientation isn't reliable. See https://bugzilla.mozilla.org/show_bug.cgi?id=1315370#c5
         // As a workaround, consider the phone to be in landscape if the new width is greater than the height.
-        showsToolsetInURLBar = (UIDevice.current.userInterfaceIdiom == .pad && (UIScreen.main.bounds.width == size.width || size.width > size.height)) || (UIDevice.current.userInterfaceIdiom == .phone && size.width > size.height)
+        showsToolsetInURLBar = true
 
         // isIPadRegularDimensions check if the device is a Ipad and the app is not in split mode
         isIPadRegularDimensions = ((UIDevice.current.userInterfaceIdiom == .pad && (UIScreen.main.bounds.width == size.width || size.width > size.height))) || (UIDevice.current.userInterfaceIdiom == .pad &&  UIApplication.shared.orientation?.isPortrait == true && UIScreen.main.bounds.width == size.width)
@@ -1077,7 +1039,7 @@ class BrowserViewController: UIViewController {
     }
 
     private func toggleURLBarBackground(isBright: Bool) {
-        urlBarContainer.backgroundColor = urlBar.inBrowsingMode ? .foundation : .clear
+        urlBarContainer.backgroundColor = .clear
     }
 
     override var keyCommands: [UIKeyCommand]? {
@@ -1143,12 +1105,6 @@ class BrowserViewController: UIViewController {
         if let url = urlBar.url {
             let utils = OpenUtils(url: url, webViewController: webViewController)
 
-            getShortcutsItem(for: url)
-                .map(UIAction.init)
-                .map { UIMenu(options: .displayInline, children: [$0]) }
-                .map {
-                    actions.append($0)
-                }
 
             var actionItems: [UIMenuElement] = [UIAction(findInPageItem)]
             actionItems.append(
@@ -1162,8 +1118,6 @@ class BrowserViewController: UIViewController {
 
             var shareItems: [UIMenuElement?] = [UIAction(copyItem(url: url))]
             shareItems.append(UIAction(sharePageItem(for: utils, sender: sender)))
-            shareItems.append(openInFireFoxItem(for: url).map(UIAction.init))
-            shareItems.append(openInChromeItem(for: url).map(UIAction.init))
             shareItems.append(UIAction(openInDefaultBrowserItem(for: url)))
 
             let shareMenu = UIMenu(options: .displayInline, children: shareItems.compactMap { $0 })
@@ -1182,8 +1136,6 @@ class BrowserViewController: UIViewController {
         if let url = urlBar.url {
             let utils = OpenUtils(url: url, webViewController: webViewController)
 
-            actions.append([getShortcutsItem(for: url).map(PhotonActionSheetItem.init)].compactMap { $0 })
-
             var actionItems = [PhotonActionSheetItem(findInPageItem)]
             actionItems.append(
                 webViewController.requestMobileSite
@@ -1193,9 +1145,6 @@ class BrowserViewController: UIViewController {
 
             var shareItems: [PhotonActionSheetItem?] = [PhotonActionSheetItem(copyItem(url: url))]
             shareItems.append(PhotonActionSheetItem(sharePageItem(for: utils, sender: sender)))
-            shareItems.append(openInFireFoxItem(for: url).map(PhotonActionSheetItem.init))
-            shareItems.append(openInChromeItem(for: url).map(PhotonActionSheetItem.init))
-            shareItems.append(PhotonActionSheetItem(openInDefaultBrowserItem(for: url)))
 
             actions.append(actionItems)
             actions.append(shareItems.compactMap { $0 })
@@ -1338,13 +1287,6 @@ extension BrowserViewController: URLBarDelegate {
 
         switch scrollBarState {
         case .expanded:
-            let y = tap.location(in: urlBar).y
-
-            // If the tap is greater than this threshold, the user wants to type in the URL bar
-            if y >= 10 {
-                urlBar.activateTextField()
-                return
-            }
 
             // FXIOS-8635 - #19155 Integrate EngineSession scrolling to top in Focus iOS
             // Just scroll the vertical position so the page doesn't appear under

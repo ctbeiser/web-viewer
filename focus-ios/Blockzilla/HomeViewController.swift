@@ -110,7 +110,7 @@ class HomeViewController: UIViewController {
             if UIDevice.current.userInterfaceIdiom == .pad {
                 // On iPad in landscape we only show the tips.
                 hideTextLogo()
-                showTips()
+                hideTips()
             } else {
                 // On iPhone in landscape we show neither.
                 hideTextLogo()
@@ -118,8 +118,8 @@ class HomeViewController: UIViewController {
             }
         } else {
             // In portrait on any form factor we show both.
-            showTextLogo()
-            showTips()
+            hideTextLogo()
+            hideTips()
         }
     }
 
