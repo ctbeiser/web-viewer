@@ -59,6 +59,34 @@ class RequestHandler {
         }
 
         switch host {
+        case "twitter.com", "www.twitter.com", "mobile.twitter.com", "x.com", "www.x.com", "mobile.x.com":
+            // Build deep link to Echo: echodotapp://<everything after .com/>
+            // Extract path + query + fragment from the original URL
+            var deepLinkString = "echodotapp://"
+            let pathComponent = url.path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+            if !pathComponent.isEmpty {
+                deepLinkString += pathComponent
+            }
+            if let query = url.query, !query.isEmpty {
+                deepLinkString += "?" + query
+            }
+            if let fragment = url.fragment, !fragment.isEmpty {
+                deepLinkString += "#" + fragment
+            }
+
+            if let deepLinkURL = URL(string: deepLinkString, invalidCharacters: false) {
+                // Open directly if possible, otherwise fall back to in-app navigation
+                if UIApplication.shared.canOpenURL(deepLinkURL) {
+                    UIApplication.shared.open(deepLinkURL, options: [:])
+                    return false
+                } else {
+                    // If iOS requires confirmation or the scheme isn't allowed, present confirmation to open Echo
+                    let alert = RequestHandler.makeAlert(title: String(format: UIConstants.strings.externalAppLinkWithAppName, AppInfo.productName, "Echo"), action: UIConstants.strings.open, forURL: deepLinkURL)
+                    alertCallback(alert)
+                    return false
+                }
+            }
+            return true
         case "maps.apple.com":
             let alert = RequestHandler.makeAlert(title: String(format: UIConstants.strings.externalAppLinkWithAppName, AppInfo.productName, "Maps"), action: UIConstants.strings.open, forURL: url)
             alertCallback(alert)
