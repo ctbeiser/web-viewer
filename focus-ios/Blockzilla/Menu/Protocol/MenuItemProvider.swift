@@ -8,18 +8,11 @@ import AppShortcuts
 protocol MenuItemProvider {
     var shortcutManager: ShortcutsManager { get }
 
-    func openInFireFoxItem(for url: URL) -> MenuAction?
-    func openInChromeItem(for url: URL) -> MenuAction?
-
     var findInPageItem: MenuAction { get }
     var requestDesktopItem: MenuAction { get }
     var requestMobileItem: MenuAction { get }
     var settingsItem: MenuAction { get }
     var helpItem: MenuAction { get }
-
-    func getShortcutsItem(for url: URL) -> MenuAction?
-    func addToShortcutsItem(for url: URL) -> MenuAction
-    func removeFromShortcutsItem(for url: URL) -> MenuAction
 
     func openInDefaultBrowserItem(for url: URL) -> MenuAction
     func copyItem(url: URL) -> MenuAction
@@ -27,23 +20,6 @@ protocol MenuItemProvider {
 }
 
 extension MenuItemProvider where Self: MenuActionable {
-    func openInFireFoxItem(for url: URL) -> MenuAction? {
-        canOpenInFirefox
-
-        ? MenuAction(title: UIConstants.strings.shareOpenInFirefox, image: "open_in_firefox_icon") { [unowned self] in
-            self.openInFirefox(url: url)
-        }
-        : nil
-    }
-
-    func openInChromeItem(for url: URL) -> MenuAction? {
-        canOpenInChrome ?
-        MenuAction(title: UIConstants.strings.shareOpenInChrome, image: "open_in_chrome_icon") { [unowned self] in
-            self.openInChrome(url: url)
-        }
-        : nil
-    }
-
     var findInPageItem: MenuAction {
         MenuAction(title: UIConstants.strings.shareMenuFindInPage, image: "icon_searchfor") { [unowned self] in
             self.findInPage()
@@ -71,28 +47,6 @@ extension MenuItemProvider where Self: MenuActionable {
     var helpItem: MenuAction {
         MenuAction(title: UIConstants.strings.aboutRowHelp, image: "icon_help") { [unowned self] in
             self.showHelp()
-        }
-    }
-
-    func getShortcutsItem(for url: URL) -> MenuAction? {
-        if shortcutManager.isSaved(url: url) {
-            return removeFromShortcutsItem(for: url)
-        } else if shortcutManager.hasSpace {
-            return addToShortcutsItem(for: url)
-        } else {
-            return nil
-        }
-    }
-
-    func addToShortcutsItem(for url: URL) -> MenuAction {
-        MenuAction(title: UIConstants.strings.shareMenuAddToShortcuts, image: "icon_shortcuts_add") { [unowned self] in
-            self.addToShortcuts(url: url)
-        }
-    }
-
-    func removeFromShortcutsItem(for url: URL) -> MenuAction {
-        MenuAction(title: UIConstants.strings.shareMenuRemoveFromShortcuts, image: "icon_shortcuts_remove") { [unowned self] in
-            self.removeShortcut(url: url)
         }
     }
 
