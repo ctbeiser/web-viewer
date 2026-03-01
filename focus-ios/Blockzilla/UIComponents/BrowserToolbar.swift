@@ -70,7 +70,7 @@ public final class BrowserToolbar: UIView {
         bindViewModelEvents()
 
         let background = UIView()
-        background.backgroundColor = .foundation
+        background.backgroundColor = .clear
         background.translatesAutoresizingMaskIntoConstraints = false
         addSubview(background)
 
