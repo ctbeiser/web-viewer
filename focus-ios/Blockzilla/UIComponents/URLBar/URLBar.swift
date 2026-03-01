@@ -36,6 +36,7 @@ final class URLBar: UIView {
         button.setContentCompressionResistancePriority(.required, for: .horizontal)
         button.setContentHuggingPriority(.required, for: .horizontal)
         button.isPointerInteractionEnabled = true
+        button.isHidden = true
         return button
     }()
 
@@ -43,7 +44,7 @@ final class URLBar: UIView {
 
     private lazy var urlBarBorderView: UIView = {
         let view = UIView()
-        view.backgroundColor = .secondaryButton
+        view.backgroundColor = .clear
         view.layer.cornerRadius = UIConstants.layout.urlBarCornerRadius
         view.setContentCompressionResistancePriority(UILayoutPriority(rawValue: UIConstants.layout.urlBarLayoutPriorityRawValue), for: .horizontal)
         view.setContentHuggingPriority(UILayoutPriority(rawValue: UIConstants.layout.urlBarLayoutPriorityRawValue), for: .horizontal)
@@ -51,12 +52,22 @@ final class URLBar: UIView {
     }()
 
     private lazy var urlBarBackgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .locationBar
-        view.layer.cornerRadius = UIConstants.layout.urlBarCornerRadius
-        view.setContentCompressionResistancePriority(UILayoutPriority(rawValue: UIConstants.layout.urlBarLayoutPriorityRawValue), for: .horizontal)
-        view.setContentHuggingPriority(UILayoutPriority(rawValue: UIConstants.layout.urlBarLayoutPriorityRawValue), for: .horizontal)
-        return view
+        if #available(iOS 26, *) {
+            let glassEffect = UIGlassEffect()
+            let effectView = UIVisualEffectView(effect: glassEffect)
+            effectView.layer.cornerRadius = UIConstants.layout.urlBarCornerRadius
+            effectView.clipsToBounds = true
+            effectView.setContentCompressionResistancePriority(UILayoutPriority(rawValue: UIConstants.layout.urlBarLayoutPriorityRawValue), for: .horizontal)
+            effectView.setContentHuggingPriority(UILayoutPriority(rawValue: UIConstants.layout.urlBarLayoutPriorityRawValue), for: .horizontal)
+            return effectView
+        } else {
+            let view = UIView()
+            view.backgroundColor = .clear
+            view.layer.cornerRadius = UIConstants.layout.urlBarCornerRadius
+            view.setContentCompressionResistancePriority(UILayoutPriority(rawValue: UIConstants.layout.urlBarLayoutPriorityRawValue), for: .horizontal)
+            view.setContentHuggingPriority(UILayoutPriority(rawValue: UIConstants.layout.urlBarLayoutPriorityRawValue), for: .horizontal)
+            return view
+        }
     }()
 
     private lazy var truncatedUrlText: UITextView = {
@@ -325,7 +336,11 @@ final class URLBar: UIView {
         addSubview(forwardButton)
         addSubview(deleteButton)
         addSubview(contextMenuButton)
-        urlBarBackgroundView.addSubview(textAndLockContainer)
+        if let effectView = urlBarBackgroundView as? UIVisualEffectView {
+            effectView.contentView.addSubview(textAndLockContainer)
+        } else {
+            urlBarBackgroundView.addSubview(textAndLockContainer)
+        }
         addSubview(cancelButton)
         textAndLockContainer.addSubview(stopReloadButton)
         addSubview(urlBarBorderView)
@@ -846,12 +861,12 @@ final class URLBar: UIView {
             compressBar = isIPadRegularDimensions ? false : true
             showBackgroundView = true
 
-            shieldIcon.animateHidden(false, duration: UIConstants.layout.urlBarTransitionAnimationDuration)
+            shieldIcon.animateHidden(true, duration: UIConstants.layout.urlBarTransitionAnimationDuration)
             cancelButton.animateHidden(true, duration: UIConstants.layout.urlBarTransitionAnimationDuration)
 
             setTextToURL()
             deactivate()
-            borderColor = .foundation
+            borderColor = .clear
             backgroundColor = .clear
 
         case .browsing:
@@ -859,11 +874,11 @@ final class URLBar: UIView {
             compressBar = isIPadRegularDimensions ? false : true
             showBackgroundView = false
 
-            shieldIcon.animateHidden(false, duration: UIConstants.layout.urlBarTransitionAnimationDuration)
+            shieldIcon.animateHidden(true, duration: UIConstants.layout.urlBarTransitionAnimationDuration)
             cancelButton.animateHidden(true, duration: UIConstants.layout.urlBarTransitionAnimationDuration)
 
             setTextToURL()
-            borderColor = .foundation
+            borderColor = .clear
             backgroundColor = .clear
 
             editingURLTextConstrains.forEach { $0.deactivate() }
@@ -892,7 +907,7 @@ final class URLBar: UIView {
             shieldIcon.animateHidden(true, duration: UIConstants.layout.urlBarTransitionAnimationDuration)
             cancelButton.animateHidden(isIPadRegularDimensions ? true : false, duration: UIConstants.layout.urlBarTransitionAnimationDuration)
             contextMenuButton.isEnabled = true
-            borderColor = .foundation
+            borderColor = .clear
             backgroundColor = .clear
         }
 
@@ -1131,9 +1146,9 @@ final class URLBar: UIView {
         contextMenuButton.alpha = expandAlpha
 
         if isEditing {
-            shieldIcon.alpha = collapseAlpha
+            shieldIcon.alpha = 0
         } else {
-            shieldIcon.alpha = expandAlpha
+            shieldIcon.alpha = 0
         }
 
         self.layoutIfNeeded()

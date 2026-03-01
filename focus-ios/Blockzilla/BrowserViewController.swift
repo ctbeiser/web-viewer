@@ -334,31 +334,7 @@ final class BrowserViewController: UIViewController {
         }
 
     func controller(for route: ToolTipRoute) -> UIViewController? {
-        switch route {
-        case .trackingProtectionShield(let version):
-            return handleTrackingProtectionShieldAction(version: version)
-
-        case .trash(let version):
-            return handleTrashAction(version: version)
-
-        case .searchBar:
-            return handleSearchBarAction()
-
-        case .onboarding(let onboardingType):
-            return handleOnboardingAction(onboardingType: onboardingType)
-
-        case .trackingProtection:
-            return nil
-
-        case .widget:
-            return handleWidgetAction()
-
-        case .menu:
-            return handleMenuAction()
-
-        case .widgetTutorial:
-            return handleWidgetTutorialAction()
-        }
+        return nil
     }
 
     private func handleTrackingProtectionShieldAction(version: OnboardingVersion) -> UIViewController? {
@@ -1313,13 +1289,10 @@ extension BrowserViewController: URLBarDelegate {
 
         switch scrollBarState {
         case .expanded:
-
-            // FXIOS-8635 - #19155 Integrate EngineSession scrolling to top in Focus iOS
-            // Just scroll the vertical position so the page doesn't appear under
-            // the notch on the iPhone X
-            var point = webViewController.scrollView.contentOffset
-            point.y = 0
-            webViewController.scrollView.setContentOffset(point, animated: true)
+            if let url = urlBar.url {
+                let utils = OpenUtils(url: url, webViewController: webViewController)
+                showSharePage(for: utils, sender: urlBar)
+            }
         case .collapsed: showToolbars()
         default: break
         }
