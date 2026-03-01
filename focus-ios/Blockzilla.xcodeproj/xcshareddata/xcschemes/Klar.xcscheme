@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E4BF2DD21BACE8CA00DA9D68"
-               BuildableName = "Firefox Focus.app"
+               BuildableName = "Web Viewer.app"
                BlueprintName = "Blockzilla"
                ReferencedContainer = "container:Blockzilla.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4BF2DD21BACE8CA00DA9D68"
-            BuildableName = "Firefox Focus.app"
+            BuildableName = "Web Viewer.app"
             BlueprintName = "Blockzilla"
             ReferencedContainer = "container:Blockzilla.xcodeproj">
          </BuildableReference>
@@ -106,7 +106,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4BF2DD21BACE8CA00DA9D68"
-            BuildableName = "Firefox Focus.app"
+            BuildableName = "Web Viewer.app"
             BlueprintName = "Blockzilla"
             ReferencedContainer = "container:Blockzilla.xcodeproj">
          </BuildableReference>
@@ -123,7 +123,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4BF2DD21BACE8CA00DA9D68"
-            BuildableName = "Firefox Focus.app"
+            BuildableName = "Web Viewer.app"
             BlueprintName = "Blockzilla"
             ReferencedContainer = "container:Blockzilla.xcodeproj">
          </BuildableReference>
