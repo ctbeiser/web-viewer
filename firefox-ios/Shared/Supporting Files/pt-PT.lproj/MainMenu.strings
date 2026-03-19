@@ -67,12 +67,6 @@
 /* On the main menu, at the top, title for the banner which suggest user can set Firefox as default browser. %@ is the app name */
 "MainMenu.HeaderBanner.Title.v142" = "Predefinir o %@";
 
-/* On the main menu, a title for a label that indicate the current option/action state is off. */
-"MainMenu.Off.Title.v141" = "Desativado";
-
-/* On the main menu, a title for a label that indicate the current option/action state is on. */
-"MainMenu.On.Title.v141" = "Ativado";
-
 /* On the main menu, the accessibility label for the action that will take the user to the Bookmarks panel. */
 "MainMenu.PanelLinkSection.AccessibilityLabels.Bookmarks.v132" = "Marcadores";
 
@@ -262,9 +256,6 @@
 /* On the main menu, a string below the Tool submenu tiitle, indicating what kind of tools are available in that menu. This string is for the Night Mode tool. */
 "MainMenu.Submenus.Tools.NightMode.Subtitle.v131" = "Modo noturno";
 
-/* On the main menu, in the tools submenu, the title for the menu component that indicates the current page zoom level. %@ is the current zoom level percentage. */
-"MainMenu.Submenus.Tools.PageZoom.Title.v140" = "Zoom da página (%@)";
-
 /* On the main menu, in the tools submenu, the title for the menu component that indicates the current page zoom level. */
 "MainMenu.Submenus.Tools.PageZoomV2.Title.v141" = "Zoom da página";
 
@@ -419,13 +410,13 @@
 "MainMenu.ToolsSection.Translation.AccessibilityLabels.TranslatedPage.v145" = "Página traduzida";
 
 /* On the main menu, the accessibility label describing the language that the webpage was translated to. %@ is the language selected (e.g. English). */
-"MainMenu.ToolsSection.Translation.AccessibilityLabels.TranslatedPageLanguage.v145" = "Traduzido para %@";
+"MainMenu.ToolsSection.Translation.AccessibilityLabels.TranslatedPageLanguage.v145" = "Traduzida para %@";
 
 /* On the main menu, the title for the action that will translate the content of the webpage. */
 "MainMenu.ToolsSection.Translation.Title.v145" = "Traduzir página";
 
 /* On the main menu, the title for the action that shows that the content of the webpage is already translated. */
-"MainMenu.ToolsSection.Translation.Translated.Title.v145" = "Traduzido";
+"MainMenu.ToolsSection.Translation.Translated.Title.v145" = "Traduzida";
 
 /* On the main menu, a title for a label that indicate the Website Dark Mode option from menu, is OFF. */
 "MainMenu.WebsiteDarkModeOffV2.Title.v142" = "Desligado";
