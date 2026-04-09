@@ -176,7 +176,7 @@
 "Settings.Rollouts.Link.v148" = "ვრცლად";
 
 /* A short description that explains that Mozilla may change features remotely. %@ is the app name (e.g. Firefox). */
-"Settings.Rollouts.Message.v148" = "%@ შეძლებს გააუმჯობესოს შესაძლებლობები, წარმადობა და მდგრადობა განახლებებს შორის შუალედშიც. ცვლილებები დაშორებული რეჟიმით.";
+"Settings.Rollouts.Message.v148" = "%@ გააუმჯობესებს შესაძლებლობებს, წარმადობასა და მდგრადობას განახლებებს შორის შუალედშიც. ცვლილებები აისახება დაშორებულად.";
 
 /* Label used as a toggle item in Settings. When this is off, the user is opting out of all rollouts. */
 "Settings.Rollouts.Title.v148" = "დაშორებულად გაუმჯობესების ნებართვა";
