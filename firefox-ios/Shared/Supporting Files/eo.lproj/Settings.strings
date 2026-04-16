@@ -263,13 +263,25 @@
 "Settings.Summarize.FooterTitle.v142" = "Tio provizas aliron al resumoj de paĝoj.";
 
 /* This is the footer text for the gestures features under the Summarize settings section. */
-"Settings.Summarize.GesturesSection.FooterTitle.v142" = "Skuu vian aparanto ambaŭflanken por resumi paĝon.";
+"Settings.Summarize.GesturesSection.FooterTitle.v142" = "Skuu vian aparaton ambaŭflanken por resumi paĝon.";
 
 /* This is the title for the setting that toggles the Shake Gesture feature under the Summarize settings section. */
 "Settings.Summarize.GesturesSection.ShakeGestureTitle.v142" = "Skui por resumi";
 
 /* This is the section title for the gestures features under the Summarize settings section. */
 "Settings.Summarize.GesturesSection.Title.v142" = "Gestoj";
+
+/* The accessibility label for the language picker button in the Summarize settings. */
+"Settings.Summarize.LanguageSection.PickerButtonAccessibilityLabel.v149" = "Elektu lingvon";
+
+/* The label for the picker option to select the preferred app language for the summarizer inside the Summarize settings. The preferred app language refers to the language that the user has selected to use for the app in the app settings. */
+"Settings.Summarize.LanguageSection.PreferredAppLanguageLabel.v149" = "Preferata lingvo de la apo";
+
+/* The title for the language choose section for the summarizer inside the Summarize settings. */
+"Settings.Summarize.LanguageSection.Title.v149" = "Lingvo";
+
+/* The label for the picker option to select the website language for the summarizer inside the Summarize settings. */
+"Settings.Summarize.LanguageSection.WebsiteLanguageLabel.v149" = "Lingvo de retejoj";
 
 /* This is the title for the setting that toggles the Summarize feature under the Summarize settings section. */
 "Settings.Summarize.SummarizePagesTitle.v142" = "Resumi paĝojn";
