@@ -748,7 +748,7 @@ open class SuggestClient: SuggestClientProtocol, @unchecked Sendable {
      */
 public convenience init(config: SuggestConfig)throws  {
     let handle =
-        try rustCallWithError(FfiConverterTypeSuggestApiError_lift) {
+        try rustCallWithError(FfiConverterTypeMerinoSuggestApiError_lift) {
     uniffi_merino_fn_constructor_suggestclient_new(
         FfiConverterTypeSuggestConfig_lower(config),$0
     )
@@ -774,7 +774,7 @@ public convenience init(config: SuggestConfig)throws  {
      * Returns the raw JSON response body as a string.
      */
 open func getSuggestions(query: String, options: SuggestOptions)throws  -> String  {
-    return try  FfiConverterString.lift(try rustCallWithError(FfiConverterTypeSuggestApiError_lift) {
+    return try  FfiConverterString.lift(try rustCallWithError(FfiConverterTypeMerinoSuggestApiError_lift) {
     uniffi_merino_fn_method_suggestclient_get_suggestions(
             self.uniffiCloneHandle(),
         FfiConverterString.lower(query),
@@ -1858,9 +1858,9 @@ public func FfiConverterTypeSuggestConfig_lower(_ value: SuggestConfig) -> RustB
  */
 public struct SuggestOptions: Equatable, Hashable, Codable {
     /**
-     * Comma-separated list of suggestion providers to query (e.g. `"wikipedia,adm"`).
+     * List of suggestion providers to query (e.g. `["wikipedia", "adm"]`).
      */
-    public var providers: String?
+    public var providers: [String]?
     /**
      * Identifier of which part of firefox the request comes from (e.g. `"urlbar"`, `"newtab"`).
      */
@@ -1878,10 +1878,10 @@ public struct SuggestOptions: Equatable, Hashable, Codable {
      */
     public var city: String?
     /**
-     * A comma-separated list of any experiments or rollouts that are affecting the client's Suggest experience.
+     * List of any experiments or rollouts that are affecting the client's Suggest experience.
      * If Merino recognizes any of them it will modify its behavior accordingly.
      */
-    public var clientVariants: String?
+    public var clientVariants: [String]?
     /**
      * For AccuWeather provider, the request type should be either a "location" or "weather" string. For "location" it will get location completion suggestion. For "weather" it will return weather suggestions.
      * If omitted, it defaults to weather suggestions.
@@ -1896,8 +1896,8 @@ public struct SuggestOptions: Equatable, Hashable, Codable {
     // declare one manually.
     public init(
         /**
-         * Comma-separated list of suggestion providers to query (e.g. `"wikipedia,adm"`).
-         */providers: String?, 
+         * List of suggestion providers to query (e.g. `["wikipedia", "adm"]`).
+         */providers: [String]?, 
         /**
          * Identifier of which part of firefox the request comes from (e.g. `"urlbar"`, `"newtab"`).
          */source: String?, 
@@ -1911,9 +1911,9 @@ public struct SuggestOptions: Equatable, Hashable, Codable {
          * City name (e.g. `"San Francisco"`).
          */city: String?, 
         /**
-         * A comma-separated list of any experiments or rollouts that are affecting the client's Suggest experience.
+         * List of any experiments or rollouts that are affecting the client's Suggest experience.
          * If Merino recognizes any of them it will modify its behavior accordingly.
-         */clientVariants: String?, 
+         */clientVariants: [String]?, 
         /**
          * For AccuWeather provider, the request type should be either a "location" or "weather" string. For "location" it will get location completion suggestion. For "weather" it will return weather suggestions.
          * If omitted, it defaults to weather suggestions.
@@ -1947,24 +1947,24 @@ public struct FfiConverterTypeSuggestOptions: FfiConverterRustBuffer {
     public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> SuggestOptions {
         return
             try SuggestOptions(
-                providers: FfiConverterOptionString.read(from: &buf), 
+                providers: FfiConverterOptionSequenceString.read(from: &buf), 
                 source: FfiConverterOptionString.read(from: &buf), 
                 country: FfiConverterOptionString.read(from: &buf), 
                 region: FfiConverterOptionString.read(from: &buf), 
                 city: FfiConverterOptionString.read(from: &buf), 
-                clientVariants: FfiConverterOptionString.read(from: &buf), 
+                clientVariants: FfiConverterOptionSequenceString.read(from: &buf), 
                 requestType: FfiConverterOptionString.read(from: &buf), 
                 acceptLanguage: FfiConverterOptionString.read(from: &buf)
         )
     }
 
     public static func write(_ value: SuggestOptions, into buf: inout [UInt8]) {
-        FfiConverterOptionString.write(value.providers, into: &buf)
+        FfiConverterOptionSequenceString.write(value.providers, into: &buf)
         FfiConverterOptionString.write(value.source, into: &buf)
         FfiConverterOptionString.write(value.country, into: &buf)
         FfiConverterOptionString.write(value.region, into: &buf)
         FfiConverterOptionString.write(value.city, into: &buf)
-        FfiConverterOptionString.write(value.clientVariants, into: &buf)
+        FfiConverterOptionSequenceString.write(value.clientVariants, into: &buf)
         FfiConverterOptionString.write(value.requestType, into: &buf)
         FfiConverterOptionString.write(value.acceptLanguage, into: &buf)
     }
@@ -2330,7 +2330,7 @@ public func FfiConverterTypeCuratedRecommendationsApiError_lower(_ value: Curate
 }
 
 
-public enum SuggestApiError: Swift.Error, Equatable, Hashable, Codable, Foundation.LocalizedError {
+public enum MerinoSuggestApiError: Swift.Error, Equatable, Hashable, Codable, Foundation.LocalizedError {
 
     
     
@@ -2357,16 +2357,16 @@ public enum SuggestApiError: Swift.Error, Equatable, Hashable, Codable, Foundati
 }
 
 #if compiler(>=6)
-extension SuggestApiError: Sendable {}
+extension MerinoSuggestApiError: Sendable {}
 #endif
 
 #if swift(>=5.8)
 @_documentation(visibility: private)
 #endif
-public struct FfiConverterTypeSuggestApiError: FfiConverterRustBuffer {
-    typealias SwiftType = SuggestApiError
+public struct FfiConverterTypeMerinoSuggestApiError: FfiConverterRustBuffer {
+    typealias SwiftType = MerinoSuggestApiError
 
-    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> SuggestApiError {
+    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> MerinoSuggestApiError {
         let variant: Int32 = try readInt(&buf)
         switch variant {
 
@@ -2385,7 +2385,7 @@ public struct FfiConverterTypeSuggestApiError: FfiConverterRustBuffer {
         }
     }
 
-    public static func write(_ value: SuggestApiError, into buf: inout [UInt8]) {
+    public static func write(_ value: MerinoSuggestApiError, into buf: inout [UInt8]) {
         switch value {
 
         
@@ -2410,15 +2410,15 @@ public struct FfiConverterTypeSuggestApiError: FfiConverterRustBuffer {
 #if swift(>=5.8)
 @_documentation(visibility: private)
 #endif
-public func FfiConverterTypeSuggestApiError_lift(_ buf: RustBuffer) throws -> SuggestApiError {
-    return try FfiConverterTypeSuggestApiError.lift(buf)
+public func FfiConverterTypeMerinoSuggestApiError_lift(_ buf: RustBuffer) throws -> MerinoSuggestApiError {
+    return try FfiConverterTypeMerinoSuggestApiError.lift(buf)
 }
 
 #if swift(>=5.8)
 @_documentation(visibility: private)
 #endif
-public func FfiConverterTypeSuggestApiError_lower(_ value: SuggestApiError) -> RustBuffer {
-    return FfiConverterTypeSuggestApiError.lower(value)
+public func FfiConverterTypeMerinoSuggestApiError_lower(_ value: MerinoSuggestApiError) -> RustBuffer {
+    return FfiConverterTypeMerinoSuggestApiError.lower(value)
 }
 
 #if swift(>=5.8)
@@ -2858,13 +2858,13 @@ private let initializationResult: InitializationResult = {
     if (uniffi_merino_checksum_method_curatedrecommendationsclient_get_curated_recommendations() != 52246) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_merino_checksum_method_suggestclient_get_suggestions() != 20057) {
+    if (uniffi_merino_checksum_method_suggestclient_get_suggestions() != 12398) {
         return InitializationResult.apiChecksumMismatch
     }
     if (uniffi_merino_checksum_constructor_curatedrecommendationsclient_new() != 18166) {
         return InitializationResult.apiChecksumMismatch
     }
-    if (uniffi_merino_checksum_constructor_suggestclient_new() != 60673) {
+    if (uniffi_merino_checksum_constructor_suggestclient_new() != 14568) {
         return InitializationResult.apiChecksumMismatch
     }
 
