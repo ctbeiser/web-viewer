@@ -71,8 +71,10 @@ final class LegacyWebViewController: UIViewController, LegacyWebController {
     private var progressObserver: NSKeyValueObservation?
     private var currentBackForwardItem: WKBackForwardListItem?
     private let trackingProtectionManager: TrackingProtectionManager
+    private let websiteDarkModeController = WebsiteDarkModeController()
     private var cancellable: AnyCancellable?
     private var menuAction: WebMenuAction
+    private var isWebsiteDarkModeEnabled = false
 
     var pageTitle: String? {
         return browserView.title
@@ -189,6 +191,7 @@ final class LegacyWebViewController: UIViewController, LegacyWebController {
         setupMetadataScripts()
         setupFullScreen()
         setupAdsScripts()
+        setupWebsiteDarkMode()
 
         view.addSubview(browserView)
         browserView.snp.makeConstraints { make in
@@ -263,6 +266,10 @@ final class LegacyWebViewController: UIViewController, LegacyWebController {
         addScript(forResource: "Ads", injectionTime: .atDocumentEnd, forMainFrameOnly: false)
     }
 
+    private func setupWebsiteDarkMode() {
+        websiteDarkModeController.configure(webView: browserView, isEnabled: isWebsiteDarkModeEnabled)
+    }
+
     func disableTrackingProtection() {
         guard case .on = trackingProtectionManager.trackingProtectionStatus else { return }
         ScriptHandlers.allCases.forEach {
@@ -274,6 +281,7 @@ final class LegacyWebViewController: UIViewController, LegacyWebController {
         setupMetadataScripts()
         setupFullScreen()
         setupAdsScripts()
+        websiteDarkModeController.reinstallUserScript(in: browserView)
         trackingProtectionManager.trackingProtectionStatus = .off
     }
 
@@ -286,6 +294,11 @@ final class LegacyWebViewController: UIViewController, LegacyWebController {
 
     func evaluate(_ javascript: String, completion: ((Any?, Error?) -> Void)?) {
         browserView.evaluateJavaScript(javascript, completionHandler: completion)
+    }
+
+    func setWebsiteDarkModeEnabled(_ enabled: Bool) {
+        isWebsiteDarkModeEnabled = enabled
+        websiteDarkModeController.setEnabled(enabled, in: browserView)
     }
 
     func evaluateDocumentContentType(_ completion: @escaping (String?) -> Void) {
