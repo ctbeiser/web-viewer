@@ -7,6 +7,7 @@ import UIKit
 
 public enum URLViewAction {
     case contextMenuTap(anchor: UIButton)
+    case archiveButtonTap
     case backButtonTap
     case forwardButtonTap
     case stopButtonTap

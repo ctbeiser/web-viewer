@@ -167,6 +167,19 @@ final class URLBar: UIView {
         return button
     }()
 
+    private lazy var archiveButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = .primaryText
+        button.setImage(UIImage(systemName: "archivebox"), for: .normal)
+        button.accessibilityLabel = UIConstants.strings.browserArchivePage
+        button.accessibilityIdentifier = "URLBar.archiveButton"
+        button.isHidden = true
+        button.alpha = 0
+        button.isPointerInteractionEnabled = true
+        return button
+    }()
+
     private lazy var textAndLockContainer: UIView = {
         let textAndLockContainer = UIView()
 
@@ -317,6 +330,7 @@ final class URLBar: UIView {
         addCancelButtonConstraints()
         addTextAndLockContainerConstraints()
         addStopReloadButtonConstraints()
+        addArchiveButtonConstraints()
         addUrlTextFieldConstraints()
         addProgressBarConstraints()
         addTruncatedUrlTextConstraints()
@@ -343,6 +357,7 @@ final class URLBar: UIView {
         }
         addSubview(cancelButton)
         textAndLockContainer.addSubview(stopReloadButton)
+        textAndLockContainer.addSubview(archiveButton)
         addSubview(urlBarBorderView)
         urlBarBorderView.addSubview(urlBarBackgroundView)
         collapsedUrlAndLockWrapper.addSubview(truncatedUrlText)
@@ -480,6 +495,14 @@ final class URLBar: UIView {
         }
     }
 
+    private func addArchiveButtonConstraints() {
+        archiveButton.snp.makeConstraints { make in
+            make.trailing.equalTo(stopReloadButton.snp.leading).offset(-UIConstants.layout.urlBarPageActionSpacing)
+            make.centerY.equalToSuperview()
+            make.size.equalTo(UIConstants.layout.urlBarButtonTargetSize)
+        }
+    }
+
     private func addUrlTextFieldConstraints() {
         urlTextField.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -488,7 +511,7 @@ final class URLBar: UIView {
             showLeftBarViewConstraints.append(make.left.equalToSuperview().constraint)
 
             hidePageActionsConstraints.append(make.trailing.equalToSuperview().constraint)
-            showPageActionsConstraints.append(make.trailing.equalTo(stopReloadButton.snp.leading).constraint)
+            showPageActionsConstraints.append(make.trailing.equalTo(archiveButton.snp.leading).constraint)
         }
     }
 
@@ -566,6 +589,15 @@ final class URLBar: UIView {
                         .viewActionSubject
                         .send(.reloadButtonTap)
                 }
+            }
+            .store(in: &cancellables)
+
+        archiveButton
+            .publisher(event: .touchUpInside)
+            .sink { [unowned self] _ in
+                self.viewModel
+                    .viewActionSubject
+                    .send(.archiveButtonTap)
             }
             .store(in: &cancellables)
 
@@ -817,6 +849,7 @@ final class URLBar: UIView {
         let duration = UIConstants.layout.urlBarTransitionAnimationDuration / 2
 
         stopReloadButton.animateHidden(!visible, duration: duration)
+        archiveButton.animateHidden(!visible, duration: duration)
 
         self.layoutIfNeeded()
 
@@ -1144,6 +1177,7 @@ final class URLBar: UIView {
         forwardButton.alpha = shouldShowToolset ? expandAlpha : 0
         deleteButton.alpha = shouldShowToolset ? expandAlpha : 0
         contextMenuButton.alpha = expandAlpha
+        archiveButton.alpha = expandAlpha
 
         if isEditing {
             shieldIcon.alpha = 0
