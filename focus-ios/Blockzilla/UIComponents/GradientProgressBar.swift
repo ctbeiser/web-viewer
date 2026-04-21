@@ -10,9 +10,9 @@ open class GradientProgressBar: UIProgressView {
         static let backgroundColor = UIColor.clear
 
         static let gradientColors = [
-            UIColor.gradientFirst.cgColor,
-            UIColor.gradientSecond.cgColor,
-            UIColor.gradientThird.cgColor
+            UIColor.accent.cgColor,
+            UIColor.accent.cgColor,
+            UIColor.accent.cgColor
         ]
 
         static let animationDuration = 0.2 // CALayer default animation duration
