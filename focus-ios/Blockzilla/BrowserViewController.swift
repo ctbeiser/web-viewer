@@ -199,6 +199,13 @@ final class BrowserViewController: UIViewController {
         }
     }
 
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        guard previousTraitCollection?.userInterfaceStyle != traitCollection.userInterfaceStyle else { return }
+        syncWebsiteDarkMode()
+    }
+
     private func configureLegacyUI() {
         webViewController.delegate = self
 
@@ -265,6 +272,7 @@ final class BrowserViewController: UIViewController {
         showsToolsetInURLBar = true
 
         containWebView()
+        syncWebsiteDarkMode()
         createHomeView()
         createURLBar()
         bindUrlBarViewModel()
@@ -310,6 +318,11 @@ final class BrowserViewController: UIViewController {
         ensureBrowsingMode()
         guard let url = initialUrl else { return }
         submit(url: url, source: .action)
+    }
+
+    private func syncWebsiteDarkMode() {
+        guard !WebEngineFlagManager.isWebEngineEnabled else { return }
+        webViewController.setWebsiteDarkModeEnabled(traitCollection.userInterfaceStyle == .dark)
     }
 
     override func viewWillAppear(_ animated: Bool) {
