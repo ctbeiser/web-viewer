@@ -136,6 +136,8 @@
 		C89AA96E271720330089838F /* ThemeTableViewToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89AA969271720330089838F /* ThemeTableViewToggleCell.swift */; };
 		C89AA96F271720330089838F /* ThemeTableViewAccessoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89AA96A271720330089838F /* ThemeTableViewAccessoryCell.swift */; };
 		C89AA970271720330089838F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89AA96B271720330089838F /* Theme.swift */; };
+		F0A1B2C32E8F100000000001 /* NightModeAllFramesAtDocumentStart.js in Resources */ = {isa = PBXBuildFile; fileRef = F0A1B2C32E8F100000000003 /* NightModeAllFramesAtDocumentStart.js */; };
+		F0A1B2C32E8F100000000002 /* WebsiteDarkModeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1B2C32E8F100000000004 /* WebsiteDarkModeController.swift */; };
 		C8A9FE0A26E7A63F00A9C72B /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A9FE0926E7A5B900A9C72B /* UserDefault.swift */; };
 		C8AC706427DF972B00165824 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AC706327DF972B00165824 /* AuthenticationManager.swift */; };
 		C8C74BF4271D5D310009CE5A /* ActionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C74BF3271D5D310009CE5A /* ActionFooterView.swift */; };
@@ -785,6 +787,8 @@
 		C89AA969271720330089838F /* ThemeTableViewToggleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeTableViewToggleCell.swift; sourceTree = "<group>"; };
 		C89AA96A271720330089838F /* ThemeTableViewAccessoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeTableViewAccessoryCell.swift; sourceTree = "<group>"; };
 		C89AA96B271720330089838F /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		F0A1B2C32E8F100000000003 /* NightModeAllFramesAtDocumentStart.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = NightModeAllFramesAtDocumentStart.js; sourceTree = "<group>"; };
+		F0A1B2C32E8F100000000004 /* WebsiteDarkModeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteDarkModeController.swift; sourceTree = "<group>"; };
 		C8A9FE0926E7A5B900A9C72B /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		C8AC706327DF972B00165824 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		C8C74BF3271D5D310009CE5A /* ActionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionFooterView.swift; sourceTree = "<group>"; };
@@ -1444,6 +1448,7 @@
 			isa = PBXGroup;
 			children = (
 				B3AFC2BB1F7C0B9F001AEF38 /* LegacyWebViewController.swift */,
+				F0A1B2C32E8F100000000004 /* WebsiteDarkModeController.swift */,
 			);
 			path = WebView;
 			sourceTree = "<group>";
@@ -1956,6 +1961,7 @@
 				1D3BEDF820C5E6C70019B722 /* FindInPage.js */,
 				C83FB7D1273AA13200B78CC5 /* MetadataHelper.js */,
 				846A23172668CC4500DB3C37 /* FullScreen.js */,
+				F0A1B2C32E8F100000000003 /* NightModeAllFramesAtDocumentStart.js */,
 				E521DD9629782CDA00655202 /* Intents.intentdefinition */,
 				D3426AEE1DB846BB0016DA5A /* topdomains.txt */,
 				E4BF2DDD1BACE8CA00DA9D68 /* Assets.xcassets */,
@@ -2471,6 +2477,7 @@
 				D3C047BD1DCBD8ED00402FFB /* SearchEngines.plist in Resources */,
 				74F94FF21FD9CA070047E629 /* Intro.strings in Resources */,
 				846A23182668CC4500DB3C37 /* FullScreen.js in Resources */,
+				F0A1B2C32E8F100000000001 /* NightModeAllFramesAtDocumentStart.js in Resources */,
 				D3DA778C1DC2C60E009C114E /* errorPage.html in Resources */,
 				D38EDB961DCA8A9400E28196 /* LaunchScreen.storyboard in Resources */,
 				CD92AAC22DA95B3D00B9C685 /* metrics_legacy.yaml in Resources */,
@@ -2716,6 +2723,7 @@
 				D34E70351DA874AA00BABDCC /* StringExtensions.swift in Sources */,
 				D30179C31BCC6F65009AD388 /* AboutViewController.swift in Sources */,
 				B3AFC2BC1F7C0B9F001AEF38 /* LegacyWebViewController.swift in Sources */,
+				F0A1B2C32E8F100000000002 /* WebsiteDarkModeController.swift in Sources */,
 				D5ABA3DA1FCC846800D5C060 /* AutocompleteSettingViewController.swift in Sources */,
 				D5ABA3D91FCC846800D5C060 /* AddCustomDomainViewController.swift in Sources */,
 				122D19F728E1B29000B884E7 /* SearchInContentTelemetry.swift in Sources */,
