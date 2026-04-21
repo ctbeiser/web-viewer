@@ -64,6 +64,17 @@ class BrowserViewControllerTests: XCTestCase {
         bvc.requestReviewIfNecessary()
         XCTAssert(mockUserDefaults.integer(forKey: UIConstants.strings.userDefaultsLaunchThresholdKey) == 114)
     }
+
+    func testArchiveIsSubmissionURL_buildsExpectedURL() throws {
+        let sourceURL = try XCTUnwrap(URL(string: "https://example.com/article?id=42&lang=en"))
+        let archiveURL = try XCTUnwrap(BrowserViewController.archiveIsSubmissionURL(for: sourceURL))
+        let components = try XCTUnwrap(URLComponents(url: archiveURL, resolvingAgainstBaseURL: false))
+
+        XCTAssertEqual(components.scheme, "https")
+        XCTAssertEqual(components.host, "archive.is")
+        XCTAssertEqual(components.path, "/submit/")
+        XCTAssertEqual(components.queryItems, [URLQueryItem(name: "url", value: sourceURL.absoluteString)])
+    }
 }
 
 private class MockUserDefaults: UserDefaults {
