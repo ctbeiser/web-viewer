@@ -2515,13 +2515,15 @@
 /* Begin PBXShellScriptBuildPhase section */
 		394C36CB2906DC5900B9845E /* Nimbus Feature Manifest Generator Script */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(SOURCE_ROOT)/bin/nimbus-fml.sh",
+				"$(SOURCE_ROOT)/bin/nimbus-fml-configuration.sh",
+				"$(SOURCE_ROOT)/bin/run_nimbus_codegen.sh",
 				"$(SOURCE_ROOT)/nimbus.fml.yaml",
 			);
 			name = "Nimbus Feature Manifest Generator Script";
@@ -2532,7 +2534,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $ACTION != \"indexbuild\" ]; then\n   /usr/bin/env -i HOME=$HOME PROJECT=$PROJECT CONFIGURATION=$CONFIGURATION SOURCE_ROOT=$SOURCE_ROOT bash $SOURCE_ROOT/bin/nimbus-fml.sh --verbose\nfi\n";
+			shellScript = "if [ $ACTION != \"indexbuild\" ]; then\n   /usr/bin/env -i HOME=$HOME PROJECT=$PROJECT CONFIGURATION=$CONFIGURATION SOURCE_ROOT=$SOURCE_ROOT bash $SOURCE_ROOT/bin/run_nimbus_codegen.sh\nfi\n";
 		};
 		D48C953D27FF411800FF8AEF /* Run Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2551,7 +2553,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nMODIFIED_FILES=$(git diff --name-only --diff-filter=ACM | grep -e '\\.swift$')\n\nSWIFTLINT_ROOT=\"${SRCROOT}/..\"\nBASELINE_FILE=\"${SWIFTLINT_ROOT}/.swiftlint-baseline.json\"\n\nif which swiftlint > /dev/null; then\n    # Move to the location of the root Swiftlint config file in\n    # order to use nested configurations\n    cd ${SWIFTLINT_ROOT}\n\n    swiftlint lint --force-exclude --baseline \"${BASELINE_FILE}\" ${MODIFIED_FILES}\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\" \nfi\n";
+			shellScript = "bash $SOURCE_ROOT/bin/run_swiftlint.sh\n";
 		};
 		D5D067F9252F939600C35227 /* Glean */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2577,18 +2579,40 @@
 		};
 		F84AFE711DE77ACC005C4DD1 /* Run Script (Copy Wordmark) */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
+				"$(SRCROOT)/bin/copy_wordmark.sh",
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_focus_wordmark.imageset/img_focus_wordmark.png",
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_focus_wordmark.imageset/img_focus_wordmark@2x.png",
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_focus_wordmark.imageset/img_focus_wordmark@3x.png",
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_focus_wordmark.imageset/ic_logo_wordmark_light_horizontal.png",
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_focus_wordmark.imageset/ic_logo_wordmark_light_horizontal@2x.png",
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_focus_wordmark.imageset/ic_logo_wordmark_light_horizontal@3x.png",
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_klar_wordmark.imageset/img_klar_wordmark.png",
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_klar_wordmark.imageset/img_klar_wordmark@2x.png",
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_klar_wordmark.imageset/img_klar_wordmark@3x.png",
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_klar_wordmark.imageset/ic_logo_wordmark_light_horizontal_klar.png",
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_klar_wordmark.imageset/ic_logo_wordmark_light_horizontal_klar@2x.png",
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_klar_wordmark.imageset/ic_logo_wordmark_light_horizontal_klar@3x.png",
 			);
 			name = "Run Script (Copy Wordmark)";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/img_focus_wordmark.png",
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/img_focus_wordmark@2x.png",
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/img_focus_wordmark@3x.png",
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/ic_logo_wordmark_light_horizontal.png",
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/ic_logo_wordmark_light_horizontal@2x.png",
+				"$(SRCROOT)/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/ic_logo_wordmark_light_horizontal@3x.png",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"$PRODUCT_NAME\" = \"Firefox Klar\" ]; then\n  cp -v \"$SRCROOT/Blockzilla/Assets.xcassets/img_klar_wordmark.imageset/img_klar_wordmark.png\" \\\n    \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/img_focus_wordmark.png\"\n  cp -v \"$SRCROOT/Blockzilla/Assets.xcassets/img_klar_wordmark.imageset/img_klar_wordmark@2x.png\" \\\n    \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/img_focus_wordmark@2x.png\"\n  cp -v \"$SRCROOT/Blockzilla/Assets.xcassets/img_klar_wordmark.imageset/img_klar_wordmark@3x.png\" \\\n    \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/img_focus_wordmark@3x.png\"\n  cp -v \"$SRCROOT/Blockzilla/Assets.xcassets/img_klar_wordmark.imageset/ic_logo_wordmark_light_horizontal_klar.png\" \\\n    \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/ic_logo_wordmark_light_horizontal.png\"\n  cp -v \"$SRCROOT/Blockzilla/Assets.xcassets/img_klar_wordmark.imageset/ic_logo_wordmark_light_horizontal_klar@2x.png\" \\\n    \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/ic_logo_wordmark_light_horizontal@2x.png\"\n  cp -v \"$SRCROOT/Blockzilla/Assets.xcassets/img_klar_wordmark.imageset/ic_logo_wordmark_light_horizontal_klar@3x.png\" \\\n    \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/ic_logo_wordmark_light_horizontal@3x.png\"\nelse\n  cp -v \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_wordmark.imageset/img_focus_wordmark.png\" \\\n    \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/img_focus_wordmark.png\"\n  cp -v \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_wordmark.imageset/img_focus_wordmark@2x.png\" \\\n    \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/img_focus_wordmark@2x.png\"\n  cp -v \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_wordmark.imageset/img_focus_wordmark@3x.png\" \\\n    \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/img_focus_wordmark@3x.png\"\n  cp -v \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_wordmark.imageset/ic_logo_wordmark_light_horizontal.png\" \\\n    \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/ic_logo_wordmark_light_horizontal.png\"\n  cp -v \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_wordmark.imageset/ic_logo_wordmark_light_horizontal@2x.png\" \\\n    \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/ic_logo_wordmark_light_horizontal@2x.png\"\n  cp -v \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_wordmark.imageset/ic_logo_wordmark_light_horizontal@3x.png\" \\\n    \"$SRCROOT/Blockzilla/Assets.xcassets/img_focus_launchscreen.imageset/ic_logo_wordmark_light_horizontal@3x.png\"\nfi\n";
+			shellScript = "bash $SRCROOT/bin/copy_wordmark.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
