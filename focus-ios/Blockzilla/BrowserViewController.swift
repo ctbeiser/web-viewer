@@ -673,6 +673,10 @@ final class BrowserViewController: UIViewController {
                     self.updateFindInPageVisibility(visible: false)
                     self.presentContextMenu(from: anchor)
 
+                case .archiveButtonTap:
+                    guard let url = self.urlBar.url else { return }
+                    self.openInArchiveIs(url: url)
+
                 case .backButtonTap:
                     // FXIOS-8626 - #19148 - Integrate basics APIs of WebEngine in Focus iOS
                     self.webViewController.goBack()
@@ -1943,6 +1947,19 @@ extension BrowserViewController: MenuActionable {
         NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: UIConstants.strings.findInPageNotification)))
 
         GleanMetrics.BrowserMenu.browserMenuAction.record(GleanMetrics.BrowserMenu.BrowserMenuActionExtra(item: "find_in_page"))
+    }
+
+    static func archiveIsSubmissionURL(for url: URL) -> URL? {
+        var components = URLComponents(string: "https://archive.is/submit/")
+        components?.queryItems = [URLQueryItem(name: "url", value: url.absoluteString)]
+        return components?.url
+    }
+
+    func openInArchiveIs(url: URL) {
+        guard let archiveURL = Self.archiveIsSubmissionURL(for: url) else { return }
+
+        submit(url: archiveURL, source: .action)
+        GleanMetrics.BrowserMenu.browserMenuAction.record(GleanMetrics.BrowserMenu.BrowserMenuActionExtra(item: "archive_is"))
     }
 
     func openInDefaultBrowser(url: URL) {

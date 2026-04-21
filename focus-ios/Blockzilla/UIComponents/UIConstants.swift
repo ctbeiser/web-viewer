@@ -150,6 +150,7 @@ struct UIConstants {
         static let contextMenuButtonMargin: CGFloat = 14
         static let contextMenuIconSize: CGFloat = 28
         static let deleteButtonMarginContextMenu: CGFloat = -16
+        static let urlBarPageActionSpacing: CGFloat = 4
         static let toastLabelOffset: CGFloat = 20
     }
 
@@ -176,6 +177,7 @@ struct UIConstants {
         static let newSessionFromBiometricFailure = NSLocalizedString("BiometricPrompt.newSession", value: "New Session", comment: "Create a new session after failing a biometric check")
         static let browserBack = NSLocalizedString("Browser.backLabel", value: "Back", comment: "Accessibility label for the back button")
         static let browserForward = NSLocalizedString("Browser.forwardLabel", value: "Forward", comment: "Accessibility label for the forward button")
+        static let browserArchivePage = NSLocalizedString("Browser.archivePageLabel", value: "Archive Page", comment: "Accessibility label for the Archive.is button")
         static let browserReload = NSLocalizedString("Browser.reloadLabel", value: "Reload", comment: "Accessibility label for the reload button")
         static let browserSettings = NSLocalizedString("Browser.settingsLabel", value: "Settings", comment: "Accessibility label for the settings button")
         static let browserStop = NSLocalizedString("Browser.stopLabel", value: "Stop", comment: "Accessibility label for the stop button")
