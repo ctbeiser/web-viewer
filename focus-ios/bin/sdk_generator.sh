@@ -23,7 +23,7 @@
 # 7. Add the same files from the `Generated` folder as Output Files of the newly created "Run Script" step.
 # 8. Start using the generated metrics.
 
-set -e
+set -euo pipefail
 
 GLEAN_PARSER_VERSION=18.0
 
@@ -65,6 +65,55 @@ HEREDOC
 
 helptext() {
     echo "$USAGE"
+}
+
+cleanup_tmp_dirs() {
+    local tmp_dir
+    for tmp_dir in "$@"; do
+        rm -rf "$tmp_dir"
+    done
+}
+
+ensure_python_package() {
+    local module_name="$1"
+    local version_prefix="$2"
+    local package_requirement="$3"
+
+    if ! "${VENVDIR}"/bin/python - "$module_name" "$version_prefix" <<'PY'
+import importlib
+import sys
+
+module_name = sys.argv[1]
+expected_prefix = sys.argv[2]
+
+try:
+    module = importlib.import_module(module_name)
+except Exception:
+    sys.exit(1)
+
+version = getattr(module, "__version__", "")
+sys.exit(0 if version.startswith(f"{expected_prefix}.") else 1)
+PY
+    then
+        "${VENVDIR}"/bin/pip install --upgrade "${package_requirement}"
+    fi
+}
+
+sync_generated_files() {
+    local source_dir="$1"
+    local destination_dir="$2"
+    local generated_file
+
+    while IFS= read -r -d '' generated_file; do
+        local relative_path="${generated_file#"${source_dir}/"}"
+        local destination_file="${destination_dir}/${relative_path}"
+
+        mkdir -p "$(dirname "${destination_file}")"
+
+        if [[ ! -f "${destination_file}" ]] || ! cmp -s "${generated_file}" "${destination_file}"; then
+            mv "${generated_file}" "${destination_file}"
+        fi
+    done < <(find "${source_dir}" -type f -print0)
 }
 
 declare -a PARAMS=()
@@ -176,10 +225,7 @@ fi
 VENVDIR="${SOURCE_ROOT}/.venv"
 
 [ -x "${VENVDIR}/bin/python" ] || python3 -m venv "${VENVDIR}"
-# We need at least pip 20.3 for Big Sur support, see https://pip.pypa.io/en/stable/news/#id48
-# Latest pip is 21.0.1
-"${VENVDIR}"/bin/pip install "pip>=20.3"
-"${VENVDIR}"/bin/pip install --upgrade "glean_parser~=$GLEAN_PARSER_VERSION"
+ensure_python_package "glean_parser" "$GLEAN_PARSER_VERSION" "glean_parser~=$GLEAN_PARSER_VERSION"
 
 # Run the glinter
 # Turn its warnings into warnings visible in Xcode (but don't do for the success message)
@@ -190,17 +236,23 @@ VENVDIR="${SOURCE_ROOT}/.venv"
     | sed 's/^\(.\)/warning: \1/'  \
     | sed '/Your metrics are Glean/s/^warning: //'
 
+TEMP_OUTPUT_DIR=$(mktemp -d "${TMPDIR:-/tmp}/glean-generated.XXXXXX")
+trap 'cleanup_tmp_dirs "$TEMP_OUTPUT_DIR"' EXIT
+
 # Any of the below variables might be empty, so by not quoting them we ensure they are just left out as arguments
 # shellcheck disable=SC2086
 PARSER_OUTPUT=$("${VENVDIR}"/bin/python -m glean_parser \
     translate \
     -f "swift" \
-    -o "${OUTPUT_DIR}" \
+    -o "${TEMP_OUTPUT_DIR}" \
     -s "glean_namespace=${GLEAN_NAMESPACE}" \
     $BUILD_DATE \
     $EXPIRE_VERSION \
     $ALLOW_RESERVED \
     "${YAML_FILES[@]}" 2>&1) || { echo "$PARSER_OUTPUT"; echo "error: glean_parser failed. See errors above."; exit 1; }
+
+mkdir -p "${OUTPUT_DIR}"
+sync_generated_files "${TEMP_OUTPUT_DIR}" "${OUTPUT_DIR}"
 
 if [ -n "$DOCS_DIRECTORY" ]; then
     "${VENVDIR}"/bin/python -m glean_parser \
