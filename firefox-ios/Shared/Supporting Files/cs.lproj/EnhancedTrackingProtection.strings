@@ -107,7 +107,7 @@
 "Menu.EnhancedTrackingProtection.On.Header.v128" = "Jste chráněni. Pokud něco zpozorujeme, dáme vám vědět.";
 
 /* Header for the enhanced tracking protection screen when the user has selected to be protected but the connection is not secure. */
-"Menu.EnhancedTrackingProtection.On.NotSecure.Header.v128" = "Vaše připojení není zabezpečené.";
+"Menu.EnhancedTrackingProtection.On.NotSecure.Header.v128" = "Vaše spojení není zabezpečené.";
 
 /* Title for the enhanced tracking protection screen when the user has selected to be protected but the connection is not secure. */
 "Menu.EnhancedTrackingProtection.On.NotSecure.Title.v128" = "Buďte na této stránce opatrní";
