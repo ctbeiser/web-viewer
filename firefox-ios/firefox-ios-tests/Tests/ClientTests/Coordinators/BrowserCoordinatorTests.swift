@@ -15,7 +15,9 @@ import Shared
 @testable import Client
 
 @MainActor
-final class BrowserCoordinatorTests: XCTestCase, LegacyFeatureFlaggable, StoreTestUtility {
+final class BrowserCoordinatorTests: XCTestCase,
+                                     FeatureFlaggable,
+                                     StoreTestUtility {
     private var mockRouter: MockRouter!
     private var profile: MockProfile!
     private var overlayModeManager: MockOverlayModeManager!
@@ -78,7 +80,7 @@ final class BrowserCoordinatorTests: XCTestCase, LegacyFeatureFlaggable, StoreTe
         let subject = createSubject()
         subject.start(with: nil)
         // TODO: FXIOS-12947 - Add tests for ToU Feature implementation
-        if !featureFlags.isFeatureEnabled(.touFeature, checking: .buildOnly) {
+        if !featureFlagsProvider.isEnabled(.touFeature) {
             XCTAssertNotNil(mockRouter.rootViewController as? BrowserViewController)
             XCTAssertEqual(mockRouter.setRootViewControllerCalled, 1)
             XCTAssertTrue(subject.childCoordinators.isEmpty)
@@ -258,7 +260,7 @@ final class BrowserCoordinatorTests: XCTestCase, LegacyFeatureFlaggable, StoreTe
         XCTAssertNotNil(subject.childCoordinators[0] as? EnhancedTrackingProtectionCoordinator)
         XCTAssertEqual(mockRouter.presentCalled, 1)
 
-        if featureFlags.isFeatureEnabled(.trackingProtectionRefactor, checking: .buildOnly) {
+        if featureFlagsProvider.isEnabled(.trackingProtectionRefactor) {
             XCTAssertTrue(mockRouter.presentedViewController is UINavigationController)
         } else {
             XCTAssertTrue(mockRouter.presentedViewController is EnhancedTrackingProtectionMenuVC)
@@ -603,6 +605,38 @@ final class BrowserCoordinatorTests: XCTestCase, LegacyFeatureFlaggable, StoreTe
         await Task.yield()
     }
 
+    // MARK: - Quick Answers
+
+    func testShowQuickAnswers_addsQuickAnswersCoordinator() {
+        let subject = createSubject()
+
+        subject.showQuickAnswers()
+
+        XCTAssertEqual(subject.childCoordinators.count, 1)
+        XCTAssertTrue(subject.childCoordinators.first is QuickAnswersCoordinator)
+        XCTAssertEqual(mockRouter.presentCalled, 1)
+    }
+
+    func testShowQuickAnswers_doesNotAddDuplicateCoordinator() {
+        let subject = createSubject()
+
+        subject.showQuickAnswers()
+        subject.showQuickAnswers()
+
+        let count = subject.childCoordinators.count { $0 is QuickAnswersCoordinator }
+        XCTAssertEqual(count, 1)
+    }
+
+    func testShowQuickAnswers_didFinish_removesChild() throws {
+        let subject = createSubject()
+        subject.showQuickAnswers()
+
+        let coordinator = try XCTUnwrap(subject.childCoordinators.first as? QuickAnswersCoordinator)
+        subject.didFinish(from: coordinator)
+
+        XCTAssertTrue(subject.childCoordinators.isEmpty)
+    }
+
     // MARK: - Shortcuts Library
 
     func testShowShortcutsLibrary_showsShortcutsLibrary() throws {
@@ -680,24 +714,43 @@ final class BrowserCoordinatorTests: XCTestCase, LegacyFeatureFlaggable, StoreTe
     func testDidRemoveTab_removesHomepageTabStateForTab() throws {
         let subject = createSubject()
         let tab = MockTab(profile: profile, windowUUID: windowUUID)
-        homepageTabStateStore.updateState(for: tab.tabUUID) { $0.scrollOffsetY = 180 }
+        homepageTabStateStore.updateState(for: tab.tabUUID) { state in
+            state.scrollOffsetY = 180
+            state.selectedNewsfeedCategoryID = "technology"
+            state.newsfeedCategoryPickerOffsetX = 64
+        }
 
         subject.tabManager(tabManager, didRemoveTab: tab, isRestoring: false)
 
-        XCTAssertNil(homepageTabStateStore.state(for: tab.tabUUID).scrollOffsetY)
+        XCTAssertEqual(homepageTabStateStore.state(for: tab.tabUUID), HomepageTabState())
     }
 
     func testDidRemoveTab_keepsHomepageTabStateForOtherTabs() throws {
         let subject = createSubject()
         let removedTab = MockTab(profile: profile, windowUUID: windowUUID)
         let otherTab = MockTab(profile: profile, windowUUID: windowUUID)
-        homepageTabStateStore.updateState(for: removedTab.tabUUID) { $0.scrollOffsetY = 120 }
-        homepageTabStateStore.updateState(for: otherTab.tabUUID) { $0.scrollOffsetY = 240 }
+        homepageTabStateStore.updateState(for: removedTab.tabUUID) { state in
+            state.scrollOffsetY = 120
+            state.selectedNewsfeedCategoryID = "science"
+            state.newsfeedCategoryPickerOffsetX = 40
+        }
+        homepageTabStateStore.updateState(for: otherTab.tabUUID) { state in
+            state.scrollOffsetY = 240
+            state.selectedNewsfeedCategoryID = "technology"
+            state.newsfeedCategoryPickerOffsetX = 72
+        }
 
         subject.tabManager(tabManager, didRemoveTab: removedTab, isRestoring: false)
 
-        XCTAssertNil(homepageTabStateStore.state(for: removedTab.tabUUID).scrollOffsetY)
-        XCTAssertEqual(homepageTabStateStore.state(for: otherTab.tabUUID).scrollOffsetY, 240)
+        XCTAssertEqual(homepageTabStateStore.state(for: removedTab.tabUUID), HomepageTabState())
+        XCTAssertEqual(
+            homepageTabStateStore.state(for: otherTab.tabUUID),
+            HomepageTabState(
+                scrollOffsetY: 240,
+                selectedNewsfeedCategoryID: "technology",
+                newsfeedCategoryPickerOffsetX: 72
+            )
+        )
     }
 
     // MARK: - Search route

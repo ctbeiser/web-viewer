@@ -66,6 +66,7 @@ struct AccessibilityIdentifiers {
         struct WebView {
             static let documentLoadingLabel = "WebView.documentLoadingLabel"
             static let automationTestLeakIndicator = "WebView.LeakIndicatorElement"
+            static let contentView = "contentView"
         }
 
         static let overKeyboardContainer = "Browser.overKeyboardContainer"
@@ -246,6 +247,7 @@ struct AccessibilityIdentifiers {
         struct OtherButtons {
             static let logoID = "FxHomeLogoID"
             static let closeButton = "FirefoxHomepage.closeButton"
+            static let quickAnswersButton = "FirefoxHomepage.quickAnswersButton"
         }
 
         struct MoreButtons {
@@ -649,6 +651,7 @@ struct AccessibilityIdentifiers {
             struct Addresses {
                 static let title = "Addresses"
                 static let addAddress = "Add address"
+                static let addressCell = "AddressCell"
             }
         }
 
