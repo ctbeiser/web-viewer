@@ -4,6 +4,10 @@ This documents all changes made on top of upstream Firefox Focus iOS to create t
 "Web Viewer" app. These should be sufficient to recreate the fork on any version
 of the upstream project.
 
+**Maintenance rule:** every Web Viewer customization, fix, or behavior change
+must be documented in this file when the change is made. Future agents should
+read this file before editing `focus-ios` and keep it current.
+
 ---
 
 ## 1. Rebranding / Signing Identity
@@ -33,6 +37,16 @@ Change `DEVELOPMENT_TEAM` from `43AQ936H96` (Mozilla) to your own team ID (was `
 
 Change `DISPLAY_NAME` from `"Firefox Focus"` to `"Web Viewer"` in the FocusRelease
 build configuration for the main Blockzilla target and ShareExtension.
+
+Change the Blockzilla app target `PRODUCT_NAME` from `"Firefox Focus"` to
+`"Web Viewer"` in the Focus app build configurations so `CFBundleName` and the
+built app name are consistent. Also update shared Xcode schemes under
+`Blockzilla.xcodeproj/xcshareddata/xcschemes/` so every `BuildableName` that
+points at the Blockzilla app uses `Web Viewer.app` instead of
+`Firefox Focus.app`.
+
+Set `INFOPLIST_KEY_LSApplicationCategoryType` to
+`public.app-category.utilities` for the app build configurations.
 
 ### Entitlements
 
@@ -200,3 +214,260 @@ case "twitter.com", "www.twitter.com", "mobile.twitter.com",
     }
     return true
 ```
+
+---
+
+## 7. URL Bar Visual Behavior
+
+### Liquid Glass / Transparent URL Bar (`Blockzilla/UIComponents/URLBar/URLBar.swift`)
+
+- Make `urlBarBorderView.backgroundColor` clear and keep URL bar state border
+  colors clear.
+- Replace the URL bar background with `UIGlassEffect` inside a
+  `UIVisualEffectView` on iOS 26 and newer.
+- On older iOS versions, keep the URL bar background clear.
+- When the background is a `UIVisualEffectView`, add `textAndLockContainer` to
+  the effect view's `contentView`.
+
+### Hide Tracking Protection UI From URL Bar
+
+In `URLBar.swift`:
+- Initialize `shieldIcon.isHidden = true`
+- Animate the shield icon hidden in all URL bar states
+- Keep shield icon alpha at `0` when the URL bar collapses
+
+In `BrowserViewController.swift`:
+- Make `controller(for route:)` return `nil` to suppress onboarding tooltips and
+  tracking protection popups.
+
+### Tap URL Bar to Share (`Blockzilla/BrowserViewController.swift`)
+
+In `urlBarDidPressScrollTop(_:tap:)`, replace the expanded-state scroll-to-top
+behavior with share-sheet presentation for the current URL:
+- Build `OpenUtils(url:webViewController:)`
+- Call `showSharePage(for:sender:)` with the URL bar as the sender
+- Keep the collapsed-state behavior that shows toolbars
+
+---
+
+## 8. Accent Styling / Progress Bar
+
+### Accent Colors
+
+Update both accent color assets to orange:
+- `BlockzillaPackage/Sources/DesignSystem/Colors.xcassets/Accent.colorset/Contents.json`
+- `BlockzillaPackage/Sources/Onboarding/DesignSystem/Colors.xcassets/Accent.colorset/Contents.json`
+
+Use:
+- Light: `#FF9500`
+- Dark: `#FFB340`
+
+### Loading Progress Bar (`Blockzilla/UIComponents/GradientProgressBar.swift`)
+
+Replace the three-color gradient with the app accent color for every gradient
+stop:
+
+```swift
+static let gradientColors = [
+    UIColor.accent.cgColor,
+    UIColor.accent.cgColor,
+    UIColor.accent.cgColor
+]
+```
+
+---
+
+## 9. Archive.is URL Bar Button
+
+### URL Bar Button (`Blockzilla/UIComponents/URLBar/URLBar.swift`)
+
+Add an `archiveButton` next to the stop/reload button:
+- Use `UIImage(systemName: "archivebox")`
+- Use `UIConstants.strings.browserArchivePage` for the accessibility label
+- Use accessibility identifier `URLBar.archiveButton`
+- Hide it by default and animate it with the page action icons
+- Add it to `textAndLockContainer`
+- Constrain it before `stopReloadButton` with
+  `UIConstants.layout.urlBarPageActionSpacing`
+- Include it in collapsed URL bar alpha updates
+
+Add `urlBarPageActionSpacing = 4` to `UIConstants.layout`.
+
+### URL Bar View Model
+
+Add `case archiveButtonTap` to `URLViewAction` in
+`Blockzilla/UIComponents/URLBar/URLBarViewModel.swift`, and publish that action
+from the archive button tap handler.
+
+### Browser Action (`Blockzilla/BrowserViewController.swift`)
+
+Handle `.archiveButtonTap` in `bindUrlBarViewModel()` by opening the current URL
+through Archive.is.
+
+Add:
+
+```swift
+static func archiveIsSubmissionURL(for url: URL) -> URL? {
+    var components = URLComponents(string: "https://archive.is/submit/")
+    components?.queryItems = [URLQueryItem(name: "url", value: url.absoluteString)]
+    return components?.url
+}
+
+func openInArchiveIs(url: URL) {
+    guard let archiveURL = Self.archiveIsSubmissionURL(for: url) else { return }
+
+    submit(url: archiveURL, source: .action)
+    GleanMetrics.BrowserMenu.browserMenuAction.record(
+        GleanMetrics.BrowserMenu.BrowserMenuActionExtra(item: "archive_is")
+    )
+}
+```
+
+Add a client test in `focus-ios-tests/ClientTests/BrowserViewControllerTests.swift`
+that verifies the generated Archive.is submission URL.
+
+---
+
+## 10. Website Dark Mode
+
+### Dark Reader Script Resource
+
+Add `Blockzilla/NightModeAllFramesAtDocumentStart.js` to the Blockzilla app
+resources. This bundled script defines `window.__firefox__.NightMode` and exposes
+`setEnabled`.
+
+### Controller (`Blockzilla/Modules/WebView/WebsiteDarkModeController.swift`)
+
+Add `WebsiteDarkModeController` to manage page dark mode:
+- Load `NightModeAllFramesAtDocumentStart.js` from the app bundle
+- Inject it as a `WKUserScript` at `.atDocumentStart`
+- Inject into all frames (`forMainFrameOnly: false`)
+- Use a dedicated `WKContentWorld` named `NightMode`
+- Register a `WKScriptMessageHandler` named `NightMode`
+- Apply the enabled state by evaluating
+  `window.__firefox__.NightMode.setEnabled(...)`
+- When enabled, set the web view opaque flag off, under-page background to black,
+  and scroll indicators to white
+
+### Web View Integration (`Blockzilla/Modules/WebView/LegacyWebViewController.swift`)
+
+- Add a `WebsiteDarkModeController` instance
+- Track `isWebsiteDarkModeEnabled`
+- Configure website dark mode after the `WKWebView` is created
+- Expose `setWebsiteDarkModeEnabled(_:)` so the browser controller can update it
+
+### Browser Trait Integration (`Blockzilla/BrowserViewController.swift`)
+
+- Add `syncWebsiteDarkMode()`
+- Call it during setup and trait changes
+- Enable website dark mode when `traitCollection.userInterfaceStyle == .dark`
+
+### Package Pins
+
+Keep the Focus SwiftPM resolved pins updated with the dark mode work:
+- Kingfisher `8.8.1`
+- SwiftyBeaver `2.1.1`
+
+---
+
+## 11. SwiftLint Build Behavior
+
+### SwiftLint Baseline
+
+The Focus Xcode project's `Run Swiftlint` build phase should invoke
+`bin/run_swiftlint.sh`.
+
+`focus-ios/bin/run_swiftlint.sh` should:
+- Add `/opt/homebrew/bin` to `PATH` on Apple Silicon
+- Exit successfully with a warning if `swiftlint` is unavailable
+- Limit linting to modified, staged, and untracked Swift files under `focus-ios`
+- Run from the repo root with the Focus config at `focus-ios/.swiftlint.yml`
+- Use `.swiftlint-baseline.json` when present
+- Pass `--force-exclude`
+- Skip linting when no modified Swift files exist under `focus-ios`
+
+The project-level build phase previously embedded this logic directly; keep the
+logic in the script instead.
+
+---
+
+## 12. Faster Focus Build Scripts
+
+### Nimbus Codegen
+
+Add `focus-ios/bin/run_nimbus_codegen.sh` and make the Xcode "Nimbus Feature
+Manifest Generator Script" call it instead of calling `nimbus-fml.sh` directly.
+
+The wrapper should:
+- Generate files into a temporary directory
+- Sync only changed generated files into `Blockzilla/Generated`
+- Avoid rewriting unchanged generated files
+
+Update the Xcode build phase inputs to include:
+- `$(SOURCE_ROOT)/bin/nimbus-fml.sh`
+- `$(SOURCE_ROOT)/bin/nimbus-fml-configuration.sh`
+- `$(SOURCE_ROOT)/bin/run_nimbus_codegen.sh`
+- `$(SOURCE_ROOT)/nimbus.fml.yaml`
+
+Remove `alwaysOutOfDate` from this build phase so Xcode can skip it when inputs
+and outputs are current.
+
+### Wordmark Copy Script
+
+Add `focus-ios/bin/copy_wordmark.sh` and make the Xcode "Run Script (Copy
+Wordmark)" phase call it.
+
+The script should:
+- Use `set -euo pipefail`
+- Copy Focus or Klar wordmark assets based on `PRODUCT_NAME`
+- Compare with `cmp -s` before copying so unchanged assets are not rewritten
+
+Update the build phase with explicit input and output paths for the source
+wordmarks, destination launchscreen wordmarks, and script file. Remove
+`alwaysOutOfDate` from the phase.
+
+### Glean SDK Generator (`focus-ios/bin/sdk_generator.sh`)
+
+Update the Glean generator script to reduce unnecessary work:
+- Use `set -euo pipefail`
+- Reuse the existing `.venv`
+- Install or upgrade `glean_parser` only when the requested major/minor version
+  is missing
+- Generate Swift output into a temporary directory
+- Sync only changed generated files into the final output directory
+
+---
+
+## 13. Focus Package Resolution
+
+When Xcode package pins are refreshed for Focus, keep
+`focus-ios/Blockzilla.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved`
+checked in with the Focus project. Recent customization work expects:
+- Kingfisher `8.8.1`
+- SwiftyBeaver `2.1.1`
+
+---
+
+## 14. Inline PDF Viewing and Attachment Downloads
+
+### Web View Response Policy (`Blockzilla/Modules/WebView/LegacyWebViewController.swift`)
+
+Focus previously cancelled binary (`application/octet-stream` or missing MIME
+type) and `Content-Disposition: attachment` responses. In Web Viewer, convert
+non-PDF binary/attachment responses into `WKDownload` instead of cancelling so
+signed URLs keep their original request, cookies, redirects, and query tokens.
+
+PDF responses should remain viewable in the browser UI. Before deciding to
+download a response, allow it inline when any of these are true:
+- `response.mimeType` is `application/pdf`
+- `response.url?.pathExtension` is `pdf`
+- `response.suggestedFilename` ends in `.pdf`
+- the `Content-Disposition` header contains `.pdf`
+
+For non-PDF downloads:
+- Return `.download` from `decidePolicyFor navigationResponse`
+- Set the `WKDownload.delegate` in both `didBecome download` callbacks
+- Write downloads into a unique directory under `temporaryDirectory`
+- Present the completed file with `UIActivityViewController`
+- Remove the temporary download directory after the activity controller finishes
+- Show a simple localized "Download Failed" alert if the download fails

@@ -75,6 +75,7 @@ final class LegacyWebViewController: UIViewController, LegacyWebController {
     private var cancellable: AnyCancellable?
     private var menuAction: WebMenuAction
     private var isWebsiteDarkModeEnabled = false
+    private var downloadDestinations: [ObjectIdentifier: URL] = [:]
 
     var pageTitle: String? {
         return browserView.title
@@ -400,6 +401,123 @@ extension LegacyWebViewController: UIScrollViewDelegate {
     }
 }
 
+private extension LegacyWebViewController {
+    func canDisplayInline(response: URLResponse) -> Bool {
+        if response.mimeType?.lowercased() == "application/pdf" {
+            return true
+        }
+
+        if response.url?.pathExtension.caseInsensitiveCompare("pdf") == .orderedSame ||
+           response.suggestedFilename?.range(of: ".pdf", options: [.caseInsensitive, .anchored, .backwards]) != nil {
+            return true
+        }
+
+        guard let httpResponse = response as? HTTPURLResponse,
+              let contentDisposition = httpResponse.value(forHTTPHeaderField: "Content-Disposition") else {
+            return false
+        }
+
+        return contentDisposition.range(of: ".pdf", options: .caseInsensitive) != nil
+    }
+
+    func shouldDownload(response: URLResponse) -> Bool {
+        let octetStream = "application/octet-stream"
+        if response.mimeType?.lowercased() == octetStream || response.mimeType == nil {
+            return true
+        }
+
+        guard let httpResponse = response as? HTTPURLResponse else {
+            return false
+        }
+
+        if let contentType = httpResponse.value(forHTTPHeaderField: "Content-Type")?
+            .components(separatedBy: ";")
+            .first?
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased(),
+           contentType == octetStream {
+            return true
+        }
+
+        guard let contentDisposition = httpResponse.value(forHTTPHeaderField: "Content-Disposition")?
+            .trimmingCharacters(in: .whitespacesAndNewlines) else {
+            return false
+        }
+
+        return contentDisposition.range(of: "attachment", options: [.anchored, .caseInsensitive]) != nil
+    }
+
+    func startDownload(_ download: WKDownload) {
+        download.delegate = self
+        delegate?.webController(self, didUpdateEstimatedProgress: 1.0)
+        delegate?.webControllerDidFinishNavigation(self)
+    }
+
+    func createDownloadDirectory() throws -> URL {
+        let rootDirectoryURL = FileManager.default.temporaryDirectory
+            .appendingPathComponent("WebViewerDownloads", isDirectory: true)
+        let directoryURL = rootDirectoryURL
+            .appendingPathComponent(UUID().uuidString, isDirectory: true)
+        try FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: true)
+        return directoryURL
+    }
+
+    func sanitizedDownloadFilename(_ suggestedFilename: String) -> String {
+        let fallbackFilename = "download"
+        let trimmedFilename = suggestedFilename.trimmingCharacters(in: .whitespacesAndNewlines)
+        let filename = trimmedFilename.isEmpty ? fallbackFilename : trimmedFilename
+
+        var invalidCharacters = CharacterSet(charactersIn: "/\\?%*|\"<>:")
+        invalidCharacters.formUnion(.newlines)
+        invalidCharacters.formUnion(.controlCharacters)
+
+        let sanitizedFilename = filename
+            .components(separatedBy: invalidCharacters)
+            .filter { !$0.isEmpty }
+            .joined(separator: "_")
+
+        return sanitizedFilename.isEmpty ? fallbackFilename : sanitizedFilename
+    }
+
+    func presentDownloadedFile(at url: URL) {
+        DispatchQueue.main.async {
+            let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            activityViewController.popoverPresentationController?.sourceRect = CGRect(
+                x: self.view.bounds.midX,
+                y: self.view.bounds.midY,
+                width: 1,
+                height: 1
+            )
+            activityViewController.completionWithItemsHandler = { _, _, _, _ in
+                try? FileManager.default.removeItem(at: url.deletingLastPathComponent())
+            }
+
+            self.topPresentationController.present(activityViewController, animated: true)
+        }
+    }
+
+    func presentDownloadFailure(_ error: Error) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(
+                title: NSLocalizedString("Download.Error.Title", value: "Download Failed", comment: "Title of the 'Download Failed' alert."),
+                message: error.localizedDescription,
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: UIConstants.strings.addPassErrorAlertDismiss, style: .default))
+            self.topPresentationController.present(alert, animated: true)
+        }
+    }
+
+    var topPresentationController: UIViewController {
+        var controller: UIViewController = self
+        while let presentedController = controller.presentedViewController {
+            controller = presentedController
+        }
+        return controller
+    }
+}
+
 extension LegacyWebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
         // validate the URL using URIFixup
@@ -493,34 +611,13 @@ extension LegacyWebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         let response = navigationResponse.response
 
-        let isBinaryData = {
-            let octetStream = "application/octet-stream"
-            if let httpResponse = response as? HTTPURLResponse,
-               let typeStr = httpResponse.allHeaderFields["Content-Type"] as? String,
-               typeStr == octetStream {
-                return true
-            }
-            // Identical handling to Firefox, if no MIME type we assume octet stream
-            return (response.mimeType ?? octetStream) == octetStream
-        }()
-
-        if isBinaryData {
-            // Bugzilla #1976296; Binary content is blocked from loading on Focus.
-            decisionHandler(.cancel)
+        if canDisplayInline(response: response) {
+            decisionHandler(.allow)
             return
         }
 
-        if let httpResponse = response as? HTTPURLResponse,
-           let contentDisposition = httpResponse.allHeaderFields["Content-Disposition"] as? String {
-            if contentDisposition.trimmingCharacters(in: .whitespaces).starts(with: "attachment") {
-                // Bugzilla #1976296
-                decisionHandler(.cancel)
-                return
-            }
-        }
-
         guard let responseMimeType = response.mimeType else {
-            decisionHandler(.allow)
+            decisionHandler(.download)
             return
         }
 
@@ -569,11 +666,53 @@ extension LegacyWebViewController: WKNavigationDelegate {
             return
         }
 
+        if shouldDownload(response: response) {
+            decisionHandler(.download)
+            return
+        }
+
         decisionHandler(.allow)
+    }
+
+    func webView(_ webView: WKWebView, navigationAction: WKNavigationAction, didBecome download: WKDownload) {
+        startDownload(download)
+    }
+
+    func webView(_ webView: WKWebView, navigationResponse: WKNavigationResponse, didBecome download: WKDownload) {
+        startDownload(download)
     }
 
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         delegate?.webControllerDidStartProvisionalNavigation(self)
+    }
+}
+
+extension LegacyWebViewController: WKDownloadDelegate {
+    func download(_ download: WKDownload, decideDestinationUsing response: URLResponse, suggestedFilename: String, completionHandler: @escaping (URL?) -> Void) {
+        do {
+            let directoryURL = try createDownloadDirectory()
+            let filename = sanitizedDownloadFilename(suggestedFilename)
+            let destinationURL = directoryURL.appendingPathComponent(filename, isDirectory: false)
+            downloadDestinations[ObjectIdentifier(download)] = destinationURL
+            completionHandler(destinationURL)
+        } catch {
+            completionHandler(nil)
+            presentDownloadFailure(error)
+        }
+    }
+
+    func downloadDidFinish(_ download: WKDownload) {
+        let downloadID = ObjectIdentifier(download)
+        guard let destinationURL = downloadDestinations.removeValue(forKey: downloadID) else { return }
+        presentDownloadedFile(at: destinationURL)
+    }
+
+    func download(_ download: WKDownload, didFailWithError error: Error, resumeData: Data?) {
+        let downloadID = ObjectIdentifier(download)
+        if let destinationURL = downloadDestinations.removeValue(forKey: downloadID) {
+            try? FileManager.default.removeItem(at: destinationURL.deletingLastPathComponent())
+        }
+        presentDownloadFailure(error)
     }
 }
 
