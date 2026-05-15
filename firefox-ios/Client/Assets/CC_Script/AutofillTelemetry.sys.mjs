@@ -12,10 +12,6 @@ class AutofillTelemetryBase {
   EVENT_CATEGORY = null;
   EVENT_OBJECT_FORM_INTERACTION = null;
 
-  HISTOGRAM_NUM_USES = null;
-  HISTOGRAM_PROFILE_NUM_USES = null;
-  HISTOGRAM_PROFILE_NUM_USES_KEY = null;
-
   #initFormEventExtra(value) {
     let extra = {};
     for (const field of Object.values(this.SUPPORTED_FIELDS)) {
@@ -183,17 +179,6 @@ class AutofillTelemetryBase {
     throw new Error("Not implemented.");
   }
 
-  recordNumberOfUse(records) {
-    let histogram = Services.telemetry.getKeyedHistogramById(
-      this.HISTOGRAM_PROFILE_NUM_USES
-    );
-    histogram.clear();
-
-    for (let record of records) {
-      histogram.add(this.HISTOGRAM_PROFILE_NUM_USES_KEY, record.timesUsed);
-    }
-  }
-
   recordIframeLayoutDetection(flowId, fieldDetails) {
     const fieldsInMainFrame = [];
     const fieldsInIframe = [];
@@ -237,9 +222,7 @@ export class AddressTelemetry extends AutofillTelemetryBase {
   EVENT_CATEGORY = "address";
   EVENT_OBJECT_FORM_INTERACTION = "AddressForm";
   EVENT_OBJECT_FORM_INTERACTION_EXT = "AddressFormExt";
-
-  HISTOGRAM_PROFILE_NUM_USES = "AUTOFILL_PROFILE_NUM_USES";
-  HISTOGRAM_PROFILE_NUM_USES_KEY = "address";
+  EVENT_OBJECT_FORM_INTERACTION_MLCOMPARE = "Mlcompare";
 
   // Fields that are recorded in `address_form` and `address_form_ext` telemetry
   SUPPORTED_FIELDS = {
@@ -310,15 +293,47 @@ export class AddressTelemetry extends AutofillTelemetryBase {
   recordAutofillProfileCount(count) {
     Glean.formautofillAddresses.autofillProfilesCount.set(count);
   }
+
+  recordMLDetection(fieldDetails, hash, mlTime) {
+    let reason = [];
+    let re = [];
+    let ml = [];
+    let computed = [];
+
+    let reTime = 0;
+
+    fieldDetails.forEach(detail => {
+      // The data is formed as followed:
+      //    detail.originalFieldName - if reason is "autocomplete", the autocomplete value,
+      //                               otherwise the value determined by heuristics.
+      //    detail.mlFieldName = the reason detected by the model.
+      reason.push(detail.reason);
+      re.push(detail.extraInfo.reFieldName || "");
+      ml.push(detail.mlFieldName || "");
+      computed.push(detail.fieldName || "");
+      reTime += detail.extraInfo.reTime || 0;
+    });
+
+    let extra = {
+      value: hash,
+      mlversion: "1",
+      retime: reTime.toFixed(2),
+      mltime: mlTime.toFixed(2),
+      reason: reason.toString(),
+      re: re.toString(),
+      ml: ml.toString(),
+      computed: computed.toString(),
+    };
+
+    Glean.address[
+      "detected" + this.EVENT_OBJECT_FORM_INTERACTION_MLCOMPARE
+    ]?.record(extra);
+  }
 }
 
 class CreditCardTelemetry extends AutofillTelemetryBase {
   EVENT_CATEGORY = "creditcard";
   EVENT_OBJECT_FORM_INTERACTION = "CcFormV2";
-
-  HISTOGRAM_NUM_USES = "CREDITCARD_NUM_USES";
-  HISTOGRAM_PROFILE_NUM_USES = "AUTOFILL_PROFILE_NUM_USES";
-  HISTOGRAM_PROFILE_NUM_USES_KEY = "credit_card";
 
   // Mapping of field name used in formautofill code to the field name
   // used in the telemetry.
@@ -366,23 +381,6 @@ class CreditCardTelemetry extends AutofillTelemetryBase {
 
     if (consecutiveCcNumberCount) {
       recordCount(consecutiveCcNumberCount);
-    }
-  }
-
-  recordNumberOfUse(records) {
-    super.recordNumberOfUse(records);
-
-    if (!this.HISTOGRAM_NUM_USES) {
-      return;
-    }
-
-    let histogram = Services.telemetry.getHistogramById(
-      this.HISTOGRAM_NUM_USES
-    );
-    histogram.clear();
-
-    for (let record of records) {
-      histogram.add(record.timesUsed);
     }
   }
 
@@ -463,15 +461,12 @@ export class AutofillTelemetry {
     telemetry.recordAutofillProfileCount(count);
   }
 
-  /**
-   * Utility functions for address/credit card number of use
-   */
-  static recordNumberOfUse(type, records) {
-    const telemetry = this.#getTelemetryByType(type);
-    telemetry.recordNumberOfUse(records);
-  }
-
   static recordFormSubmissionHeuristicCount(label) {
     Glean.formautofill.formSubmissionHeuristic[label].add(1);
+  }
+
+  static recordMLDetection(fieldDetails, hash, mlTime) {
+    const telemetry = this.#getTelemetryByType(AutofillTelemetry.ADDRESS);
+    telemetry.recordMLDetection(fieldDetails, hash, mlTime);
   }
 }
