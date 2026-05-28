@@ -34,8 +34,11 @@
 /* Label for the done button on the country picker for the World Cup widget. This allows users to confirm their selection of a team to follow for the World Cup event. */
 "WorldCup.CountryPicker.DoneButtonTitle.v151" = "Hotowo";
 
+/* Label for the skip button on the country picker for the World Cup widget. This shows to the user that you could skip the selection of a country to follow. */
+"WorldCup.CountryPicker.SkipButton.Title.v151" = "Přeskočić";
+
 /* Title for the country picker for the World Cup widget. This is shown when the user clicks the widget on the Firefox homepage to allow users to select a team to follow for the World Cup event. */
-"WorldCup.CountryPicker.Title.v151" = "Wašemu teamej slědować";
+"WorldCup.CountryPicker.Title.v151" = "Wašemu mustwu slědować";
 
 /* The title of the Group A group in the World Cup Group Stage. */
 "WorldCup.GroupPhase.GroupA.Title.v151" = "Skupina A";
@@ -74,7 +77,7 @@
 "WorldCup.GroupPhase.GroupL.Title.v151" = "Skupina L";
 
 /* The label for the button that allows to change the team displayed in the World Cup widget more options panel. */
-"WorldCup.HomepageWidget.ChangeTeamLabel.v151" = "Team změnić";
+"WorldCup.HomepageWidget.ChangeTeamLabel.v151" = "Mustwo změnić";
 
 /* D is short for Days. The layout only allows for 1–2 characters: if there is an equivalent single character for your language, use that (e.g. T for German). Your translation will be automatically truncated at 2 characters to avoid layout issues. */
 "WorldCup.HomepageWidget.CountDown.DayLabel.v151" = "D";
@@ -88,14 +91,17 @@
 /* Title for the countdown section of the World Cup widget showing the time remaining until the World Cup event. */
 "WorldCup.HomepageWidget.CountDown.Title.v151" = "Countdown k swětowemu mišterstwu";
 
+/* Label for the button that takes users to the World Cup schedule website on the countdown section. */
+"WorldCup.HomepageWidget.CountDown.ViewScheduleButtonLabel.v151" = "Hrajny plan pokazać";
+
 /* The accessibility labels for the button that allow to disable World Cup notifications. */
 "WorldCup.HomepageWidget.DisableNotificationButtonAccessibilityLabel.v151" = "Zdźělenki znjemóžnić";
 
 /* The label for the button in the eliminated section that takes the user back to the team selection screen. */
-"WorldCup.HomepageWidget.EliminatedTeamSection.ChooseTeamButtonLabel.v151" = "Team wubrać";
+"WorldCup.HomepageWidget.EliminatedTeamSection.ChooseTeamButtonLabel.v151" = "Mustwo wubrać";
 
 /* The description of the section in the World Cup widget that shows when the selected team was eliminated. */
-"WorldCup.HomepageWidget.EliminatedTeamSection.Description.v151" = "Wubjerće druhi team, zo byšće wo swětowym mišterstwje na běžnym wostał.";
+"WorldCup.HomepageWidget.EliminatedTeamSection.Description.v151" = "Wubjerće druhe mustwo, zo byšće wo swětowym mišterstwje na běžnym wostał.";
 
 /* The accessibility label for the button in the eliminated section that removes the World Cup widget from the homepage. */
 "WorldCup.HomepageWidget.EliminatedTeamSection.RemoveButtonAccessibilityLabel.v151" = "Asistent swětoweho mišterstwa wotstronić";
@@ -113,13 +119,16 @@
 "WorldCup.HomepageWidget.FollowTeamCard.Close.AccessibilityLabel.v151" = "Aktualizacija swětoweho mišterstwa schować";
 
 /* Call to action for the follow your team for the World Cup widget. This is shown on the Firefox homepage to allow users to select a team to follow for the World Cup event. */
-"WorldCup.HomepageWidget.FollowTeamCard.CTA.v151" = "Wašemu teamej slědować";
+"WorldCup.HomepageWidget.FollowTeamCard.CTA.v151" = "Wašemu mustwu slědować";
 
 /* Description for the follow your team for the World Cup widget. This is shown on the Firefox homepage to allow users to select a team to follow for the World Cup event. */
 "WorldCup.HomepageWidget.FollowTeamCard.Description.v151" = "Dóstańće aktualizacije live a wjace.";
 
 /* Title for the follow your team for the World Cup widget. This is shown on the Firefox homepage to allow users to select a team to follow for the World Cup event. 'Keep Tabs On' is an informal expression meaning to stay updated on or regularly follow something (in this case, World Cup matches and updates). It’s playfully related to Firefox in that “tabs” are a browser feature. It suggests ongoing awareness rather than active monitoring or control. Not to be translated literally as physical 'tabs' or tracking in a technical sense. the meaning is about staying informed. */
 "WorldCup.HomepageWidget.FollowTeamCard.Title.v151" = "Wobchowajće swětowe mišterstwo we wóčku";
+
+/* The label for the button that allows to follow a team displayed in the World Cup widget more options panel when no previous team was selected. */
+"WorldCup.HomepageWidget.FollowTeamLabel.v151" = "Mustwu slědować";
 
 /* The label indicating that the displaying match as ended. */
 "WorldCup.HomepageWidget.FTLabel.v151" = "(Wšón čas)";
@@ -163,6 +172,9 @@
 /* The label for the 'Semi-finals' phase in the World Cup widget. */
 "WorldCup.HomepageWidget.RoundPhase.SemiFinalsLabel.v151" = "POŁFINALE";
 
+/* The label for the 'Third place' winner in the World Cup widget. */
+"WorldCup.HomepageWidget.RoundPhase.ThirdPlaceLabel.v151" = "TŘEĆE MĚSTNO";
+
 /* The label for an upcoming match in the World Cup widget round phase. */
 "WorldCup.HomepageWidget.RoundPhase.UpcomingLabel.v151" = "Přichodne";
 
@@ -174,4 +186,7 @@
 
 /* The label for the button that allows to share the selected match info in the World Cup widget more options panel. */
 "WorldCup.HomepageWidget.ShareLabel.v151" = "Dźělić";
+
+/* The description for the temporary view in the World Cup widget showing the team that has been previously selected. */
+"WorldCup.HomepageWidget.TemporaryView.Description.v151" = "Dźeržimy was na běžnym, hdyž so swětowe mišterstwo bliži";
 

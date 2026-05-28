@@ -76,6 +76,9 @@
 /* In the AI Controls settings, in the AI powered features section, this is the text that what the blocked status means. The content between the ** ** is bolded. Please do not remove these in translation. */
 "Settings.AIControls.AIPoweredFeaturesSection.BlockedStatusDescription.v151" = "**Engellendi**: Bu özelliği görmeyecek ve kullanamayacaksınız. Cihaza indirilmiş yapay zekâ modelleri kaldırılacaktır.";
 
+/* In the AI Controls settings, in the AI powered features section, this is the text that what the blocked status means. The content between the ** ** is bolded. Please do not remove these in translation. */
+"Settings.AIControls.AIPoweredFeaturesSection.BlockedStatusDescriptionV2.v151" = "**Engellendi**: Bu özelliği görmeyecek ve kullanamayacaksınız. Cihaza indirilmiş yapay zekâ modelleri kaldırılacaktır.";
+
 /* In the AI Controls settings, in the AI powered features section, this is the message that describes the pages summaries feature */
 "Settings.AIControls.AIPoweredFeaturesSection.PageSummariesSection.Message.v151" = "Sayfalar ve özetler asla depolanmaz.";
 
@@ -107,7 +110,7 @@
 "Settings.AIControls.HeaderCard.Link.v151" = "Daha fazla bilgi al";
 
 /* This is the message for the Header Card under the AI Controls settings section. */
-"Settings.AIControls.HeaderCard.Message.v151" = "Yapay zekâ sayesinde çalışan özelliklerin kullanılması da dahildir.";
+"Settings.AIControls.HeaderCard.Message.v151" = "Yapay zekâyla çalışan özellikleri kullanıp kullanmayacağınızı da seçebilirsiniz.";
 
 /* This is the title for the Header Card under the AI Controls settings section. %@ is the app name (e.g. Firefox). */
 "Settings.AIControls.HeaderCard.Title.v151" = "%@ ile tercih daima sizin";
@@ -161,7 +164,7 @@
 "Settings.Autoplay.Footer.v137" = "Otomatik oynatma ayarları yalnızca yeni açılan sekmeler için geçerli olur. Uygulama yeniden başlatılmadıkça değişiklikler mevcut sekmelere uygulanamaz.";
 
 /* In the settings menu, this label indicates that there is an option of customizing the Autoplay behaviour. */
-"Settings.Autoplay.SettingsTitle.v137" = "Otomatik oynatma";
+"Settings.Autoplay.SettingsTitle.v137" = "Otomatik oynat";
 
 /* This is the title for Links customization under the Browsing settings section. */
 "Settings.Browsing.Links.v137" = "Bağlantılar";

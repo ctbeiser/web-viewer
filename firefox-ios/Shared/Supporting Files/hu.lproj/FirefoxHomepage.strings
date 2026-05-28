@@ -47,13 +47,13 @@
 "FirefoxHomepage.SearchBar.PlaceholderTitle.v142" = "Keressen, vagy adjon meg címet";
 
 /* This is the navigation title for the Shortcuts Library view */
-"FirefoxHomepage.Shortcuts.Library.Title.v143" = "Parancsok";
+"FirefoxHomepage.Shortcuts.Library.Title.v143" = "Indítóikonok";
 
 /* Accessibility label for shortcuts tile on the Firefox home page, indicating that the tile is a pinned tile. %@ is the title of the website. */
 "FirefoxHomepage.Shortcuts.Pinned.AccessibilityLabel.v139" = "Kitűzve: %@";
 
 /* This is the section title for the Shortcuts section on Firefox Homepage. */
-"FirefoxHomepage.Shortcuts.SectionTitle.v142" = "Parancsok";
+"FirefoxHomepage.Shortcuts.SectionTitle.v142" = "Indítóikonok";
 
 /* On the homepage, in the category selection bar, in the stories section, this will be the title of the button indicating that all story categories are currently selected. */
 "FirefoxHomepage.Stories.AllStoryCategories.v151" = "Összes";
