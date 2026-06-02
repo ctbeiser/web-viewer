@@ -144,6 +144,9 @@ This prevents the purple overlay from appearing when the app goes to background.
   URL text field)
 - In the URL bar state machine, collapse `.browsing` and `.editing` cases into
   `.default` so the toolbar/buttons are always hidden
+- Keep the URL bar navigation toolset (`backButton`, `forwardButton`, and
+  `deleteButton`) hidden, disabled, and inaccessible even when loading, scrolling,
+  rotating, or receiving updated navigation state from the view model
 
 ### Remove Tap-to-Focus-URLBar Behavior (`BrowserViewController.swift`)
 

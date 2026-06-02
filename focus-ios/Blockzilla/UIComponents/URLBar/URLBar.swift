@@ -116,6 +116,10 @@ final class URLBar: UIView { // swiftlint:disable:this type_body_length
         button.setImage(.delete, for: .normal)
         button.accessibilityIdentifier = "URLBar.deleteButton"
         button.isEnabled = false
+        button.isHidden = true
+        button.alpha = 0
+        button.isUserInteractionEnabled = false
+        button.accessibilityElementsHidden = true
         button.isPointerInteractionEnabled = true
         return button
     }()
@@ -144,6 +148,10 @@ final class URLBar: UIView { // swiftlint:disable:this type_body_length
         button.setImage(.backActive, for: .normal)
         button.accessibilityLabel = UIConstants.strings.browserBack
         button.isEnabled = false
+        button.isHidden = true
+        button.alpha = 0
+        button.isUserInteractionEnabled = false
+        button.accessibilityElementsHidden = true
         button.isPointerInteractionEnabled = true
         return button
     }()
@@ -154,6 +162,10 @@ final class URLBar: UIView { // swiftlint:disable:this type_body_length
         button.setImage(.forwardActive, for: .normal)
         button.accessibilityLabel = UIConstants.strings.browserForward
         button.isEnabled = false
+        button.isHidden = true
+        button.alpha = 0
+        button.isUserInteractionEnabled = false
+        button.accessibilityElementsHidden = true
         button.isPointerInteractionEnabled = true
         return button
     }()
@@ -697,25 +709,25 @@ final class URLBar: UIView { // swiftlint:disable:this type_body_length
 
         viewModel
             .$canGoBack
-            .sink { [backButton] in
-                backButton.isEnabled = $0
-                backButton.alpha = $0 ? 1 : UIConstants.layout.browserToolbarDisabledOpacity
+            .sink { [backButton] _ in
+                backButton.isEnabled = false
+                backButton.alpha = 0
             }
             .store(in: &cancellables)
 
         viewModel
             .$canGoForward
-            .sink { [forwardButton] in
-                forwardButton.isEnabled = $0
-                forwardButton.alpha = $0 ? 1 : UIConstants.layout.browserToolbarDisabledOpacity
+            .sink { [forwardButton] _ in
+                forwardButton.isEnabled = false
+                forwardButton.alpha = 0
             }
             .store(in: &cancellables)
 
         viewModel
             .$canDelete
-            .sink { [deleteButton] in
-                deleteButton.isEnabled = $0
-                deleteButton.alpha = $0 ? 1 : UIConstants.layout.browserToolbarDisabledOpacity
+            .sink { [deleteButton] _ in
+                deleteButton.isEnabled = false
+                deleteButton.alpha = 0
             }
             .store(in: &cancellables)
 
@@ -760,14 +772,11 @@ final class URLBar: UIView { // swiftlint:disable:this type_body_length
         shieldIcon.snp.removeConstraints()
         addShieldConstraints()
 
-        if isIPadRegularDimensions {
-            leftBarViewLayoutGuide.snp.remakeConstraints { (make) in
-                make.leading.equalTo(forwardButton.snp.trailing).offset(UIConstants.layout.urlBarToolsetOffset)
-            }
-        } else {
-            leftBarViewLayoutGuide.snp.makeConstraints { make in
-                make.leading.equalTo(safeAreaLayoutGuide).offset(UIConstants.layout.urlBarMargin)
-            }
+        leftBarViewLayoutGuide.snp.remakeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.height.equalTo(UIConstants.layout.urlBarButtonTargetSize)
+            make.width.equalTo(UIConstants.layout.urlBarButtonTargetSize).priority(900)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(UIConstants.layout.urlBarMargin)
         }
 
         rightBarViewLayoutGuide.snp.makeConstraints { (make) in
@@ -1020,7 +1029,7 @@ final class URLBar: UIView { // swiftlint:disable:this type_body_length
             backgroundColor = .clear
 
         case .browsing:
-            showLeftBar = shouldShowToolset ? true : false
+            showLeftBar = false
             compressBar = isIPadRegularDimensions ? false : true
             showBackgroundView = false
 
@@ -1183,10 +1192,19 @@ final class URLBar: UIView { // swiftlint:disable:this type_body_length
             centerURLBar = false
         }
 
-        backButton.animateHidden(isHidden, duration: UIConstants.layout.urlBarTransitionAnimationDuration)
-        forwardButton.animateHidden(isHidden, duration: UIConstants.layout.urlBarTransitionAnimationDuration)
-        deleteButton.animateHidden(isHidden, duration: UIConstants.layout.urlBarTransitionAnimationDuration)
+        hideNavigationToolset()
         contextMenuButton.animateHidden(!inBrowsingMode ? false : (isIPadRegularDimensions ? false : isHidden), duration: UIConstants.layout.urlBarTransitionAnimationDuration)
+    }
+
+    private func hideNavigationToolset() {
+        [backButton, forwardButton, deleteButton].forEach { button in
+            button.layer.removeAllAnimations()
+            button.isHidden = true
+            button.alpha = 0
+            button.isEnabled = false
+            button.isUserInteractionEnabled = false
+            button.accessibilityElementsHidden = true
+        }
     }
 
     @objc
@@ -1290,12 +1308,13 @@ final class URLBar: UIView { // swiftlint:disable:this type_body_length
         urlBarBackgroundView.alpha = expandAlpha
         truncatedUrlText.alpha = collapseAlpha
         collapsedUrlAndLockWrapper.alpha = collapseAlpha
-        backButton.alpha = shouldShowToolset ? expandAlpha : 0
-        forwardButton.alpha = shouldShowToolset ? expandAlpha : 0
-        deleteButton.alpha = shouldShowToolset ? expandAlpha : 0
+        backButton.alpha = 0
+        forwardButton.alpha = 0
+        deleteButton.alpha = 0
         contextMenuButton.alpha = expandAlpha
         archiveButton.alpha = expandAlpha
         autoNightModeButton.alpha = shouldShowAutoNightModeButton ? expandAlpha : 0
+        hideNavigationToolset()
 
         if isEditing {
             shieldIcon.alpha = 0
