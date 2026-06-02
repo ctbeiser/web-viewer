@@ -77,6 +77,49 @@ class BrowserViewControllerTests: XCTestCase {
         XCTAssertEqual(components.queryItems, [URLQueryItem(name: "url", value: sourceURL.absoluteString)])
     }
 
+    func testForcedDarkModeOverrideState_reflectsAutoNightModeAndOverride() {
+        XCTAssertEqual(
+            BrowserViewController.forcedDarkModeOverrideState(isAppOverrideActive: false, isUserDisabled: false),
+            .unavailable
+        )
+        XCTAssertEqual(
+            BrowserViewController.forcedDarkModeOverrideState(isAppOverrideActive: true, isUserDisabled: false),
+            .enabled
+        )
+        XCTAssertEqual(
+            BrowserViewController.forcedDarkModeOverrideState(isAppOverrideActive: true, isUserDisabled: true),
+            .disabled
+        )
+    }
+
+    func testForcedDarkModeOverrideEnabled_requiresAutoNightModeWithoutOverride() {
+        XCTAssertFalse(BrowserViewController.isForcedDarkModeOverrideEnabled(isAppOverrideActive: false, isUserDisabled: false))
+        XCTAssertFalse(BrowserViewController.isForcedDarkModeOverrideEnabled(isAppOverrideActive: true, isUserDisabled: true))
+        XCTAssertTrue(BrowserViewController.isForcedDarkModeOverrideEnabled(isAppOverrideActive: true, isUserDisabled: false))
+    }
+
+    func testForcedDarkModeOverrideReset_ignoresSameSiteNavigation() throws {
+        let currentSite = BrowserViewController.forcedDarkModeOverrideSiteIdentifier(
+            for: try XCTUnwrap(URL(string: "https://example.com/article"))
+        )
+        let sameSiteURL = try XCTUnwrap(URL(string: "https://www.example.com/other"))
+
+        XCTAssertFalse(
+            BrowserViewController.shouldResetForcedDarkModeOverride(currentSite: currentSite, navigatingTo: sameSiteURL)
+        )
+    }
+
+    func testForcedDarkModeOverrideReset_requiresNewSite() throws {
+        let currentSite = BrowserViewController.forcedDarkModeOverrideSiteIdentifier(
+            for: try XCTUnwrap(URL(string: "https://example.com/article"))
+        )
+        let newSiteURL = try XCTUnwrap(URL(string: "https://mozilla.org/"))
+
+        XCTAssertTrue(
+            BrowserViewController.shouldResetForcedDarkModeOverride(currentSite: currentSite, navigatingTo: newSiteURL)
+        )
+    }
+
     func testPasskeyAvailabilityUserScriptDisablesWebAuthnSignals() {
         let source = PasskeyAvailabilityUserScript.source
 

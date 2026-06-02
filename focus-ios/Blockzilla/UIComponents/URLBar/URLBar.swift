@@ -7,11 +7,12 @@ import SnapKit
 import Glean
 import Combine
 
+// swiftlint:disable file_length
 enum Source: String {
    case action, shortcut, suggestion, topsite, widget, none
 }
 
-final class URLBar: UIView {
+final class URLBar: UIView { // swiftlint:disable:this type_body_length
     fileprivate var viewModel: URLBarViewModel
     private var cancellables: Set<AnyCancellable> = []
 
@@ -167,6 +168,18 @@ final class URLBar: UIView {
         return button
     }()
 
+    private lazy var autoNightModeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = .primaryText
+        button.setImage(Self.autoNightModeImage(isEnabled: true), for: .normal)
+        button.accessibilityIdentifier = "URLBar.autoNightModeButton"
+        button.isHidden = true
+        button.alpha = 0
+        button.isPointerInteractionEnabled = true
+        return button
+    }()
+
     private lazy var archiveButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -275,6 +288,14 @@ final class URLBar: UIView {
     }
     private var hidePageActionsConstraints = [Constraint]()
     private var showPageActionsConstraints = [Constraint]()
+    private var hideAutoNightModeConstraints = [Constraint]()
+    private var showAutoNightModeConstraints = [Constraint]()
+    private var isAutoNightModeButtonVisible = false
+    private var autoNightModeState: AutoNightModeState = .unavailable {
+        didSet {
+            updateAutoNightModeButton()
+        }
+    }
 
     private var showToolset = false {
         didSet {
@@ -330,6 +351,7 @@ final class URLBar: UIView {
         addCancelButtonConstraints()
         addTextAndLockContainerConstraints()
         addStopReloadButtonConstraints()
+        addAutoNightModeButtonConstraints()
         addArchiveButtonConstraints()
         addUrlTextFieldConstraints()
         addProgressBarConstraints()
@@ -363,6 +385,7 @@ final class URLBar: UIView {
         collapsedUrlAndLockWrapper.addSubview(truncatedUrlText)
         addSubview(collapsedUrlAndLockWrapper)
         textAndLockContainer.addSubview(urlTextField)
+        addSubview(autoNightModeButton)
         addSubview(shieldIcon)
         addSubview(progressBar)
     }
@@ -495,6 +518,14 @@ final class URLBar: UIView {
         }
     }
 
+    private func addAutoNightModeButtonConstraints() {
+        autoNightModeButton.snp.makeConstraints { make in
+            make.leading.equalTo(shieldIcon.snp.leading).offset(-UIConstants.layout.urlBarIconInset)
+            make.centerY.equalTo(self)
+            make.size.equalTo(UIConstants.layout.urlBarButtonTargetSize)
+        }
+    }
+
     private func addArchiveButtonConstraints() {
         archiveButton.snp.makeConstraints { make in
             make.trailing.equalTo(stopReloadButton.snp.leading).offset(-UIConstants.layout.urlBarPageActionSpacing)
@@ -506,7 +537,8 @@ final class URLBar: UIView {
     private func addUrlTextFieldConstraints() {
         urlTextField.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalTo(shieldIcon.snp.trailing).offset(5)
+            hideAutoNightModeConstraints.append(make.leading.equalTo(shieldIcon.snp.trailing).offset(5).constraint)
+            showAutoNightModeConstraints.append(make.leading.equalTo(autoNightModeButton.snp.trailing).constraint)
 
             showLeftBarViewConstraints.append(make.left.equalToSuperview().constraint)
 
@@ -545,6 +577,7 @@ final class URLBar: UIView {
         hideLeftBarViewConstraints.forEach { $0.activate() }
         showLeftBarViewConstraints.forEach { $0.deactivate() }
         showToolsetConstraints.forEach { $0.deactivate() }
+        showAutoNightModeConstraints.forEach { $0.deactivate() }
         expandedBarConstraints.forEach { $0.activate() }
         updateToolsetConstraints()
     }
@@ -601,6 +634,15 @@ final class URLBar: UIView {
             }
             .store(in: &cancellables)
 
+        autoNightModeButton
+            .publisher(event: .touchUpInside)
+            .sink { [unowned self] _ in
+                self.viewModel
+                    .viewActionSubject
+                    .send(.autoNightModeButtonTap)
+            }
+            .store(in: &cancellables)
+
         deleteButton
             .publisher(event: .touchUpInside)
             .sink { [unowned self] _ in
@@ -643,6 +685,14 @@ final class URLBar: UIView {
                         shieldIcon.setImage(image, for: .normal)
                     })
             })
+            .store(in: &cancellables)
+
+        viewModel
+            .$autoNightModeState
+            .removeDuplicates()
+            .sink { [weak self] state in
+                self?.autoNightModeState = state
+            }
             .store(in: &cancellables)
 
         viewModel
@@ -844,12 +894,79 @@ final class URLBar: UIView {
         urlTextField.text = text
     }
 
+    private var shouldShowAutoNightModeButton: Bool {
+        autoNightModeState != .unavailable && !isEditing && inBrowsingMode && url != nil
+    }
+
+    private static let autoNightModeTurnOffAccessibilityLabel = NSLocalizedString(
+        "URLBar.autoNightMode.turnOff",
+        value: "Turn off forced dark mode",
+        comment: "Accessibility label for the URL bar button that disables the app's forced dark-mode override."
+    )
+    private static let autoNightModeTurnOnAccessibilityLabel = NSLocalizedString(
+        "URLBar.autoNightMode.turnOn",
+        value: "Turn on forced dark mode",
+        comment: "Accessibility label for the URL bar button that enables the app's forced dark-mode override."
+    )
+
+    private static func autoNightModeImage(isEnabled: Bool) -> UIImage? {
+        let configuration = UIImage.SymbolConfiguration(
+            pointSize: UIConstants.layout.urlBarButtonImageSize,
+            weight: .regular
+        )
+        if isEnabled {
+            return UIImage(systemName: "moon.fill", withConfiguration: configuration)?.withRenderingMode(.alwaysTemplate)
+        }
+        if let image = UIImage(systemName: "moon.slash", withConfiguration: configuration) {
+            return image.withRenderingMode(.alwaysTemplate)
+        }
+        guard let moon = UIImage(systemName: "moon.fill", withConfiguration: configuration) else { return nil }
+
+        let size = CGSize(width: UIConstants.layout.urlBarButtonTargetSize, height: UIConstants.layout.urlBarButtonTargetSize)
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let image = renderer.image { _ in
+            let moonSize = moon.size
+            let moonRect = CGRect(
+                x: (size.width - moonSize.width) / 2,
+                y: (size.height - moonSize.height) / 2,
+                width: moonSize.width,
+                height: moonSize.height
+            )
+            moon.withTintColor(.black, renderingMode: .alwaysOriginal).draw(in: moonRect)
+
+            let path = UIBezierPath()
+            path.move(to: CGPoint(x: 10, y: 30))
+            path.addLine(to: CGPoint(x: 30, y: 10))
+            path.lineWidth = 2.5
+            path.lineCapStyle = .round
+            UIColor.black.setStroke()
+            path.stroke()
+        }
+        return image.withRenderingMode(.alwaysTemplate)
+    }
+
+    private func updateAutoNightModeButton(animated: Bool = true) {
+        let shouldShow = shouldShowAutoNightModeButton
+        if shouldShow != isAutoNightModeButtonVisible {
+            isAutoNightModeButtonVisible = shouldShow
+            activateConstraints(shouldShow, shownConstraints: showAutoNightModeConstraints, hiddenConstraints: hideAutoNightModeConstraints)
+        }
+
+        let isEnabled = autoNightModeState == .enabled
+        autoNightModeButton.setImage(Self.autoNightModeImage(isEnabled: isEnabled), for: .normal)
+        autoNightModeButton.accessibilityLabel = isEnabled ?
+            Self.autoNightModeTurnOffAccessibilityLabel :
+            Self.autoNightModeTurnOnAccessibilityLabel
+        autoNightModeButton.animateHidden(!shouldShow, duration: animated ? UIConstants.layout.urlBarTransitionAnimationDuration / 2 : 0)
+    }
+
     private func updateUrlIcons() {
         let visible = !isEditing && url != nil
         let duration = UIConstants.layout.urlBarTransitionAnimationDuration / 2
 
         stopReloadButton.animateHidden(!visible, duration: duration)
         archiveButton.animateHidden(!visible, duration: duration)
+        updateAutoNightModeButton()
 
         self.layoutIfNeeded()
 
@@ -1178,6 +1295,7 @@ final class URLBar: UIView {
         deleteButton.alpha = shouldShowToolset ? expandAlpha : 0
         contextMenuButton.alpha = expandAlpha
         archiveButton.alpha = expandAlpha
+        autoNightModeButton.alpha = shouldShowAutoNightModeButton ? expandAlpha : 0
 
         if isEditing {
             shieldIcon.alpha = 0

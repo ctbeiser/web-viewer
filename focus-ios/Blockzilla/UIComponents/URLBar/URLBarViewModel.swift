@@ -8,6 +8,7 @@ import UIKit
 public enum URLViewAction {
     case contextMenuTap(anchor: UIButton)
     case archiveButtonTap
+    case autoNightModeButtonTap
     case backButtonTap
     case forwardButtonTap
     case stopButtonTap
@@ -24,12 +25,19 @@ public enum ShieldIconStatus: Equatable {
     case connectionNotSecure
 }
 
+public enum AutoNightModeState: Equatable {
+    case unavailable
+    case enabled
+    case disabled
+}
+
 public final class URLBarViewModel {
     @Published public var canGoBack = false
     @Published public var canGoForward = false
     @Published public var canDelete = false
     @Published public var isLoading = false
     @Published public var connectionState: ShieldIconStatus = .on
+    @Published public var autoNightModeState: AutoNightModeState = .unavailable
     @Published public var loadingProgres: Double = 0
 
     internal var viewActionSubject = PassthroughSubject<URLViewAction, Never>()

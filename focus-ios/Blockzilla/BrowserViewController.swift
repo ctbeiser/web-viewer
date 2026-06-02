@@ -13,7 +13,8 @@ import Onboarding
 import AppShortcuts
 import SwiftUI
 
-final class BrowserViewController: UIViewController {
+// swiftlint:disable file_length
+final class BrowserViewController: UIViewController { // swiftlint:disable:this type_body_length
     private let mainContainerView = UIView(frame: .zero)
     let darkView = UIView()
     private lazy var trackingProtectionManager = TrackingProtectionManager(
@@ -69,6 +70,8 @@ final class BrowserViewController: UIViewController {
     private let shortcutsPresenter = ShortcutsPresenter()
     private let onboardingTelemetry = OnboardingTelemetryHelper()
     private let gleanUsageReportingMetricsService: GleanUsageReportingMetricsService
+    private var isForcedDarkModeOverrideDisabledByUser = false
+    private var currentForcedDarkModeOverrideSite: String?
 
     private enum URLBarScrollState {
         case collapsed
@@ -203,7 +206,7 @@ final class BrowserViewController: UIViewController {
         super.traitCollectionDidChange(previousTraitCollection)
 
         guard previousTraitCollection?.userInterfaceStyle != traitCollection.userInterfaceStyle else { return }
-        syncWebsiteDarkMode()
+        syncForcedDarkModeOverride()
     }
 
     private func configureLegacyUI() {
@@ -272,7 +275,7 @@ final class BrowserViewController: UIViewController {
         showsToolsetInURLBar = true
 
         containWebView()
-        syncWebsiteDarkMode()
+        syncForcedDarkModeOverride()
         createHomeView()
         createURLBar()
         bindUrlBarViewModel()
@@ -320,9 +323,60 @@ final class BrowserViewController: UIViewController {
         submit(url: url, source: .action)
     }
 
-    private func syncWebsiteDarkMode() {
-        guard !WebEngineFlagManager.isWebEngineEnabled else { return }
-        webViewController.setWebsiteDarkModeEnabled(traitCollection.userInterfaceStyle == .dark)
+    private func syncForcedDarkModeOverride() {
+        guard !WebEngineFlagManager.isWebEngineEnabled else {
+            urlBarViewModel.autoNightModeState = .unavailable
+            return
+        }
+
+        let isAppOverrideActive = traitCollection.userInterfaceStyle == .dark
+        if !isAppOverrideActive {
+            isForcedDarkModeOverrideDisabledByUser = false
+        }
+
+        urlBarViewModel.autoNightModeState = Self.forcedDarkModeOverrideState(
+            isAppOverrideActive: isAppOverrideActive,
+            isUserDisabled: isForcedDarkModeOverrideDisabledByUser
+        )
+        webViewController.setWebsiteDarkModeEnabled(Self.isForcedDarkModeOverrideEnabled(
+            isAppOverrideActive: isAppOverrideActive,
+            isUserDisabled: isForcedDarkModeOverrideDisabledByUser
+        ))
+    }
+
+    static func forcedDarkModeOverrideState(isAppOverrideActive: Bool, isUserDisabled: Bool) -> AutoNightModeState {
+        guard isAppOverrideActive else { return .unavailable }
+        return isUserDisabled ? .disabled : .enabled
+    }
+
+    static func isForcedDarkModeOverrideEnabled(isAppOverrideActive: Bool, isUserDisabled: Bool) -> Bool {
+        isAppOverrideActive && !isUserDisabled
+    }
+
+    static func forcedDarkModeOverrideSiteIdentifier(for url: URL?) -> String? {
+        guard let url, url.isWebPage(includeDataURIs: false) else { return nil }
+        return url.baseDomain?.lowercased()
+    }
+
+    static func shouldResetForcedDarkModeOverride(currentSite: String?, navigatingTo url: URL?) -> Bool {
+        forcedDarkModeOverrideSiteIdentifier(for: url) != currentSite
+    }
+
+    private func resetForcedDarkModeOverrideIfSiteChanged(to url: URL?) {
+        guard Self.shouldResetForcedDarkModeOverride(currentSite: currentForcedDarkModeOverrideSite, navigatingTo: url) else {
+            return
+        }
+
+        currentForcedDarkModeOverrideSite = Self.forcedDarkModeOverrideSiteIdentifier(for: url)
+        isForcedDarkModeOverrideDisabledByUser = false
+        syncForcedDarkModeOverride()
+    }
+
+    private func toggleForcedDarkModeOverride() {
+        guard traitCollection.userInterfaceStyle == .dark else { return }
+        currentForcedDarkModeOverrideSite = Self.forcedDarkModeOverrideSiteIdentifier(for: urlBar.url)
+        isForcedDarkModeOverrideDisabledByUser.toggle()
+        syncForcedDarkModeOverride()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -690,6 +744,9 @@ final class BrowserViewController: UIViewController {
                     guard let url = self.urlBar.url else { return }
                     self.openInArchiveIs(url: url)
 
+                case .autoNightModeButtonTap:
+                    self.toggleForcedDarkModeOverride()
+
                 case .backButtonTap:
                     // FXIOS-8626 - #19148 - Integrate basics APIs of WebEngine in Focus iOS
                     self.webViewController.goBack()
@@ -863,6 +920,8 @@ final class BrowserViewController: UIViewController {
     private func clearBrowser() {
         // Helper function for resetBrowser that handles all the logic of actually clearing user data and the browsing session
         overlayView.currentURL = ""
+        currentForcedDarkModeOverrideSite = nil
+        isForcedDarkModeOverrideDisabledByUser = false
         // FXIOS-8639 - #19162 - Handle reset webview in Focus iOS
         webViewController.reset()
         legacyWebViewContainer.isHidden = true
@@ -932,6 +991,7 @@ final class BrowserViewController: UIViewController {
         // If this is the first navigation, show the browser and the toolbar.
         guard isViewLoaded else { initialUrl = url; return }
 
+        resetForcedDarkModeOverrideIfSiteChanged(to: url)
         shortcutsPresenter.shortcutsState = .none
         SearchInContentTelemetry.shouldSetUrlTypeSearch = true
         if isIPadRegularDimensions {
@@ -1112,6 +1172,7 @@ final class BrowserViewController: UIViewController {
     // This function won't exist as is as part of the WebEngine. URL bar gets updated through onLocationChange(url:)
     func updateURLBar() {
         if webViewController.url?.absoluteString != "about:blank" {
+            resetForcedDarkModeOverrideIfSiteChanged(to: webViewController.url)
             urlBar.url = webViewController.url
             overlayView.currentURL = urlBar.url?.absoluteString ?? ""
         }

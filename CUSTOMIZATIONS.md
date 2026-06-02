@@ -243,6 +243,15 @@ In `BrowserViewController.swift`:
 - Make `controller(for route:)` return `nil` to suppress onboarding tooltips and
   tracking protection popups.
 
+### Forced Dark Mode URL Bar Toggle
+
+When system dark mode activates the app's forced dark-mode override, show a moon
+button on the left side of the URL bar. Tapping it disables that app override
+for the current site and changes the icon to a slashed moon; tapping again
+re-enables the override. Sites with native dark themes can still render dark
+through their own CSS. Navigating to a different base domain or returning to
+system light mode clears the temporary override.
+
 ### Tap URL Bar to Share (`Blockzilla/BrowserViewController.swift`)
 
 In `urlBarDidPressScrollTop(_:tap:)`, replace the expanded-state scroll-to-top
@@ -361,9 +370,9 @@ Add `WebsiteDarkModeController` to manage page dark mode:
 
 ### Browser Trait Integration (`Blockzilla/BrowserViewController.swift`)
 
-- Add `syncWebsiteDarkMode()`
+- Add `syncForcedDarkModeOverride()`
 - Call it during setup and trait changes
-- Enable website dark mode when `traitCollection.userInterfaceStyle == .dark`
+- Enable the forced dark-mode override when `traitCollection.userInterfaceStyle == .dark`
 
 ### Package Pins
 
