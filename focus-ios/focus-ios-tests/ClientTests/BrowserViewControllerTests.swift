@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import XCTest
+import WebKit
 import Onboarding
 import AppShortcuts
 
@@ -123,6 +124,20 @@ class BrowserViewControllerTests: XCTestCase {
         data.appendBigEndianUInt32(blobLength)
         data.append(plistData)
         return data
+    }
+
+    func testLegacyWebViewUsesPersistentWebsiteDataStore() {
+        let controller = LegacyWebViewController(
+            trackingProtectionManager: TrackingProtectionManager(isTrackingEnabled: { false }),
+            webMenuAction: WebMenuAction(
+                openInDefaultBrowser: { _ in },
+                showCopy: { _ in },
+                showSharePage: { _, _, _ in },
+                openLink: { _ in }
+            )
+        )
+
+        XCTAssertTrue(controller.browserView.configuration.websiteDataStore.isPersistent)
     }
 }
 

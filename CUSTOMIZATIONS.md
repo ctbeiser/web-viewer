@@ -477,7 +477,22 @@ For non-PDF downloads:
 
 ---
 
-## 15. Conditionally Disable Passkey Advertising in WKWebView
+## 15. Preserve Login Sessions
+
+Web Viewer keeps site login state when the user taps erase or relaunches the app:
+- `LegacyWebViewController.swift`: use `WKWebsiteDataStore.default()` instead of
+  `WKWebsiteDataStore.nonPersistent()` so cookies and site storage persist across
+  webview resets. It also sets `WebKitLocalStorageEnabledPreferenceKey` to `true`
+  before creating the webview.
+- `WebCacheUtils.swift`: keep clearing cache files and in-memory history, but do
+  not delete cookies, localStorage, IndexedDB, WebSQL, or other login-bearing
+  website storage.
+- Update English erase/onboarding copy so the UI no longer says cookies or
+  passwords are cleared.
+
+---
+
+## 16. Conditionally Disable Passkey Advertising in WKWebView
 
 ### WebAuthn / Passkeys (`Blockzilla/Modules/WebView/LegacyWebViewController.swift`)
 
