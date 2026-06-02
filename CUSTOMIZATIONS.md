@@ -474,3 +474,25 @@ For non-PDF downloads:
 - Present the completed file with `UIActivityViewController`
 - Remove the temporary download directory after the activity controller finishes
 - Show a simple localized "Download Failed" alert if the download fails
+
+---
+
+## 15. Conditionally Disable Passkey Advertising in WKWebView
+
+### WebAuthn / Passkeys (`Blockzilla/Modules/WebView/LegacyWebViewController.swift`)
+
+The custom app usually is not signed with Apple's managed browser passkey
+entitlement and does not have `webcredentials:` associated domains for arbitrary
+relying parties, so WKWebView passkey calls can be advertised to pages but fail
+in practice.
+
+- Check the signed
+  `com.apple.developer.web-browser.public-key-credential` entitlement at runtime
+- If the entitlement is present, leave WebKit's native passkey APIs untouched
+- If the entitlement is missing, add a document-start user script that hides
+  `window.PublicKeyCredential`
+- Make WebAuthn availability probes resolve `false`
+- Make `navigator.credentials.create/get` reject `publicKey` requests with
+  `NotSupportedError`
+- Reinstall this script whenever the web view's user scripts are rebuilt after
+  disabling tracking protection

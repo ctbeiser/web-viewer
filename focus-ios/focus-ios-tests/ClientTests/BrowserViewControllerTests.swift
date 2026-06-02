@@ -75,6 +75,55 @@ class BrowserViewControllerTests: XCTestCase {
         XCTAssertEqual(components.path, "/submit/")
         XCTAssertEqual(components.queryItems, [URLQueryItem(name: "url", value: sourceURL.absoluteString)])
     }
+
+    func testPasskeyAvailabilityUserScriptDisablesWebAuthnSignals() {
+        let source = PasskeyAvailabilityUserScript.source
+
+        XCTAssertTrue(source.contains("PublicKeyCredential"))
+        XCTAssertTrue(source.contains("isUserVerifyingPlatformAuthenticatorAvailable"))
+        XCTAssertTrue(source.contains("isConditionalMediationAvailable"))
+        XCTAssertTrue(source.contains("navigator.credentials"))
+        XCTAssertTrue(source.contains("options.publicKey"))
+        XCTAssertTrue(source.contains("NotSupportedError"))
+    }
+
+    func testPasskeyAvailabilityInstallsUserScriptWithoutBrowserEntitlement() {
+        XCTAssertTrue(PasskeyAvailability.shouldInstallUserScript(hasBrowserPublicKeyCredentialEntitlement: false))
+    }
+
+    func testPasskeyAvailabilityDoesNotInstallUserScriptWithBrowserEntitlement() {
+        XCTAssertFalse(PasskeyAvailability.shouldInstallUserScript(hasBrowserPublicKeyCredentialEntitlement: true))
+    }
+
+    func testSignedEntitlementsReaderReadsBrowserEntitlementFromCodeSignature() throws {
+        let codeSignature = try makeCodeSignature(entitlements: [
+            PasskeyAvailability.browserPublicKeyCredentialEntitlement: true
+        ])
+        let entitlements = try XCTUnwrap(SignedEntitlementsReader.entitlements(inCodeSignature: codeSignature))
+
+        XCTAssertTrue(PasskeyAvailability.containsBrowserPublicKeyCredentialEntitlement(in: entitlements))
+    }
+
+    private func makeCodeSignature(entitlements: [String: Any]) throws -> Data {
+        let plistData = try PropertyListSerialization.data(
+            fromPropertyList: entitlements,
+            format: .xml,
+            options: 0
+        )
+        let blobOffset = UInt32(20)
+        let blobLength = UInt32(8 + plistData.count)
+
+        var data = Data()
+        data.appendBigEndianUInt32(0xfade0cc0)
+        data.appendBigEndianUInt32(blobOffset + blobLength)
+        data.appendBigEndianUInt32(1)
+        data.appendBigEndianUInt32(5)
+        data.appendBigEndianUInt32(blobOffset)
+        data.appendBigEndianUInt32(0xfade7171)
+        data.appendBigEndianUInt32(blobLength)
+        data.append(plistData)
+        return data
+    }
 }
 
 private class MockUserDefaults: UserDefaults {
@@ -83,5 +132,16 @@ private class MockUserDefaults: UserDefaults {
         removeObject(forKey: UIConstants.strings.userDefaultsLastReviewRequestDate)
         removeObject(forKey: UIConstants.strings.userDefaultsLaunchCountKey)
         removeObject(forKey: UIConstants.strings.userDefaultsLaunchThresholdKey)
+    }
+}
+
+private extension Data {
+    mutating func appendBigEndianUInt32(_ value: UInt32) {
+        append(contentsOf: [
+            UInt8((value >> 24) & 0xff),
+            UInt8((value >> 16) & 0xff),
+            UInt8((value >> 8) & 0xff),
+            UInt8(value & 0xff)
+        ])
     }
 }
