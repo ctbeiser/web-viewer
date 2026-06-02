@@ -474,3 +474,18 @@ For non-PDF downloads:
 - Present the completed file with `UIActivityViewController`
 - Remove the temporary download directory after the activity controller finishes
 - Show a simple localized "Download Failed" alert if the download fails
+
+---
+
+## 15. Preserve Login Sessions
+
+Web Viewer keeps site login state when the user taps erase or relaunches the app:
+- `LegacyWebViewController.swift`: use `WKWebsiteDataStore.default()` instead of
+  `WKWebsiteDataStore.nonPersistent()` so cookies and site storage persist across
+  webview resets. It also sets `WebKitLocalStorageEnabledPreferenceKey` to `true`
+  before creating the webview.
+- `WebCacheUtils.swift`: keep clearing cache files and in-memory history, but do
+  not delete cookies, localStorage, IndexedDB, WebSQL, or other login-bearing
+  website storage.
+- Update English erase/onboarding copy so the UI no longer says cookies or
+  passwords are cleared.
