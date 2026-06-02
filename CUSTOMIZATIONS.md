@@ -65,6 +65,9 @@ Set `INFOPLIST_KEY_LSApplicationCategoryType` to
 ### Widgets/Info.plist
 
 Remove the hardcoded `CFBundleShortVersionString` key (it gets set automatically).
+Set the WidgetsExtension target `MARKETING_VERSION` to `$(APP_VERSION)` in all
+build configurations so the generated extension plist version matches the
+containing app version.
 
 ---
 
