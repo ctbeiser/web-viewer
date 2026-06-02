@@ -250,7 +250,9 @@ button on the left side of the URL bar. Tapping it disables that app override
 for the current site and changes the icon to a slashed moon; tapping again
 re-enables the override. Sites with native dark themes can still render dark
 through their own CSS. Navigating to a different base domain or returning to
-system light mode clears the temporary override.
+system light mode clears the temporary override. Use outlined SF Symbols
+(`moon` when enabled, `sun.max` when disabled) and otherwise mirror the
+surrounding URL bar icon buttons, including the same 40pt tap target.
 
 ### Tap URL Bar to Share (`Blockzilla/BrowserViewController.swift`)
 
