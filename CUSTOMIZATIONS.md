@@ -489,3 +489,25 @@ Web Viewer keeps site login state when the user taps erase or relaunches the app
   website storage.
 - Update English erase/onboarding copy so the UI no longer says cookies or
   passwords are cleared.
+
+---
+
+## 16. Conditionally Disable Passkey Advertising in WKWebView
+
+### WebAuthn / Passkeys (`Blockzilla/Modules/WebView/LegacyWebViewController.swift`)
+
+The custom app usually is not signed with Apple's managed browser passkey
+entitlement and does not have `webcredentials:` associated domains for arbitrary
+relying parties, so WKWebView passkey calls can be advertised to pages but fail
+in practice.
+
+- Check the signed
+  `com.apple.developer.web-browser.public-key-credential` entitlement at runtime
+- If the entitlement is present, leave WebKit's native passkey APIs untouched
+- If the entitlement is missing, add a document-start user script that hides
+  `window.PublicKeyCredential`
+- Make WebAuthn availability probes resolve `false`
+- Make `navigator.credentials.create/get` reject `publicKey` requests with
+  `NotSupportedError`
+- Reinstall this script whenever the web view's user scripts are rebuilt after
+  disabling tracking protection
