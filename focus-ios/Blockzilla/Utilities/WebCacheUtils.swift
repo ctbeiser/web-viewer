@@ -10,8 +10,7 @@ final class WebCacheUtils {
 
     static func reset() {
         clearCaches()
-        clearCookies()
-        clearWebKitDataStore()
+        clearWebKitCaches()
         removeInMemoryHistory()
     }
 
@@ -27,27 +26,11 @@ final class WebCacheUtils {
         }
     }
 
-    private static func clearCookies() {
-        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
-
-        // Delete other cookies, such as .binarycookies files.
-        if let libraryPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first {
-            let cookiesPath = (libraryPath as NSString).appendingPathComponent("Cookies")
-            FileManager.default.removeItemAndContents(path: cookiesPath)
-        }
-    }
-
-    private static func clearWebKitDataStore() {
-        // Clear everything that WKWebView creates
+    private static func clearWebKitCaches() {
         let dateFrom = Date(timeIntervalSince1970: 0)
         let dataTypes: Set<String> = [WKWebsiteDataTypeDiskCache,
                                       WKWebsiteDataTypeOfflineWebApplicationCache,
-                                      WKWebsiteDataTypeMemoryCache,
-                                      WKWebsiteDataTypeLocalStorage,
-                                      WKWebsiteDataTypeCookies,
-                                      WKWebsiteDataTypeSessionStorage,
-                                      WKWebsiteDataTypeIndexedDBDatabases,
-                                      WKWebsiteDataTypeWebSQLDatabases]
+                                      WKWebsiteDataTypeMemoryCache]
 
         WKWebsiteDataStore.default().removeData(ofTypes: dataTypes, modifiedSince: dateFrom, completionHandler: {})
     }
@@ -60,8 +43,8 @@ final class WebCacheUtils {
             let clazz = klazz as AnyObject as? NSObjectProtocol {
             if clazz.responds(to: Selector(("optional" + "Shared" + "History"))) {
                 if let webHistory = clazz.perform(Selector(("optional" + "Shared" + "History"))) {
-                    let o = webHistory.takeUnretainedValue()
-                    _ = o.perform(Selector(("remove" + "All" + "Items")))
+                    let history = webHistory.takeUnretainedValue()
+                    _ = history.perform(Selector(("remove" + "All" + "Items")))
                 }
             }
         }

@@ -151,8 +151,10 @@ final class LegacyWebViewController: UIViewController, LegacyWebController {
     func stop() { browserView.stopLoading() }
 
     private func setupWebview() {
+        UserDefaults.standard.set(true, forKey: "WebKitLocalStorageEnabledPreferenceKey")
+
         let configuration = WKWebViewConfiguration()
-        configuration.websiteDataStore = WKWebsiteDataStore.nonPersistent()
+        configuration.websiteDataStore = WKWebsiteDataStore.default()
         configuration.allowsInlineMediaPlayback = true
         configuration.ignoresViewportScaleLimits = true
 
