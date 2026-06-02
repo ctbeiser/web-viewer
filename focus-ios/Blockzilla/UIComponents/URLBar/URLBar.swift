@@ -910,39 +910,7 @@ final class URLBar: UIView { // swiftlint:disable:this type_body_length
     )
 
     private static func autoNightModeImage(isEnabled: Bool) -> UIImage? {
-        let configuration = UIImage.SymbolConfiguration(
-            pointSize: UIConstants.layout.urlBarButtonImageSize,
-            weight: .regular
-        )
-        if isEnabled {
-            return UIImage(systemName: "moon.fill", withConfiguration: configuration)?.withRenderingMode(.alwaysTemplate)
-        }
-        if let image = UIImage(systemName: "moon.slash", withConfiguration: configuration) {
-            return image.withRenderingMode(.alwaysTemplate)
-        }
-        guard let moon = UIImage(systemName: "moon.fill", withConfiguration: configuration) else { return nil }
-
-        let size = CGSize(width: UIConstants.layout.urlBarButtonTargetSize, height: UIConstants.layout.urlBarButtonTargetSize)
-        let renderer = UIGraphicsImageRenderer(size: size)
-        let image = renderer.image { _ in
-            let moonSize = moon.size
-            let moonRect = CGRect(
-                x: (size.width - moonSize.width) / 2,
-                y: (size.height - moonSize.height) / 2,
-                width: moonSize.width,
-                height: moonSize.height
-            )
-            moon.withTintColor(.black, renderingMode: .alwaysOriginal).draw(in: moonRect)
-
-            let path = UIBezierPath()
-            path.move(to: CGPoint(x: 10, y: 30))
-            path.addLine(to: CGPoint(x: 30, y: 10))
-            path.lineWidth = 2.5
-            path.lineCapStyle = .round
-            UIColor.black.setStroke()
-            path.stroke()
-        }
-        return image.withRenderingMode(.alwaysTemplate)
+        UIImage(systemName: isEnabled ? "moon" : "sun.max")
     }
 
     private func updateAutoNightModeButton(animated: Bool = true) {
