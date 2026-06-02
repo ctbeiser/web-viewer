@@ -151,8 +151,10 @@ final class LegacyWebViewController: UIViewController, LegacyWebController {
     func stop() { browserView.stopLoading() }
 
     private func setupWebview() {
+        UserDefaults.standard.set(true, forKey: "WebKitLocalStorageEnabledPreferenceKey")
+
         let configuration = WKWebViewConfiguration()
-        configuration.websiteDataStore = WKWebsiteDataStore.nonPersistent()
+        configuration.websiteDataStore = WKWebsiteDataStore.default()
         configuration.allowsInlineMediaPlayback = true
         configuration.ignoresViewportScaleLimits = true
 
@@ -190,6 +192,7 @@ final class LegacyWebViewController: UIViewController, LegacyWebController {
         }
         setupFindInPageScripts()
         setupMetadataScripts()
+        setupPasskeyAvailabilityScript()
         setupFullScreen()
         setupAdsScripts()
         setupWebsiteDarkMode()
@@ -257,6 +260,16 @@ final class LegacyWebViewController: UIViewController, LegacyWebController {
         addScript(forResource: "MetadataHelper", injectionTime: .atDocumentEnd, forMainFrameOnly: true)
     }
 
+    private func setupPasskeyAvailabilityScript() {
+        guard PasskeyAvailability.shouldInstallUserScript() else { return }
+
+        let script = WKUserScript(
+            source: PasskeyAvailabilityUserScript.source,
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: false)
+        browserView.configuration.userContentController.addUserScript(script)
+    }
+
     private func setupFullScreen() {
         browserView.configuration.userContentController.add(self, name: ScriptHandlers.fullScreen.rawValue)
         addScript(forResource: "FullScreen", injectionTime: .atDocumentEnd, forMainFrameOnly: true)
@@ -280,6 +293,7 @@ final class LegacyWebViewController: UIViewController, LegacyWebController {
         browserView.configuration.userContentController.removeAllContentRuleLists()
         setupFindInPageScripts()
         setupMetadataScripts()
+        setupPasskeyAvailabilityScript()
         setupFullScreen()
         setupAdsScripts()
         websiteDarkModeController.reinstallUserScript(in: browserView)

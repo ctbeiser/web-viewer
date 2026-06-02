@@ -11,7 +11,7 @@
 "About.privateBullet2" = "Block trackers (or update settings to allow trackers)";
 
 /* Label on About screen */
-"About.privateBullet3" = "Erase to delete cookies as well as search and browsing history";
+"About.privateBullet3" = "Erase to delete search and browsing history";
 
 /* Label on About screen */
 "About.privateBulletHeader" = "Use it as a private browser:";

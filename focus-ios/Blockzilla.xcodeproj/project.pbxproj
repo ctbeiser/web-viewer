@@ -87,6 +87,7 @@
 		B101243E2B4EE8C20099F3CA /* URLValidationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B101243D2B4EE8C20099F3CA /* URLValidationTest.swift */; };
 		B3481A551FCF261900CA2EA6 /* AutocompleteCustomUrlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3481A541FCF261900CA2EA6 /* AutocompleteCustomUrlViewController.swift */; };
 		B3AFC2BC1F7C0B9F001AEF38 /* LegacyWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AFC2BB1F7C0B9F001AEF38 /* LegacyWebViewController.swift */; };
+		F0A1B2C42E8F100000000002 /* PasskeyAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1B2C42E8F100000000004 /* PasskeyAvailability.swift */; };
 		B3CD41C91FD1027000AEBD58 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CD41C81FD1027000AEBD58 /* InsetTextField.swift */; };
 		B3CD41CC1FD1CAF000AEBD58 /* PaddedSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CD41CB1FD1CAF000AEBD58 /* PaddedSwitch.swift */; };
 		B3D23BEF1FA3A9E500D9C50F /* postload.js in Resources */ = {isa = PBXBuildFile; fileRef = B3D23BEE1FA3A9E500D9C50F /* postload.js */; };
@@ -742,6 +743,7 @@
 		B101243D2B4EE8C20099F3CA /* URLValidationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLValidationTest.swift; sourceTree = "<group>"; };
 		B3481A541FCF261900CA2EA6 /* AutocompleteCustomUrlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteCustomUrlViewController.swift; sourceTree = "<group>"; };
 		B3AFC2BB1F7C0B9F001AEF38 /* LegacyWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyWebViewController.swift; sourceTree = "<group>"; };
+		F0A1B2C42E8F100000000004 /* PasskeyAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasskeyAvailability.swift; sourceTree = "<group>"; };
 		B3CD41C81FD1027000AEBD58 /* InsetTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetTextField.swift; sourceTree = "<group>"; };
 		B3CD41CB1FD1CAF000AEBD58 /* PaddedSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedSwitch.swift; sourceTree = "<group>"; };
 		B3D23BEE1FA3A9E500D9C50F /* postload.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = postload.js; sourceTree = "<group>"; };
@@ -1448,6 +1450,7 @@
 			isa = PBXGroup;
 			children = (
 				B3AFC2BB1F7C0B9F001AEF38 /* LegacyWebViewController.swift */,
+				F0A1B2C42E8F100000000004 /* PasskeyAvailability.swift */,
 				F0A1B2C32E8F100000000004 /* WebsiteDarkModeController.swift */,
 			);
 			path = WebView;
@@ -2747,6 +2750,7 @@
 				D34E70351DA874AA00BABDCC /* StringExtensions.swift in Sources */,
 				D30179C31BCC6F65009AD388 /* AboutViewController.swift in Sources */,
 				B3AFC2BC1F7C0B9F001AEF38 /* LegacyWebViewController.swift in Sources */,
+				F0A1B2C42E8F100000000002 /* PasskeyAvailability.swift in Sources */,
 				F0A1B2C32E8F100000000002 /* WebsiteDarkModeController.swift in Sources */,
 				D5ABA3DA1FCC846800D5C060 /* AutocompleteSettingViewController.swift in Sources */,
 				D5ABA3D91FCC846800D5C060 /* AddCustomDomainViewController.swift in Sources */,
