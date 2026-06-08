@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Defineix com a navegador per defecte";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Elimineu l'historial de navegació, contrasenyes i galetes i eviteu que anuncis no desitjats us segueixin amb un sol clic!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "El vostre historial no us segueix";
 

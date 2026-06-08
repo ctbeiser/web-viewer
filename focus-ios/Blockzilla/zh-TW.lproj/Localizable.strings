@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "設為預設瀏覽器";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "只要輕鬆一點，就可以清除您的上網紀錄、網頁密碼、Cookie，並防止被不想要的廣告追蹤！";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "瀏覽紀錄，不用隨身帶著走";
 

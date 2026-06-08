@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Setja sem sjálfgefinn vafra";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Eyddu vafraferli þínum, lykilorðum, vafrakökum og komdu í veg fyrir að óæskilegar auglýsingar fylgi þér, allt með einum smelli!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Sagan þín fylgir þér ekki";
 
