@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "ነባሪ አሳሽ አድርገህ አስቀምጥ";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "የአሰሳ ታሪክዎን፣ የይለፍ ቃሎችዎን፣ ኩኪዎችዎን ያጥፉ እና አላስፈላጊ ማስታወቂያዎችን በቀላል ጠቅታ እንዳትከተልሉዎ ያግዱ!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "ታሪክዎ አይከተልዎትም";
 
