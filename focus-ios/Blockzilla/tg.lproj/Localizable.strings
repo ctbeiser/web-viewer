@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Гузоштан ҳамчун браузери пешфарз";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Бо зер кардани танҳо як тугма таърихи тамошобинӣ, ниҳонвожаҳо ва кукиҳоро пок созед ва имкон надиҳед, ки рекламаи номутлуб шуморо пайгирӣ кунад!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Таърихи шумо шуморо пайгирӣ намекунад";
 
