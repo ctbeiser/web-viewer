@@ -87,7 +87,6 @@
 		B101243E2B4EE8C20099F3CA /* URLValidationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B101243D2B4EE8C20099F3CA /* URLValidationTest.swift */; };
 		B3481A551FCF261900CA2EA6 /* AutocompleteCustomUrlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3481A541FCF261900CA2EA6 /* AutocompleteCustomUrlViewController.swift */; };
 		B3AFC2BC1F7C0B9F001AEF38 /* LegacyWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AFC2BB1F7C0B9F001AEF38 /* LegacyWebViewController.swift */; };
-		F0A1B2C42E8F100000000002 /* PasskeyAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1B2C42E8F100000000004 /* PasskeyAvailability.swift */; };
 		B3CD41C91FD1027000AEBD58 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CD41C81FD1027000AEBD58 /* InsetTextField.swift */; };
 		B3CD41CC1FD1CAF000AEBD58 /* PaddedSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CD41CB1FD1CAF000AEBD58 /* PaddedSwitch.swift */; };
 		B3D23BEF1FA3A9E500D9C50F /* postload.js in Resources */ = {isa = PBXBuildFile; fileRef = B3D23BEE1FA3A9E500D9C50F /* postload.js */; };
@@ -137,8 +136,6 @@
 		C89AA96E271720330089838F /* ThemeTableViewToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89AA969271720330089838F /* ThemeTableViewToggleCell.swift */; };
 		C89AA96F271720330089838F /* ThemeTableViewAccessoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89AA96A271720330089838F /* ThemeTableViewAccessoryCell.swift */; };
 		C89AA970271720330089838F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89AA96B271720330089838F /* Theme.swift */; };
-		F0A1B2C32E8F100000000001 /* NightModeAllFramesAtDocumentStart.js in Resources */ = {isa = PBXBuildFile; fileRef = F0A1B2C32E8F100000000003 /* NightModeAllFramesAtDocumentStart.js */; };
-		F0A1B2C32E8F100000000002 /* WebsiteDarkModeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1B2C32E8F100000000004 /* WebsiteDarkModeController.swift */; };
 		C8A9FE0A26E7A63F00A9C72B /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A9FE0926E7A5B900A9C72B /* UserDefault.swift */; };
 		C8AC706427DF972B00165824 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AC706327DF972B00165824 /* AuthenticationManager.swift */; };
 		C8C74BF4271D5D310009CE5A /* ActionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C74BF3271D5D310009CE5A /* ActionFooterView.swift */; };
@@ -240,6 +237,9 @@
 		EB84F9712093815500BA6739 /* effective_tld_names.dat in Resources */ = {isa = PBXBuildFile; fileRef = EB84F9702093815500BA6739 /* effective_tld_names.dat */; };
 		EBE44F4E20ADDF6A005AFEA6 /* SmartLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE44F4D20ADDF6A005AFEA6 /* SmartLabel.swift */; };
 		ED5ACDB02CE6AABF00A55506 /* Sentry-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = ED5ACDAF2CE6AABF00A55506 /* Sentry-Dynamic */; };
+		F0A1B2C32E8F100000000001 /* NightModeAllFramesAtDocumentStart.js in Resources */ = {isa = PBXBuildFile; fileRef = F0A1B2C32E8F100000000003 /* NightModeAllFramesAtDocumentStart.js */; };
+		F0A1B2C32E8F100000000002 /* WebsiteDarkModeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1B2C32E8F100000000004 /* WebsiteDarkModeController.swift */; };
+		F0A1B2C42E8F100000000002 /* PasskeyAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1B2C42E8F100000000004 /* PasskeyAvailability.swift */; };
 		F74E8109218183F400D18535 /* SearchSuggestionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74E8108218183F400D18535 /* SearchSuggestionsTest.swift */; };
 		F7B3E49D2165C32B00118785 /* SearchSuggestionsPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B3E49C2165C32B00118785 /* SearchSuggestionsPromptView.swift */; };
 		F805722F1DBEE504004339C1 /* WebCacheUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F805722E1DBEE504004339C1 /* WebCacheUtils.swift */; };
@@ -743,7 +743,6 @@
 		B101243D2B4EE8C20099F3CA /* URLValidationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLValidationTest.swift; sourceTree = "<group>"; };
 		B3481A541FCF261900CA2EA6 /* AutocompleteCustomUrlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteCustomUrlViewController.swift; sourceTree = "<group>"; };
 		B3AFC2BB1F7C0B9F001AEF38 /* LegacyWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyWebViewController.swift; sourceTree = "<group>"; };
-		F0A1B2C42E8F100000000004 /* PasskeyAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasskeyAvailability.swift; sourceTree = "<group>"; };
 		B3CD41C81FD1027000AEBD58 /* InsetTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetTextField.swift; sourceTree = "<group>"; };
 		B3CD41CB1FD1CAF000AEBD58 /* PaddedSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedSwitch.swift; sourceTree = "<group>"; };
 		B3D23BEE1FA3A9E500D9C50F /* postload.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = postload.js; sourceTree = "<group>"; };
@@ -789,8 +788,6 @@
 		C89AA969271720330089838F /* ThemeTableViewToggleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeTableViewToggleCell.swift; sourceTree = "<group>"; };
 		C89AA96A271720330089838F /* ThemeTableViewAccessoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeTableViewAccessoryCell.swift; sourceTree = "<group>"; };
 		C89AA96B271720330089838F /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		F0A1B2C32E8F100000000003 /* NightModeAllFramesAtDocumentStart.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = NightModeAllFramesAtDocumentStart.js; sourceTree = "<group>"; };
-		F0A1B2C32E8F100000000004 /* WebsiteDarkModeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteDarkModeController.swift; sourceTree = "<group>"; };
 		C8A9FE0926E7A5B900A9C72B /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		C8AC706327DF972B00165824 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		C8C74BF3271D5D310009CE5A /* ActionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionFooterView.swift; sourceTree = "<group>"; };
@@ -1220,6 +1217,9 @@
 		EB84F96E209380CE00BA6739 /* URLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 		EB84F9702093815500BA6739 /* effective_tld_names.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = effective_tld_names.dat; sourceTree = "<group>"; };
 		EBE44F4D20ADDF6A005AFEA6 /* SmartLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartLabel.swift; sourceTree = "<group>"; };
+		F0A1B2C32E8F100000000003 /* NightModeAllFramesAtDocumentStart.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = NightModeAllFramesAtDocumentStart.js; sourceTree = "<group>"; };
+		F0A1B2C32E8F100000000004 /* WebsiteDarkModeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteDarkModeController.swift; sourceTree = "<group>"; };
+		F0A1B2C42E8F100000000004 /* PasskeyAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasskeyAvailability.swift; sourceTree = "<group>"; };
 		F4C4943B406FCA9B74B4E186 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		F74E8108218183F400D18535 /* SearchSuggestionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionsTest.swift; sourceTree = "<group>"; };
 		F7B3E49C2165C32B00118785 /* SearchSuggestionsPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionsPromptView.swift; sourceTree = "<group>"; };
