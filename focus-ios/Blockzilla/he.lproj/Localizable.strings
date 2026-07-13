@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "הגדרה כדפדפן ברירת המחדל";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "למחוק את היסטוריית הגלישה, הססמאות והעוגיות שלך ולמנוע מפרסומות לא רצויות לעקוב אחריך בלחיצה אחת!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "ההיסטוריה שלך לא עוקבת אחריך";
 

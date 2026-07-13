@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Als Standardbrowser festlegen";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Löschen Sie mit einem einfachen Klick Ihre Surf-Chronik, Passwörter, Cookies und verhindern Sie, dass unerwünschte Anzeigen Sie verfolgen!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Ihre Chronik verfolgt Sie nicht";
 
