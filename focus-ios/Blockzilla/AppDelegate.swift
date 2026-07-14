@@ -28,7 +28,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // This enum can be expanded to support all new shortcuts added to menu.
     enum ShortcutIdentifier: String {
-        case EraseAndOpen
+        case eraseAndOpen = "EraseAndOpen"
         init?(fullIdentifier: String) {
             guard let shortIdentifier = fullIdentifier.components(separatedBy: ".").last else {
                 return nil
@@ -55,6 +55,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     private var cancellables = Set<AnyCancellable>()
     private lazy var shortcutManager: ShortcutsManager = .init()
     private lazy var gleanUsageReportingMetricsService = GleanUsageReportingMetricsService()
+    private var didFinishWindowDependentStartup = false
 
     private lazy var onboardingEventsHandler: OnboardingEventsHandling = {
         var shouldShowNewOnboarding: () -> Bool = { [unowned self] in
@@ -149,28 +150,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         // Re-register the blocking lists at startup in case they've changed.
         Utils.reloadSafariContentBlocker()
 
-        window = UIWindow(frame: UIScreen.main.bounds)
-
-        browserViewController.modalDelegate = self
-        window?.rootViewController = browserViewController
-        window?.makeKeyAndVisible()
-        window?.overrideUserInterfaceStyle = themeManager.selectedTheme
-
-        WebCacheUtils.reset()
-
-        KeyboardHelper.defaultHelper.startObserving()
-
-        if AppInfo.isTesting() {
-            // Only show the First Run UI if the test asks for it.
-            if AppInfo.isFirstRunUIEnabled() {
-                onboardingEventsHandler.send(.applicationDidLaunch)
-            }
-            return true
+        if !usesSceneLifecycle {
+            configureMainWindow(UIWindow(frame: UIScreen.main.bounds))
         }
-
-        onboardingEventsHandler.send(.applicationDidLaunch)
-
-        ContentBlockerHelper.shared.updateContentRuleListIfNeeded()
 
         return true
     }
@@ -193,7 +175,72 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
-        completionHandler(handleShortcut(shortcutItem: shortcutItem))
+        completionHandler(handleShortcutItem(shortcutItem))
+    }
+
+    func application(_ application: UIApplication,
+                     configurationForConnecting connectingSceneSession: UISceneSession,
+                     options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        let configuration = UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+        configuration.delegateClass = SceneDelegate.self
+        return configuration
+    }
+
+    func configureMainWindow(for windowScene: UIWindowScene) {
+        configureMainWindow(UIWindow(windowScene: windowScene))
+    }
+
+    func handleSceneConnectionOptions(_ connectionOptions: UIScene.ConnectionOptions) {
+        for urlContext in connectionOptions.urlContexts {
+            _ = application(UIApplication.shared, open: urlContext.url)
+        }
+
+        for userActivity in connectionOptions.userActivities {
+            _ = application(UIApplication.shared, continue: userActivity) { _ in }
+        }
+
+        if let shortcutItem = connectionOptions.shortcutItem {
+            _ = handleShortcutItem(shortcutItem)
+        }
+    }
+
+    func handleShortcutItem(_ shortcutItem: UIApplicationShortcutItem) -> Bool {
+        handleShortcut(shortcutItem: shortcutItem)
+    }
+
+    private var usesSceneLifecycle: Bool {
+        Bundle.main.object(forInfoDictionaryKey: "UIApplicationSceneManifest") != nil
+    }
+
+    private func configureMainWindow(_ window: UIWindow) {
+        browserViewController.modalDelegate = self
+        window.rootViewController = browserViewController
+        window.makeKeyAndVisible()
+        window.overrideUserInterfaceStyle = themeManager.selectedTheme
+        self.window = window
+
+        finishWindowDependentStartup()
+    }
+
+    private func finishWindowDependentStartup() {
+        guard !didFinishWindowDependentStartup else { return }
+        didFinishWindowDependentStartup = true
+
+        WebCacheUtils.reset()
+
+        KeyboardHelper.defaultHelper.startObserving()
+
+        if AppInfo.isTesting() {
+            // Only show the First Run UI if the test asks for it.
+            if AppInfo.isFirstRunUIEnabled() {
+                onboardingEventsHandler.send(.applicationDidLaunch)
+            }
+            return
+        }
+
+        onboardingEventsHandler.send(.applicationDidLaunch)
+
+        ContentBlockerHelper.shared.updateContentRuleListIfNeeded()
     }
 
     private func handleShortcut(shortcutItem: UIApplicationShortcutItem) -> Bool {
@@ -202,7 +249,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
         switch shortcutIdentifier {
-        case .EraseAndOpen:
+        case .eraseAndOpen:
             browserViewController.photonActionSheetDidDismiss()
             browserViewController.dismiss(animated: true, completion: nil)
             browserViewController.navigationController?.popViewController(animated: true)
@@ -330,7 +377,7 @@ enum Environment: String {
 
 // MARK: - Crash Reporting
 
-private let SentryDSNKey = "SentryDSN"
+private let sentryDSNKey = "SentryDSN"
 
 extension AppDelegate {
     private var environment: Environment {
@@ -351,7 +398,7 @@ extension AppDelegate {
             return
         }
 
-        if let sentryDSN = Bundle.main.object(forInfoDictionaryKey: SentryDSNKey) as? String {
+        if let sentryDSN = Bundle.main.object(forInfoDictionaryKey: sentryDSNKey) as? String {
             SentrySDK.start { options in
                 options.dsn = sentryDSN
                 options.environment = self.environment.rawValue

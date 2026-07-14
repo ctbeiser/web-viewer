@@ -89,6 +89,15 @@ The `Contents.json` should use the single-size universal format:
 }
 ```
 
+Add Liquid Glass / transparent-mode Icon Composer packages under
+`Blockzilla/LiquidGlassAppIcons/`. These packages should use transparent
+foreground layers derived from the Web Viewer `AppIcon.dev.appiconset` earth
+artwork, not the upstream Firefox Focus icons. Add them to the Blockzilla app
+target resources:
+- `AppIcon.icon` for FocusRelease
+- `AppIcon.dev.icon` for FocusDebug
+- `AppIcon.beta.icon` for FocusEnterprise
+
 ---
 
 ## 3. Launch Screen / Splash Screen De-branding
@@ -525,3 +534,18 @@ in practice.
   `NotSupportedError`
 - Reinstall this script whenever the web view's user scripts are rebuilt after
   disabling tracking protection
+
+---
+
+## 17. UIKit Scene Lifecycle
+
+Xcode 27 / the iOS 27 SDK requires apps to adopt the UIKit scene lifecycle.
+Web Viewer keeps the existing single-window `AppDelegate` startup path, but adds
+`SceneDelegate.swift` and a `UIApplicationSceneManifest` to `Blockzilla/Info.plist`.
+
+The scene delegate should remain a thin bridge:
+- Create the main window through `AppDelegate.configureMainWindow(for:)`
+- Forward foreground/background/active/inactive callbacks to the existing app
+  delegate lifecycle methods
+- Forward launch URL contexts, continued user activities, and home-screen
+  shortcut actions to the existing app delegate handlers
