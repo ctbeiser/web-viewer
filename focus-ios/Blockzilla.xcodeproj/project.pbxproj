@@ -207,6 +207,10 @@
 		D5D067FB252F945D00C35227 /* metrics.yaml in Resources */ = {isa = PBXBuildFile; fileRef = D5D067FA252F945D00C35227 /* metrics.yaml */; };
 		D5D2F02B252FA6AE00761DC8 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D2F02A252FA6AE00761DC8 /* Metrics.swift */; };
 		D831FEE2205247A400EAE19A /* BrowserViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D831FEE1205247A400EAE19A /* BrowserViewControllerTests.swift */; };
+		CB6F1A202E80000000000001 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = CB6F1A212E80000000000001 /* AppIcon.icon */; };
+		CB6F1A302E80000000000001 /* AppIcon.beta.icon in Resources */ = {isa = PBXBuildFile; fileRef = CB6F1A312E80000000000001 /* AppIcon.beta.icon */; };
+		CB6F1A102E80000000000001 /* AppIcon.dev.icon in Resources */ = {isa = PBXBuildFile; fileRef = CB6F1A112E80000000000001 /* AppIcon.dev.icon */; };
+		CB6F1B102E90000000000001 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6F1B112E90000000000001 /* SceneDelegate.swift */; };
 		D8E0152C1FB4136E00CA3B9F /* AddSearchEngineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E0152B1FB4136E00CA3B9F /* AddSearchEngineViewController.swift */; };
 		D8E0155F1FCF409F00CA3B9F /* SearchEngineManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E0155E1FCF409F00CA3B9F /* SearchEngineManagerTests.swift */; };
 		D8E0156E1FD9E40F00CA3B9F /* DomainCompletionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E0156D1FD9E40F00CA3B9F /* DomainCompletionTests.swift */; };
@@ -1111,7 +1115,11 @@
 		E4BC854D1E2D2C4800833B45 /* MarketingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketingTests.swift; sourceTree = "<group>"; };
 		E4BF2DD31BACE8CA00DA9D68 /* Firefox Klar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Firefox Klar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4BF2DD61BACE8CA00DA9D68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CB6F1B112E90000000000001 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E4BF2DDD1BACE8CA00DA9D68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CB6F1A212E80000000000001 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
+		CB6F1A312E80000000000001 /* AppIcon.beta.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.beta.icon; sourceTree = "<group>"; };
+		CB6F1A112E80000000000001 /* AppIcon.dev.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.dev.icon; sourceTree = "<group>"; };
 		E4BF2DE21BACE8CA00DA9D68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4BF2DEC1BACE92400DA9D68 /* ContentBlocker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ContentBlocker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4BF2DF01BACE92400DA9D68 /* ActionRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRequestHandler.swift; sourceTree = "<group>"; };
@@ -1926,11 +1934,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		CB6F1A122E80000000000001 /* LiquidGlassAppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				CB6F1A212E80000000000001 /* AppIcon.icon */,
+				CB6F1A312E80000000000001 /* AppIcon.beta.icon */,
+				CB6F1A112E80000000000001 /* AppIcon.dev.icon */,
+			);
+			path = LiquidGlassAppIcons;
+			sourceTree = "<group>";
+		};
 		E4BF2DD51BACE8CA00DA9D68 /* Blockzilla */ = {
 			isa = PBXGroup;
 			children = (
 				CD92AAC12DA95B3D00B9C685 /* metrics_legacy.yaml */,
 				E4BF2DD61BACE8CA00DA9D68 /* AppDelegate.swift */,
+				CB6F1B112E90000000000001 /* SceneDelegate.swift */,
 				8C8906AB2D0B3E9F003734FE /* UsageProfileManager.swift */,
 				8C90C3BD2D48F0DB00DDA361 /* GleanUsageReportingMetricsService.swift */,
 				8C0AB2282D817EC700E88035 /* ProfileIdentifier.swift */,
@@ -1968,6 +1987,7 @@
 				E521DD9629782CDA00655202 /* Intents.intentdefinition */,
 				D3426AEE1DB846BB0016DA5A /* topdomains.txt */,
 				E4BF2DDD1BACE8CA00DA9D68 /* Assets.xcassets */,
+				CB6F1A122E80000000000001 /* LiquidGlassAppIcons */,
 				74F94FF41FD9CA070047E629 /* Intro.strings */,
 				E40AFC761DDDE96D00DA5651 /* InfoPlist.strings */,
 				D343DCC41C44356500D7EEE8 /* Localizable.strings */,
@@ -2476,6 +2496,9 @@
 				CD44FD932CC104320080D111 /* pings.yaml in Resources */,
 				C83FB7D2273AA13300B78CC5 /* MetadataHelper.js in Resources */,
 				E4BF2DDE1BACE8CA00DA9D68 /* Assets.xcassets in Resources */,
+				CB6F1A202E80000000000001 /* AppIcon.icon in Resources */,
+				CB6F1A302E80000000000001 /* AppIcon.beta.icon in Resources */,
+				CB6F1A102E80000000000001 /* AppIcon.dev.icon in Resources */,
 				B3F4A3171FA136E70029A6F2 /* preload.js in Resources */,
 				D3C047BD1DCBD8ED00402FFB /* SearchEngines.plist in Resources */,
 				74F94FF21FD9CA070047E629 /* Intro.strings in Resources */,
@@ -2792,6 +2815,7 @@
 				161D90312108085F00C2A74A /* HomeViewToolbar.swift in Sources */,
 				EBE44F4E20ADDF6A005AFEA6 /* SmartLabel.swift in Sources */,
 				E4BF2DD71BACE8CA00DA9D68 /* AppDelegate.swift in Sources */,
+				CB6F1B102E90000000000001 /* SceneDelegate.swift in Sources */,
 				D3E2C9691DA3024800DEBE3D /* InsetButton.swift in Sources */,
 				F8BC6A0927224B890026AB9F /* NimbusWrapper.swift in Sources */,
 				E5A890A9290FB8E2004F95B8 /* WebMenuAction.swift in Sources */,
