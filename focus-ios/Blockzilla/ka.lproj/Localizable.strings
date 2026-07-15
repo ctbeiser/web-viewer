@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "ნაგულისხმევ ბრაუზერად დაყენება";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "გაასუფთავეთ მონახულებული გვერდების ისტორია, პაროლები, ფუნთუშები და აუკრძალეთ არასასურველ რეკლამებს დადევნების საშუალება, მხოლოდ ერთი დაწკაპებით!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "წარსული ვერ დაგედევნებათ კუდში";
 
