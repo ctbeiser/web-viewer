@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Taba ùr";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Bheir seo comas dhut dealbhan a thogail is a luchdadh suas.";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Feumaidh Firefox Face ID mus fhaigh e cothrom air na faclan-faire is dòighean pàighidh a shàbhail thu.";
 

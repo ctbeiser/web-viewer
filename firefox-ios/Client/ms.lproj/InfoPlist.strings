@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Tab Baru";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Ciri ini membolehkan anda mengambil dan memuat naik foto.";
-
 /* Privacy - Location When In Use Usage Description */
 "NSLocationWhenInUseUsageDescription" = "Laman web yang anda lawati mungkin meminta lokasi anda.";
 

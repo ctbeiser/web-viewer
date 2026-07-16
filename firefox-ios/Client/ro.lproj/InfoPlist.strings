@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Filă nouă";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Firefox folosește camera pentru scanare de coduri QR și fotografii și videoclipuri.";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Firefox are nevoie de Face ID pentru a-ți accesa parolele și metodele de plată salvate.";
 

@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Жаңа бет";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Бұл арқылы фотоларды түсіріп, жүктеуге болады.";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Сақталған парольдер мен төлем әдістеріне қол жеткізу үшін Firefox Face ID қажет етеді.";
 
