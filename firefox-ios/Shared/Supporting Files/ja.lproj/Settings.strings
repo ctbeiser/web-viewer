@@ -326,7 +326,7 @@
 "Settings.Summarize.GesturesSection.FooterTitle.v142" = "端末を左右に振ってページを要約します。";
 
 /* This is the title for the setting that toggles the Shake Gesture feature under the Summarize settings section. */
-"Settings.Summarize.GesturesSection.ShakeGestureTitle.v142" = "振って要約";
+"Settings.Summarize.GesturesSection.ShakeGestureTitle.v142" = "振って要約する";
 
 /* This is the section title for the gestures features under the Summarize settings section. */
 "Settings.Summarize.GesturesSection.Title.v142" = "ジェスチャー";
@@ -344,7 +344,7 @@
 "Settings.Summarize.LanguageSection.WebsiteLanguageLabel.v149" = "ウェブサイトの言語";
 
 /* This is the title for the setting that toggles the Summarize feature under the Summarize settings section. */
-"Settings.Summarize.SummarizePagesTitle.v142" = "ページを要約";
+"Settings.Summarize.SummarizePagesTitle.v142" = "ページを要約する";
 
 /* In the settings menu, in the General section, this is the title for the Summarize settings section. */
 "Settings.Summarize.Title.v142" = "ページ要約";
