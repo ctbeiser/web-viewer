@@ -26,6 +26,10 @@ fxios test
 
 `scripts/run-device.sh` builds, installs, and launches Focus on a paired iPhone over Wi-Fi. Runs are quiet by default while retaining native warnings and errors. Set `RUN_VERBOSE=1` to restore full `xcodebuild` and `devicectl` output.
 
+### Continuous Integration
+
+`.github/workflows/focus-ios-ci.yml` bootstraps and builds the `Focus` scheme for an unsigned iOS Simulator on every pull request, every push to `main`, and manual dispatches. Keep this check on Focus rather than the Firefox `Fennec` scheme. The scheduled and manual Focus UI-test workflows remain separate from this compiler check.
+
 ### JavaScript User Scripts
 
 Needed to be ran whenever we make JavaScript changes.
