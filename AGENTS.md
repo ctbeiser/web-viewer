@@ -22,6 +22,10 @@ This is a monorepo containing three main projects:
 fxios test
 ```
 
+### Device Runs
+
+`scripts/run-device.sh` builds, installs, and launches Focus on a paired iPhone over Wi-Fi. Runs are quiet by default while retaining native warnings and errors. Set `RUN_VERBOSE=1` to restore full `xcodebuild` and `devicectl` output.
+
 ### JavaScript User Scripts
 
 Needed to be ran whenever we make JavaScript changes.
