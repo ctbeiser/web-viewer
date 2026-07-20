@@ -1,0 +1,11 @@
+"$schema" = "https://conductor.build/schemas/settings.repo.schema.json"
+
+[scripts]
+run_mode = "nonconcurrent"
+setup = "./bootstrap.sh focus"
+
+[scripts.run.device]
+available_in = [ "local" ]
+command = "scripts/run-device.sh"
+default = true
+icon = "smartphone"

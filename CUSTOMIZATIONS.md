@@ -549,3 +549,21 @@ The scene delegate should remain a thin bridge:
   delegate lifecycle methods
 - Forward launch URL contexts, continued user activities, and home-screen
   shortcut actions to the existing app delegate handlers
+
+---
+
+## 18. Shared Focus Build and Device Run Scripts
+
+The root `scripts/build-simulator.sh` and `scripts/build-device.sh` entry points
+always build `focus-ios/Blockzilla.xcodeproj`, the `Focus` scheme, and the
+`FocusDebug` configuration. They share the worktree-local `DerivedData/` cache.
+Use the unsigned simulator script for compiler and smoke-check builds; use the
+device script only when a signed iPhone product is intentional.
+
+The shared Conductor setup runs `./bootstrap.sh focus` so generated content
+blocking resources and Focus dependencies exist before either build entry point
+runs.
+
+`scripts/run-device.sh` builds `Web Viewer.app`, verifies its Focus bundle ID and
+signature, then installs and launches it on a paired iPhone available over
+Wi-Fi. Set `DEVICE_ID` when more than one paired iPhone is available.
