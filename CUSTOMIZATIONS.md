@@ -567,3 +567,12 @@ runs.
 `scripts/run-device.sh` builds `Web Viewer.app`, verifies its Focus bundle ID and
 signature, then installs and launches it on a paired iPhone available over
 Wi-Fi. Set `DEVICE_ID` when more than one paired iPhone is available.
+
+---
+
+## 19. Fork-Scoped Glean Probe Scraper
+
+The `glean-probe-scraper` workflow should invoke Mozilla's reusable workflow
+only when `github.repository` is `mozilla-mobile/firefox-ios`. Mozilla's
+production probe-scraper service does not register the Web Viewer fork, so
+submitting `ctbeiser/web-viewer` always returns an HTTP 400 response.
