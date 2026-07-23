@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Uusi välilehti";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Firefox käyttää kameraasi skannatakseen QR-koodeja ja ottaakseen valokuvia ja videoita.";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Firefox vaatii Face ID:n käyttääkseen tallennettuja salasanoja ja maksutapoja.";
 
