@@ -50,10 +50,10 @@
 "Menu.SharePageAction.Title" = "ᱥᱟᱠᱟᱢ ᱦᱟᱹᱴᱤᱧ ᱢᱮ…";
 
 /* Label for the button, displayed in the menu, used to request the desktop version of the current website. */
-"Menu.ViewDekstopSiteAction.Title" = "ᱰᱮᱥᱠᱴᱚᱯ ᱥᱟᱤᱴ ᱱᱮᱦᱚᱨ ᱢᱮ";
+"Menu.ViewDekstopSiteAction.Title" = "ᱰᱮᱥᱠᱴᱚᱯ ᱥᱟᱭᱤᱴ ᱱᱮᱦᱚᱨ ᱢᱮ";
 
 /* Label for the button, displayed in the menu, used to request the mobile version of the current website. */
-"Menu.ViewMobileSiteAction.Title" = "ᱢᱚᱵᱟᱤᱞ ᱥᱟᱤᱴ ᱱᱮᱦᱚᱨ ᱢᱮ";
+"Menu.ViewMobileSiteAction.Title" = "ᱢᱚᱵᱟᱤᱞ ᱥᱟᱭᱤᱴ ᱱᱮᱦᱚᱨ ᱢᱮ";
 
 /* Label for the button, displayed in the menu, used to navigate to the home page. */
 "SettingsMenu.OpenHomePageAction.Title" = "ᱚᱲᱟᱜ ᱥᱟᱦᱴᱟ";

@@ -314,7 +314,7 @@
 "Settings.Studies.Message.v148" = "%@ seleziona utenti in modo casuale per provare nuove funzionalità, contribuendo così a migliorare la qualità del browser per tutti.";
 
 /* Label used as a toggle item in Settings. When this is off, the user is opting out of all studies. */
-"Settings.Studies.Title.v136" = "Installa e conduci studi";
+"Settings.Studies.Title.v136" = "Installa ed esegui studi";
 
 /* Label used as a toggle item in Settings. When this is off, the user is opting out of all studies. */
 "Settings.Studies.Title.v148" = "Consenti studi sulle funzionalità";
