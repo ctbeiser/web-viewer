@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "اضبطه ليكون المتصفّح المبدئي";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "امسح سجل تصفحك وكلمات مرورك وملفات تعريف ارتباطك، وامنع الإعلانات غير المرغوب فيها من متابعتك بنقرة بسيطة!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "تأريخك لا يتبعك";
 
