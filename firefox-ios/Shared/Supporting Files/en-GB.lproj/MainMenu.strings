@@ -50,7 +50,7 @@
 "MainMenu.Account.SyncError.Description.v131" = "Synchronisation paused";
 
 /* On the main menu, at the top, when the user is signed in but there was an error syncing. The title for this state. */
-"MainMenu.Account.SyncError.Title.v131" = "Sign back in to synchroise";
+"MainMenu.Account.SyncError.Title.v131" = "Sign back in to synchronise";
 
 /* On the main menu,the title for the menu component that allows a user to save a bookmark for this particular page.. */
 "MainMenu.BookmarkPage.Title.v141" = "Bookmark Page";
@@ -294,12 +294,6 @@
 
 /* On the main menu, the title for the action that will take the user to the Share module in the application. */
 "MainMenu.Submenus.Tools.Share.Title.v144" = "Share";
-
-/* On the main menu, the title for the action that will turn Website's Dark Mode off in the application. */
-"MainMenu.Submenus.Tools.WebsiteDarkMode.Off.Title.v137" = "Turn off Web Site Dark Mode";
-
-/* On the main menu, the title for the action that will turn Website's Dark Mode on in the application. */
-"MainMenu.Submenus.Tools.WebsiteDarkMode.On.Title.v137" = "Turn on Web Site Dark Mode";
 
 /* On the main menu, the title for the action that indicate, website dark mode can be turned on or off. */
 "MainMenu.Submenus.Tools.WebsiteDarkMode.Title.v141" = "Web Site Dark Mode";
