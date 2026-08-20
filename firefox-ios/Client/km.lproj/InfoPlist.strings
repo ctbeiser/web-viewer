@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "ផ្ទាំងថ្មី";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "កម្មវិធី Firefox ប្រើប្រាស់កាមេរ៉ារបស់លោកអ្នក ដើម្បីស្កេនកូដ QR ព្រមទាំងថតរូបភាព និងវីដេអូ។";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Firefox តម្រូវឱ្យមាន Face ID ដើម្បីអាក់សេសពាក្យសម្ងាត់ និងវិធីបង់ប្រាក់ដែលអ្នកបានរក្សាទុក។";
 
@@ -20,7 +17,7 @@
 "NSPhotoLibraryAddUsageDescription" = "វាអនុញ្ញាតឱ្យអ្នករក្សាទុករូបថតបាន។";
 
 /* Privacy - Speech Recognition Usage Description */
-"NSSpeechRecognitionUsageDescription" = "Firefox ប្រើ​ការ​សម្គាល់​សំឡេង ដើម្បី​បម្លែង​សំឡេង​របស់​អ្នក​ទៅ​ជា​អត្ថបទ ​សម្រាប់​ការ​ស្វែងរក​ដោយ​សំឡេង។";
+"NSSpeechRecognitionUsageDescription" = "Firefox ប្រើប្រាស់មុខងារសម្គាល់ការនិយាយ ដើម្បីបម្លែងសំឡេងរបស់អ្នកទៅជាអត្ថបទសម្រាប់ការស្វែងរកតាមសំឡេង។";
 
 /* (No Comment) */
 "Scan QR Code" = "ស្គែនឃ្យូអ៝កូដ";
