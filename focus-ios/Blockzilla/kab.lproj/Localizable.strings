@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Sbadu-t d iminig amezwer";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Sfeḍ azray-ik•im n Tunigin, awalen-ik•im uffir, inagan-ik•im n tuqqna, tesweḥleḍ adellel akken ur ak•akem-iṭṭafar ara s yiwen kan usiti!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Azray-ik·im ur ak·akem-iṭṭafar ara";
 
