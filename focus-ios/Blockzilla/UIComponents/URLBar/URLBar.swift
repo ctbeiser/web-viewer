@@ -54,7 +54,7 @@ final class URLBar: UIView { // swiftlint:disable:this type_body_length
 
     private lazy var urlBarBackgroundView: UIView = {
         if #available(iOS 26, *) {
-            let glassEffect = UIGlassEffect()
+            let glassEffect = UIGlassEffect(style: .clear)
             let effectView = UIVisualEffectView(effect: glassEffect)
             effectView.layer.cornerRadius = UIConstants.layout.urlBarCornerRadius
             effectView.clipsToBounds = true
