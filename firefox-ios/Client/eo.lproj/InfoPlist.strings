@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Nova langeto";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Tio ĉi permesas al vi preni kaj alŝuti fotojn.";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Firefox postulas Face ID por aliri viajn konservitajn legitimilojn kaj pagmetodojn.";
 
