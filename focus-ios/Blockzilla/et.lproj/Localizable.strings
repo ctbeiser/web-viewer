@@ -178,9 +178,6 @@
 /* Text for a label that indicates the title of button from onboarding screen */
 "Onboarding.Button.Title" = "Alusta veebilehitsemist";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Kustuta lehitsemise ajalugu, paroolid ja küpsised ning väldi ühe puutega reklaamide poolt jälitamist!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Sinu ajalugu ei jälita sind";
 
