@@ -238,8 +238,9 @@ case "twitter.com", "www.twitter.com", "mobile.twitter.com",
 
 - Make `urlBarBorderView.backgroundColor` clear and keep URL bar state border
   colors clear.
-- Replace the URL bar background with `UIGlassEffect` inside a
-  `UIVisualEffectView` on iOS 26 and newer.
+- Replace the URL bar background with a clear-style `UIGlassEffect` inside a
+  `UIVisualEffectView` on iOS 26 and newer so it does not render a blurred edge
+  above the URL.
 - On older iOS versions, keep the URL bar background clear.
 - When the background is a `UIVisualEffectView`, add `textAndLockContainer` to
   the effect view's `contentView`.
