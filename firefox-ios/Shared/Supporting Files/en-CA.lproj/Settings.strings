@@ -74,9 +74,6 @@
 "Settings.AIControls.AIPoweredFeaturesSection.BlockedStatus.v151" = "Blocked";
 
 /* In the AI Controls settings, in the AI powered features section, this is the text that what the blocked status means. The content between the ** ** is bolded. Please do not remove these in translation. */
-"Settings.AIControls.AIPoweredFeaturesSection.BlockedStatusDescription.v151" = "**Blocked**: you won’t see and can’t use the feature. For on-device AI, any downloaded models are removed.";
-
-/* In the AI Controls settings, in the AI powered features section, this is the text that what the blocked status means. The content between the ** ** is bolded. Please do not remove these in translation. */
 "Settings.AIControls.AIPoweredFeaturesSection.BlockedStatusDescriptionV2.v151" = "**Blocked**: You won’t see and can’t use the feature. For on-device AI, any downloaded models are removed.";
 
 /* In the AI Controls settings, in the AI powered features section, this is the message that describes the pages summaries feature */
@@ -95,22 +92,22 @@
 "Settings.AIControls.AIPoweredFeaturesSection.TranslationSection.Title.v151" = "Translation";
 
 /* This is the description for the setting that toggles whether to block AI enhancements under the AI Controls settings section. %@ is the app name (e.g. Firefox). */
-"Settings.AIControls.BlockAIEnhancementsDescription.v151" = "Blocking means you won’t see new or current features with AI in %@, or pop-ups about them.";
+"Settings.AIControls.BlockAIEnhancementsDescription.v151" = "Blocking means you won’t see new or current AI enhancements in %@, or pop-ups about them.";
 
 /* In the AI Controls settings, this is the text for the link that takes the user more information on AI features. */
 "Settings.AIControls.BlockAIEnhancementsLink.v151" = "See what is and isn’t included";
 
 /* This is the title for the setting that toggles whether to block AI enhancements under the AI Controls settings section. */
-"Settings.AIControls.BlockAIEnhancementsTitle.v151" = "Block Features With AI";
+"Settings.AIControls.BlockAIEnhancementsTitle.v151" = "Block AI Enhancements";
 
 /* In the AI Controls settings, this is the text that appears when you have turned on the Block AI Enhancements toggle */
-"Settings.AIControls.BlockedInformation.v151" = "New and current features with AI are blocked by default. Unblock specific features below.";
+"Settings.AIControls.BlockedInformation.v151" = "New and current AI enhancements are blocked by default. Unblock specific features below.";
 
 /* This is the text for the link in the Header Card under the AI Controls settings section that links to more information. */
 "Settings.AIControls.HeaderCard.Link.v151" = "Learn more";
 
 /* This is the message for the Header Card under the AI Controls settings section. */
-"Settings.AIControls.HeaderCard.Message.v151" = "That includes whether to use features with AI.";
+"Settings.AIControls.HeaderCard.Message.v151" = "That includes whether to use features enhanced with AI.";
 
 /* This is the title for the Header Card under the AI Controls settings section. %@ is the app name (e.g. Firefox). */
 "Settings.AIControls.HeaderCard.Title.v151" = "You always have a choice in %@";
@@ -166,6 +163,12 @@
 /* In the settings menu, this label indicates that there is an option of customizing the Autoplay behaviour. */
 "Settings.Autoplay.SettingsTitle.v137" = "Autoplay";
 
+/* Title for the Block Ads toggle in the Browsing settings page. When enabled, the app blocks advertisements. */
+"Settings.Browsing.BlockAds.Title.v153" = "Block Ads";
+
+/* This is the title for the Content customization section under the Browsing settings page. */
+"Settings.Browsing.Content.v153" = "Content";
+
 /* This is the title for Links customization under the Browsing settings section. */
 "Settings.Browsing.Links.v137" = "Links";
 
@@ -179,7 +182,7 @@
 "Settings.Browsing.Title.v137" = "Browsing";
 
 /* Title for a link that explains how Mozilla send crash reports. */
-"Settings.CrashReports.Link.v136" = "Learn more";
+"Settings.CrashReports.Link.v136" = "Learn More";
 
 /* On the Settings screen, this is the subtitle text for a toggle which controls automatically sending crash reports. */
 "Settings.CrashReports.Message.v136" = "This helps us diagnose and fix issues with the browser.";
@@ -188,7 +191,7 @@
 "Settings.CrashReports.Title.v135" = "Automatically Send Crash Reports";
 
 /* Title for a link that explains how Mozilla send daily usage ping. */
-"Settings.DailyUsagePing.Link.v136" = "Learn more";
+"Settings.DailyUsagePing.Link.v136" = "Learn More";
 
 /* On the Settings screen, this is the subtitle text for a toggle which controls sending daily usage ping. %@ is the company name (e.g. Mozilla). */
 "Settings.DailyUsagePing.Message.v135" = "This helps %@ to estimate active users.";
@@ -324,12 +327,6 @@
 
 /* This is the section title for the gestures features under the Summarize settings section. */
 "Settings.Summarize.GesturesSection.Title.v142" = "Gestures";
-
-/* The accessibility label for the language picker button in the Summarize settings. */
-"Settings.Summarize.LanguageSection.PickerButtonAccessibilityLabel.v149" = "Pick a language";
-
-/* The label for the picker option to select the preferred app language for the summarizer inside the Summarize settings. The preferred app language refers to the language that the user has selected to use for the app in the app settings. */
-"Settings.Summarize.LanguageSection.PreferredAppLanguageLabel.v149" = "Preferred App Language";
 
 /* The title for the language choose section for the summarizer inside the Summarize settings. */
 "Settings.Summarize.LanguageSection.Title.v149" = "Language";
