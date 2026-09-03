@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Nova kartica";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Firefox koristi tvoju kameru za snimanje QR kodova, fotografija i videa.";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Firefox zahtijeva Face ID za pristup tvojim spremljenim lozinkama i načinima plaćanja.";
 
