@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "ਮੂਲ ਬਰਾਊਜ਼ਰ ਬਣਾਓ";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "ਬੱਸ ਇੱਕ ਕਲਿੱਕ ਨਾਲ ਆਪਣੇ ਬਰਾਊਜ਼ ਕਰਨ ਦਾ ਅਤੀਤ, ਪਾਸਵਰਡਾ, ਕੂਕੀਜ਼ ਨੂੰ ਮਿਟਾਓ ਅਤੇ ਬੇਲੋੜੇ ਇਸ਼ਤਿਹਾਰਾਂ ਨੂੰ ਤੁਹਾਡਾ ਪਿੱਛਾ ਕਰਨ ਰੋਕੋ!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "ਤੁਹਾਡਾ ਅਤੀਤ ਤੁਹਾਡਾ ਪਿੱਛਾ ਨਹੀਂ ਕਰਦਾ ਹੈ";
 

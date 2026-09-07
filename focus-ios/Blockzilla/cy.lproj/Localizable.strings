@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Gosod fel y Porwr Ragosodedig";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Dilewch eich hanes pori, cyfrineiriau, cwcis, ac atal hysbysebion diangen rhag eich dilyn chi drwy un clic syml!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Nid yw eich hanes yn eich dilyn";
 
