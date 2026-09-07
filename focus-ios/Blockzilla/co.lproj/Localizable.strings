@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Sceglie cum’è navigatore predefinitu";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "D’un cliccu simplice, squassate a vostra cronolugia di navigazione, e vostre parolle d’intesa, i vostri canistrelli, è impedite e publicità indesiderevule di seguitavvi.";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "A vostra cronolugia ùn vi seguita micca";
 

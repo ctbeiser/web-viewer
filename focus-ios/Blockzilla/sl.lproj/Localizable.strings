@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Nastavi kot privzeti brskalnik";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Z enim samim klikom izbrišite zgodovino brskanja, gesla in piškotke ter preprečite, da bi vas spremljali neželeni oglasi.";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Vaša zgodovina vam ne sledi";
 

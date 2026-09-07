@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Suidhich mar am brabhsair bunaiteach";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Suath bàn an eachdraidh brabhsaidh, na faclan-faire is briosgaidean agus cuir casg air sanasachd o bhith gad leantainn ann an aon bhriogadh!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Chan eil an eachdraidh gad leantainn mun cuairt";
 

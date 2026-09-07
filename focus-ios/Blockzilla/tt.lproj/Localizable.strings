@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Төп браузер итеп билгеләү";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Гизү тарихыгызны, серсүзләрегезне, кукиларны бетерегез һәм бер басу белән кирәкмәгән рекламаларны күзәтчелек итүдән тыегыз!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Сезнең тарихыгыз Сезне эзәрлекләмәячәк";
 

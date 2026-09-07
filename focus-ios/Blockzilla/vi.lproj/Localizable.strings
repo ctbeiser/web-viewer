@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Đặt làm trình duyệt mặc định";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Xóa lịch sử duyệt web, mật khẩu, cookie và ngăn các quảng cáo không mong muốn theo dõi bạn chỉ bằng một lần nhấn đơn giản!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Lịch sử của bạn không theo dõi bạn";
 

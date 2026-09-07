@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Setează ca browser implicit";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Șterge istoricul de navigare, parolele, modulele cookie și împiedică reclamele nedorite să te urmărească, toate numai cu un simplu clic!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Istoricul tău nu te urmărește";
 
