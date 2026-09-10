@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "புதிய கீற்று";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "படங்களை எடுத்து பதிவேற்றச் செய்கிறது.";
-
 /* Privacy - Location When In Use Usage Description */
 "NSLocationWhenInUseUsageDescription" = "வலைதள பக்கங்கள் உங்கள் இடத்தை கேட்கலாம்.";
 

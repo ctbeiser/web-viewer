@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "새 탭";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Firefox가 QR code 를 스캔하거나 사진, 영상을 찍기 위해 카메라를 사용합니다.";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Firefox가 저장된 비밀번호와 결제 방법에 접근하려면 Face ID가 필요합니다.";
 
@@ -18,9 +15,6 @@
 
 /* Privacy - Photo Library Additions Usage Description */
 "NSPhotoLibraryAddUsageDescription" = "사진을 저장할 수 있게 합니다.";
-
-/* Privacy - Speech Recognition Usage Description */
-"NSSpeechRecognitionUsageDescription" = "Firefox는 음성 검색을 위해 음성 인식을 사용하여 음성을 텍스트로 변환합니다.";
 
 /* (No Comment) */
 "Scan QR Code" = "QR 코드 스캔";

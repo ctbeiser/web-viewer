@@ -161,7 +161,7 @@
 "ContextMenu.BookmarkLinkButtonTitle" = "Enlace a marcadores";
 
 /* The label text in the Button Toast for switching to a fresh New Private Tab. */
-"ContextMenu.ButtonToast.NewPrivateTabOpened.LabelText" = "Se abrió una nueva pestaña privada";
+"ContextMenu.ButtonToast.NewPrivateTabOpened.LabelText" = "Se ha abierto una nueva pestaña privada";
 
 /* The label text in the Button Toast for switching to a fresh New Private Tab. */
 "ContextMenu.ButtonToast.NewPrivateTabOpened.LabelText.v113" = "Se abrió una nueva pestaña privada";
@@ -170,7 +170,7 @@
 "ContextMenu.ButtonToast.NewTabOpened.ButtonText" = "Cambiar";
 
 /* The label text in the Button Toast for switching to a fresh New Tab. */
-"ContextMenu.ButtonToast.NewTabOpened.LabelText" = "Se abrió una nueva pestaña";
+"ContextMenu.ButtonToast.NewTabOpened.LabelText" = "Se ha abierto una nueva pestaña";
 
 /* The label text in the Button Toast for switching to a fresh New Tab. */
 "ContextMenu.ButtonToast.NewTabOpened.LabelText.v114" = "Nueva pestaña abierta";
