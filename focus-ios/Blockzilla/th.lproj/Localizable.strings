@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "ตั้งเป็นเบราว์เซอร์เริ่มต้น";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "ลบประวัติการเรียกดู รหัสผ่าน คุกกี้ และป้องกันไม่ให้โฆษณาที่ไม่ต้องการติดตามคุณในคลิกเดียว!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "ประวัติของคุณไม่ได้ติดตามคุณ";
 

@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "기본 브라우저로 설정하기";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "클릭 한 번으로 인터넷 사용 기록, 비밀번호, 쿠키를 지우고 원치 않는 광고가 나를 따라오는 것을 방지할 수 있습니다!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "내 탐색 기록이 나를 따라다니지 않습니다.";
 
