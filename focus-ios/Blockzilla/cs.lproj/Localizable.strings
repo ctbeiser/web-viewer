@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Nastavit jako výchozí prohlížeč";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Smažte svou historii prohlížení, hesla a cookies a zabraňte jedním klepnutím nechtěným reklamám, aby vás pronásledovaly.";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Vaše historie vás nevysleduje";
 
