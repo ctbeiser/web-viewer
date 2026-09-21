@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "पूर्वनिर्धारित ब्राउजरको रूपमा सेट गर्नुहोस्";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "आफ्नो ब्राउजिङ्ग इतिहास, पासवर्डहरू, कुकीजहरू मेटाउनुहोस्, र नचाहिने विज्ञापनहरूलाई एक साधारण क्लिकमा तपाईंलाई पछ्याउनबाट रोक्नुहोस्!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "तपाईंको इतिहासले तपाईंलाई पछ्याउँदैन";
 

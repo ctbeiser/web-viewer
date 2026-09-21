@@ -208,9 +208,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Lakaat da verdeer dre ziouer";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Dilemel roll-istor ar merdeiñ, ar gerioù-tremen, an toupinoù ha mirout ouzh ar bruderezhioù strobus da heuliañ ac'hanoc'h gant ur c'hlik nemetken!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Ho roll istor ne heuilh ket ac'hanoc'h";
 
