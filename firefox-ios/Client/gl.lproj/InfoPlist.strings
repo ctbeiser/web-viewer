@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Nova lapela";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Isto permítelle facer fotos e subilas.";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Firefox require Face ID para acceder aos teus contrasinais e aos métodos de pago gardados.";
 
