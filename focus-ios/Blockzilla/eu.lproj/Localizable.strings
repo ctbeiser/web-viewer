@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Ezarri nabigatzaile lehenetsi gisa";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Ezabatu zure nabigazio-historia, pasahitzak, cookieak eta eragotzi iragarkiek zure jarraipena egitea klik bakarrarekin!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Zure historiak ez du zure jarraipenik egiten";
 
