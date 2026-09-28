@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Cunfijura comu navigaturi pridifinutu";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Scancella a to crunuluggìa di navigazzioni, i chiavi, i viscotta e blocca i pubblicità di trazzàriti c’un toccu sulu!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "A to crunuluggìa nun ti sicuta";
 

@@ -11,7 +11,7 @@
 "About.privateBullet2" = "Block trackers (or update settings to allow trackers)";
 
 /* Label on About screen */
-"About.privateBullet3" = "Erase to delete search and browsing history";
+"About.privateBullet3" = "Erase to delete cookies as well as search and browsing history";
 
 /* Label on About screen */
 "About.privateBulletHeader" = "Use it as a private browser:";
@@ -210,9 +210,6 @@
 
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Set as Default Browser";
-
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Erase your browsing history and cached files, and prevent unwanted ads from following you in a simple click!";
 
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Your history doesn’t follow you";
@@ -641,10 +638,10 @@
 "TooltipBodyText.ShieldIconTrackerBlocked.V2" = "Got ‘em! We stopped this site from spying on you. Tap the shield any time to see what we’re blocking.";
 
 /* This is the body text that is displayed for the Trash icon tooltip */
-"TooltipBodyText.TrashIcon" = "Tap the trash at any time to clear your current page and browsing history.";
+"TooltipBodyText.TrashIcon" = "Tap the trash at any time to remove all traces of your current session.";
 
 /* This is the body text that is displayed for the Trash icon tooltip */
-"TooltipBodyText.TrashIcon.V2" = "Tap here to clear history and cached files, then start fresh on a new tab.";
+"TooltipBodyText.TrashIcon.V2" = "Tap here to trash it all — history, cookies, everything — and start fresh on a new tab.";
 
 /* This is the title text that is displayed for the Privacy tooltip */
 "TooltipTitleText.Privacy" = "You’re protected!";
@@ -708,3 +705,4 @@
 
 /* Title shown on card view explaining the app has a widget option */
 "WidgetOnboardingCard.Title" = "Browsing history cleared! 🎉";
+

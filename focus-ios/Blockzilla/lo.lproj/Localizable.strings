@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "ຕັ້ງໃຫ້ເປັນບຣາວເຊີຫລັກ";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "ລຶບປະຫວັດການທ່ອງເວັບ, ລະຫັດຜ່ານ, ຄຸກກີ້, ແລະປ້ອງກັນບໍ່ໃຫ້ໂຄສະນາທີ່ບໍ່ຕ້ອງການຕິດຕາມເຈົ້າດ້ວຍການຄລິກງ່າຍໆ!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "ປະຫວັດຂອງເຈົ້າບໍ່ຕິດຕາມເຈົ້າ";
 

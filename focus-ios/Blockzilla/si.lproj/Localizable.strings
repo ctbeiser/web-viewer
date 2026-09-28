@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "පෙරනිමි අතිරික්සුව කරන්න";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "ඔබගේ පිරික්සුම් ඉතිහාසය, මුරපද, දත්තකඩ මකන්න සහ තනි එබීමකින් අනවශ්‍ය දැන්වීම් ඔබව ලුහුබැඳීමෙන් වළක්වන්න!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "ඔබගේ ඉතිහාසය ඔබව හඹා නොයයි";
 
