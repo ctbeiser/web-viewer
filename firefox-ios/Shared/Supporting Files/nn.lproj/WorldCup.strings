@@ -31,9 +31,6 @@
 /* Country name for Scotland in the World Cup country picker. Scotland cannot be resolved with standard locale APIs so it needs an explicit string. */
 "WorldCup.CountryPicker.Country.Scotland.v151" = "Skottland";
 
-/* Label for the done button on the country picker for the World Cup widget. This allows users to confirm their selection of a team to follow for the World Cup event. */
-"WorldCup.CountryPicker.DoneButtonTitle.v151" = "Ferdig";
-
 /* Label for the skip button on the country picker for the World Cup widget. This shows to the user that you could skip the selection of a country to follow. */
 "WorldCup.CountryPicker.SkipButton.Title.v151" = "Hopp over";
 
@@ -167,7 +164,7 @@
 "WorldCup.HomepageWidget.MatchUnavailableRefreshButtonLabel.v151" = "Oppdater";
 
 /* Message shown in the World Cup widget when the device has no internet connection. */
-"WorldCup.HomepageWidget.OfflineLabel.v151" = "Det ser ut som om du er fråkopla. Sjekk internett-tilkoblinga di og prøv igjen.";
+"WorldCup.HomepageWidget.OfflineLabel.v151" = "Det ser ut som om du er fråkopla. Sjekk internett-tilkoplinga di og prøv igjen.";
 
 /* The label indicating that the displaying match is in the penalties part of the game. %@ will be replaced by the score of the penalties */
 "WorldCup.HomepageWidget.PenaltiesLabel.v151" = "Straffespark (%@)";
@@ -183,9 +180,6 @@
 
 /* The label for the 'Final' match in the World Cup widget. */
 "WorldCup.HomepageWidget.RoundPhase.FinalLabel.v151" = "FINALE";
-
-/* The label indicating the displaying match has ended after penalties. */
-"WorldCup.HomepageWidget.RoundPhase.FullTimePenaltiesLabel.v151" = "Slutt • Straffespark";
 
 /* The label for the 'Quarter-finals' phase in the World Cup widget. */
 "WorldCup.HomepageWidget.RoundPhase.QuarterFinalsLabel.v151" = "KVARTFINALAR";
