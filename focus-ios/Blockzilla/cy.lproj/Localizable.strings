@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Gosod fel y Porwr Ragosodedig";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Dilewch eich hanes pori, cyfrineiriau, cwcis, ac atal hysbysebion diangen rhag eich dilyn chi drwy un clic syml!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Nid yw eich hanes yn eich dilyn";
 
@@ -334,12 +331,6 @@
 /* Description associated to the Send Usage Data toggle on main screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
 "Settings.detailTextSendUsageData.v2" = "Mae Mozilla'n ceisio casglu dim ond yr hyn sydd ei angen arnom i ddarparu a gwella %@ ar gyfer pawb.";
 
-/* Description associated to the Studies toggle on the settings screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
-"Settings.detailTextStudies" = "Gall %@ osod a rhedeg astudiaethau o bryd i'w gilydd.";
-
-/* Description associated to the Studies toggle on the settings screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
-"Settings.detailTextStudies.v2" = "Mae %@ yn dewis defnyddwyr ar hap i brofi nodweddion, sy'n gwella ansawdd i bawb.";
-
 /* Title for section in settings menu */
 "Settings.general" = "Cyffredinol";
 
@@ -456,12 +447,6 @@
 
 /* Label for Send Usage Data toggle on main screen */
 "Settings.toggleSendUsageData" = "Anfon data defnydd";
-
-/* Label for Studies toggle on the settings screen */
-"Settings.toggleStudies" = "Astudiaethau";
-
-/* Label for Studies toggle on the settings screen */
-"Settings.toggleStudies.v2" = "Caniatáu Astudiaethau Nodwedd";
 
 /* Label for toggle on settings screen */
 "Settings.toggleTouchID" = "Defnyddio Touch ID i ddatgloi ap";

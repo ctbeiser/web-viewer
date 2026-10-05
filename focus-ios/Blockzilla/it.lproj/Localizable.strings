@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Imposta come browser predefinito";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Con un solo clic elimina la cronologia di navigazione, le password, i cookie e impedisci alle pubblicità indesiderate di seguirti.";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Liberati della tua cronologia";
 
@@ -257,10 +254,10 @@
 "Onboarding.TermsOfUse.Text" = "Proseguendo, accetti le %@.";
 
 /* Title for the Terms of Use screen during onboarding. %@ is the app name (for example “Firefox Focus” or ”Firefox Klar”). */
-"Onboarding.TermsOfUse.Title" = "Benvenuto in %@";
+"Onboarding.TermsOfUse.Title" = "Ti diamo il benvenuto in %@";
 
 /* Text for a label that indicates the title for onboarding screen. %@ is the app name (for example “Firefox Focus” or ”Firefox Klar”). */
-"Onboarding.Title" = "Benvenuto in Firefox %@";
+"Onboarding.Title" = "Ti diamo il benvenuto in Firefox %@";
 
 /* Label for instructions to enable Safari, shown when enabling Safari Integration in Settings */
 "Safari.instructionsContentBlockers" = "Tocca Safari, poi seleziona Blocchi dei contenuti";
@@ -333,12 +330,6 @@
 
 /* Description associated to the Send Usage Data toggle on main screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
 "Settings.detailTextSendUsageData.v2" = "Mozilla cerca di raccogliere solo i dati necessari per fornire e migliorare %@ per tutti gli utenti.";
-
-/* Description associated to the Studies toggle on the settings screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
-"Settings.detailTextStudies" = "%@ può installare e condurre degli studi di tanto in tanto.";
-
-/* Description associated to the Studies toggle on the settings screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
-"Settings.detailTextStudies.v2" = "%@ seleziona utenti in modo casuale per provare nuove funzionalità, contribuendo così a migliorare la qualità del browser per tutti.";
 
 /* Title for section in settings menu */
 "Settings.general" = "Generale";
@@ -456,12 +447,6 @@
 
 /* Label for Send Usage Data toggle on main screen */
 "Settings.toggleSendUsageData" = "Invia dati sull’uso";
-
-/* Label for Studies toggle on the settings screen */
-"Settings.toggleStudies" = "Studi";
-
-/* Label for Studies toggle on the settings screen */
-"Settings.toggleStudies.v2" = "Consenti studi sulle funzionalità";
 
 /* Label for toggle on settings screen */
 "Settings.toggleTouchID" = "Usa Touch ID per sbloccare l’app";

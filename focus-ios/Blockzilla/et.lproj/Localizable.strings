@@ -178,9 +178,6 @@
 /* Text for a label that indicates the title of button from onboarding screen */
 "Onboarding.Button.Title" = "Alusta veebilehitsemist";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Kustuta lehitsemise ajalugu, paroolid ja küpsised ning väldi ühe puutega reklaamide poolt jälitamist!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Sinu ajalugu ei jälita sind";
 
@@ -252,9 +249,6 @@
 
 /* Description associated to the Send Usage Data toggle on main screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
 "Settings.detailTextSendUsageData" = "Mozilla püüab koguda ainult seda, mida vajame, et teha %@ kõigi jaoks paremaks.";
-
-/* Description associated to the Studies toggle on the settings screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
-"Settings.detailTextStudies" = "%@ võib aegajalt paigaldada ja käivitada uuringuid.";
 
 /* Title for section in settings menu */
 "Settings.general" = "Üldine";
@@ -357,9 +351,6 @@
 
 /* Label for Send Usage Data toggle on main screen */
 "Settings.toggleSendUsageData" = "Saadetakse kasutusandmeid";
-
-/* Label for Studies toggle on the settings screen */
-"Settings.toggleStudies" = "Uuringud";
 
 /* Label for toggle on settings screen */
 "Settings.toggleTouchID" = "Rakenduse lahti lukustamiseks kasutatakse Touch ID'd";

@@ -208,9 +208,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Lakaat da verdeer dre ziouer";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Dilemel roll-istor ar merdeiñ, ar gerioù-tremen, an toupinoù ha mirout ouzh ar bruderezhioù strobus da heuliañ ac'hanoc'h gant ur c'hlik nemetken!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Ho roll istor ne heuilh ket ac'hanoc'h";
 
@@ -312,9 +309,6 @@
 
 /* Description associated to the Send Usage Data toggle on main screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
 "Settings.detailTextSendUsageData" = "Strivañ a ra Mozilla evit dastum ar pezh hon eus ezhomm hepken evit gwellaat ha kinnig %@ d'an holl.";
-
-/* Description associated to the Studies toggle on the settings screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
-"Settings.detailTextStudies" = "%@ a c’hall staliañ ha lañsañ studiadennoù a vare da vare.";
 
 /* Title for section in settings menu */
 "Settings.general" = "Hollek";
@@ -426,9 +420,6 @@
 
 /* Label for Send Usage Data toggle on main screen */
 "Settings.toggleSendUsageData" = "Kas roadennoù arver";
-
-/* Label for Studies toggle on the settings screen */
-"Settings.toggleStudies" = "Studioù";
 
 /* Label for toggle on settings screen */
 "Settings.toggleTouchID" = "Implijit Touch ID evit dibrennañ an arload";
