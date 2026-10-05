@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "הגדרה כדפדפן ברירת המחדל";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "למחוק את היסטוריית הגלישה, הססמאות והעוגיות שלך ולמנוע מפרסומות לא רצויות לעקוב אחריך בלחיצה אחת!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "ההיסטוריה שלך לא עוקבת אחריך";
 
@@ -334,12 +331,6 @@
 /* Description associated to the Send Usage Data toggle on main screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
 "Settings.detailTextSendUsageData.v2" = "Mozilla חותרת לאסוף רק מה שנדרש לצורך שיפור %@ לטובת הכלל.";
 
-/* Description associated to the Studies toggle on the settings screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
-"Settings.detailTextStudies" = "‏%@ עשוי להתקין ולהריץ מחקרים מדי פעם בפעם.";
-
-/* Description associated to the Studies toggle on the settings screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
-"Settings.detailTextStudies.v2" = "‏%@ בוחר באופן אקראי משתמשים לבדיקת תכונות, מה שמשפר את האיכות עבור כולם.";
-
 /* Title for section in settings menu */
 "Settings.general" = "כללי";
 
@@ -456,12 +447,6 @@
 
 /* Label for Send Usage Data toggle on main screen */
 "Settings.toggleSendUsageData" = "שליחת נתוני שימוש";
-
-/* Label for Studies toggle on the settings screen */
-"Settings.toggleStudies" = "מחקרים";
-
-/* Label for Studies toggle on the settings screen */
-"Settings.toggleStudies.v2" = "לאפשר מחקרי תכונות";
 
 /* Label for toggle on settings screen */
 "Settings.toggleTouchID" = "שימוש ב־Touch ID כדי לשחרר את נעילת היישומון";
