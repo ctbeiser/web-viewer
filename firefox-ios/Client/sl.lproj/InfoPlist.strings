@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Nov zavihek";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Firefox uporablja vašo kamero za skeniranje QR-kod, fotografiranje in snemanje.";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Firefox za dostop do shranjenih gesel in plačilnih sredstev zahteva Face ID.";
 
@@ -18,9 +15,6 @@
 
 /* Privacy - Photo Library Additions Usage Description */
 "NSPhotoLibraryAddUsageDescription" = "To vam omogoča shranjevati fotografije.";
-
-/* Privacy - Speech Recognition Usage Description */
-"NSSpeechRecognitionUsageDescription" = "Pri glasovnem iskanju Firefox uporablja prepoznavo govora za pretvarjanje vašega glasu v besedilo.";
 
 /* (No Comment) */
 "Scan QR Code" = "Skeniraj QR-kodo";
