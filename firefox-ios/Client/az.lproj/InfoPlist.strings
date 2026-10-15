@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Yeni Vərəq";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Bu sizə şəkil çəkmə və yükləmə imkanı verir.";
-
 /* Privacy - Location When In Use Usage Description */
 "NSLocationWhenInUseUsageDescription" = "Daxil olduğunuz saytlar sizin yerinizi soruşa bilərlər.";
 
