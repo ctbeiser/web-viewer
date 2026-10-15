@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "కొత్త ట్యాబు";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "ఇది మీకు ఫోటోలను తీసుకొని అప్లోడ్ చేయడానికి అనుమతిస్తుంది.";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "మీరు భద్రపరచిన సంకేతపదాలను, చెల్లింపు పద్ధతులను చూడడానికి Firefoxకి ఫేస్ ID అవసరం.";
 
