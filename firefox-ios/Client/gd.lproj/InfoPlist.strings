@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Taba ùr";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Bheir seo comas dhut dealbhan a thogail is a luchdadh suas.";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Feumaidh Firefox Face ID mus fhaigh e cothrom air na faclan-faire is dòighean pàighidh a shàbhail thu.";
 
@@ -18,9 +15,6 @@
 
 /* Privacy - Photo Library Additions Usage Description */
 "NSPhotoLibraryAddUsageDescription" = "Bheir seo comas dhut dealbhan a shàbhaladh.";
-
-/* Privacy - Speech Recognition Usage Description */
-"NSSpeechRecognitionUsageDescription" = "Cleachdaidh Firefox gleus aithneachadh cainnte airson teacsa a dhèanamh dhen ghuth agad airson lorg gutha a dhèanamh.";
 
 /* (No Comment) */
 "Scan QR Code" = "Sganaich còd QR";

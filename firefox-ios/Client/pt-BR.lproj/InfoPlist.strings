@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Nova aba";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "O Firefox usa sua câmera para capturar códigos QR, tirar fotos e gravar vídeos.";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "O Firefox requer Face ID para acessar suas senhas e métodos de pagamento salvos.";
 
@@ -18,9 +15,6 @@
 
 /* Privacy - Photo Library Additions Usage Description */
 "NSPhotoLibraryAddUsageDescription" = "Permite salvar fotos.";
-
-/* Privacy - Speech Recognition Usage Description */
-"NSSpeechRecognitionUsageDescription" = "O Firefox usa reconhecimento de voz para converter sua fala em texto ao usar pesquisa por voz.";
 
 /* (No Comment) */
 "Scan QR Code" = "Digitalizar código QR";
