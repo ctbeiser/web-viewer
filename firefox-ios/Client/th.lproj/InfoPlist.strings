@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "แท็บใหม่";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Firefox ใช้กล้องของคุณเพื่อสแกนคิวอาร์โค้ด รวมทั้งถ่ายรูปและวิดีโอ";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Firefox ต้องใช้ Face ID เพื่อเข้าถึงการเข้าสู่ระบบและวิธีการชำระเงินที่คุณบันทึกไว้";
 
@@ -18,9 +15,6 @@
 
 /* Privacy - Photo Library Additions Usage Description */
 "NSPhotoLibraryAddUsageDescription" = "สิ่งนี้ช่วยให้คุณบันทึกรูปถ่าย";
-
-/* Privacy - Speech Recognition Usage Description */
-"NSSpeechRecognitionUsageDescription" = "Firefox ใช้เทคโนโลยีการรู้จำเสียงพูดเพื่อแปลงเสียงของคุณเป็นข้อความสำหรับการค้นหาด้วยเสียง";
 
 /* (No Comment) */
 "Scan QR Code" = "สแกนคิวอาร์โค้ด";

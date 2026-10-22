@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Tab Anyar";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Ngidinké sampéyan njepret lan ngunggah poto.";
-
 /* Privacy - Location When In Use Usage Description */
 "NSLocationWhenInUseUsageDescription" = "Situs kang sampéyan tiliki njaluk lokasi sampéyan.";
 

@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Նոր ներդիր";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Firefox-ն օգտագործում է Ձեր տեսախցիկը՝ սկանավորելու QR կոդերը և լուսանկարելու ու տեսանկարելու համար:";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Firefox-ը պահանջում է Face ID՝ Ձեր պահված գաղտնաբառերին և վճարման եղանակներին հասանելիություն ունենալու համար:";
 
@@ -18,9 +15,6 @@
 
 /* Privacy - Photo Library Additions Usage Description */
 "NSPhotoLibraryAddUsageDescription" = "Սա ձեզ թույլ է տալիս պահպանել լուսանկարներ։";
-
-/* Privacy - Speech Recognition Usage Description */
-"NSSpeechRecognitionUsageDescription" = "Firefox-ն օգտագործում է խոսքի ճանաչում՝ ձայնային որոնման համար ձեր ձայնը տեքստի փոխակերպելու համար։";
 
 /* (No Comment) */
 "Scan QR Code" = "Սկանավորել QR կոդը";
