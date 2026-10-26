@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Sceglie cum’è navigatore predefinitu";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "D’un cliccu simplice, squassate a vostra cronolugia di navigazione, e vostre parolle d’intesa, i vostri canistrelli, è impedite e publicità indesiderevule di seguitavvi.";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "A vostra cronolugia ùn vi seguita micca";
 
@@ -334,12 +331,6 @@
 /* Description associated to the Send Usage Data toggle on main screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
 "Settings.detailTextSendUsageData.v2" = "Mozilla face casu di cullettà solu i dati chì sò ghjuvevule per rigalà è amendà %@ per tutti.";
 
-/* Description associated to the Studies toggle on the settings screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
-"Settings.detailTextStudies" = "%@ pò installà è lancià studii di quandu in quandu.";
-
-/* Description associated to the Studies toggle on the settings screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
-"Settings.detailTextStudies.v2" = "%@ selezziuneghja à l’azardu certi utilizatori per pruvà e funzioni, ciò chì aumenteghja a qualità per tutte è tutti.";
-
 /* Title for section in settings menu */
 "Settings.general" = "Generale";
 
@@ -456,12 +447,6 @@
 
 /* Label for Send Usage Data toggle on main screen */
 "Settings.toggleSendUsageData" = "Mandà i dati d’adopru";
-
-/* Label for Studies toggle on the settings screen */
-"Settings.toggleStudies" = "Studii";
-
-/* Label for Studies toggle on the settings screen */
-"Settings.toggleStudies.v2" = "Permette e studii nant’à e funzioni";
 
 /* Label for toggle on settings screen */
 "Settings.toggleTouchID" = "Impiegà Touch ID per spalancà l’appiecazione";
