@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Jako standardny wobhladowak nastajić";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Zhašejće swoju přehladowansku historiju, hesła, placki, a zadźěwajće z jednym kliknjenjom tomu, zo wam njewitane wabjenje slěduje!";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Waša historija wam njeslěduje";
 
@@ -334,12 +331,6 @@
 /* Description associated to the Send Usage Data toggle on main screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
 "Settings.detailTextSendUsageData.v2" = "Mozilla so prócuje, jenož informacije hromadźić, kotrež trjebamy, zo bychmy %@ za kóždeho poskićili a polěpšili.";
 
-/* Description associated to the Studies toggle on the settings screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
-"Settings.detailTextStudies" = "%@ móže hdys a hdys studije instalować a přewjesć.";
-
-/* Description associated to the Studies toggle on the settings screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
-"Settings.detailTextStudies.v2" = "%@ wužiwarjow připadnje wuběra, zo by funkcije testował, štož kwalitu za kóždeho polěpšuje.";
-
 /* Title for section in settings menu */
 "Settings.general" = "Powšitkowne";
 
@@ -456,12 +447,6 @@
 
 /* Label for Send Usage Data toggle on main screen */
 "Settings.toggleSendUsageData" = "Wužiwanske daty pósłać";
-
-/* Label for Studies toggle on the settings screen */
-"Settings.toggleStudies" = "Studije";
-
-/* Label for Studies toggle on the settings screen */
-"Settings.toggleStudies.v2" = "Funkciske studije dowolić";
 
 /* Label for toggle on settings screen */
 "Settings.toggleTouchID" = "Touch ID za wotewěranje nałoženja wužiwać";

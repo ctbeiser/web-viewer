@@ -211,9 +211,6 @@
 /* Text for a label that indicates the title of the top button from the default browser onboarding screen version 2. */
 "Onboarding.DefaultBrowser.TopButtonTitle.V2" = "Nastavit jako výchozí prohlížeč";
 
-/* Text for a label that indicates the description of history section from onboarding screen. */
-"Onboarding.History.Description" = "Smažte svou historii prohlížení, hesla a cookies a zabraňte jedním klepnutím nechtěným reklamám, aby vás pronásledovaly.";
-
 /* Text for a label that indicates the title of history section from onboarding screen. */
 "Onboarding.History.Title" = "Vaše historie vás nevysleduje";
 
@@ -334,12 +331,6 @@
 /* Description associated to the Send Usage Data toggle on main screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
 "Settings.detailTextSendUsageData.v2" = "Mozilla sbírá jenom ty informace, které potřebuje pro další vylepšování aplikace %@.";
 
-/* Description associated to the Studies toggle on the settings screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
-"Settings.detailTextStudies" = "%@ může čas od času instalovat a spouštět studie.";
-
-/* Description associated to the Studies toggle on the settings screen. %@ is the app name (for example "Firefox Focus" or "Firefox Klar"). */
-"Settings.detailTextStudies.v2" = "%@ náhodně vybírá uživatele, aby otestoval nové funkce, s cílem zlepšit jeho kvalitu pro všechny.";
-
 /* Title for section in settings menu */
 "Settings.general" = "Obecné";
 
@@ -456,12 +447,6 @@
 
 /* Label for Send Usage Data toggle on main screen */
 "Settings.toggleSendUsageData" = "Odesílat údaje o používání";
-
-/* Label for Studies toggle on the settings screen */
-"Settings.toggleStudies" = "Studie";
-
-/* Label for Studies toggle on the settings screen */
-"Settings.toggleStudies.v2" = "Povolit studie funkcí";
 
 /* Label for toggle on settings screen */
 "Settings.toggleTouchID" = "Použít Touch ID pro odemčení aplikace";
