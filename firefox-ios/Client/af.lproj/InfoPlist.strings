@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Nuwe oortjie";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Hierdie laat mens foto’s neem en oplaai.";
-
 /* Privacy - Location When In Use Usage Description */
 "NSLocationWhenInUseUsageDescription" = "Webwerwe wat u besoek kan dalk u ligging vra.";
 

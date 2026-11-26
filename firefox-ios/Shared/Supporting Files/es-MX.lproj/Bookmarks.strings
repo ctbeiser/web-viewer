@@ -8,7 +8,7 @@
 "Bookmarks.EmptyState.Root.Body.v135" = "Guarda sitios mientras navegas. También te mostraremos los marcadores de tus otros dispositivos sincronizados.";
 
 /* The body text for the placeholder screen shown when the user is signed out and there are no saved bookmarks, located at the root level of the bookmarks panel within the library modal. */
-"Bookmarks.EmptyState.Root.BodySignedOut.v135" = "Guarda sitios mientras navegas. Inicia sesión para obtener los marcadores de tus otros dispositivos sincronizados.";
+"Bookmarks.EmptyState.Root.BodySignedOut.v135" = "Cuando navegues, puedes guardar sitios en marcadores. Inicia sesión para acceder a los marcadores de tus dispositivos sincronizados.";
 
 /* The button title for the sign in button on the placeholder screen shown when there are no saved bookmarks, located at the root level of the bookmarks panel within the library modal. This button triggers the sign in flow, allowing users to sign in to their Mozilla Account to sync data. In this string, "Sync" is used as a verb, and is capitalized as per convention to title case text for buttons in iOS */
 "Bookmarks.EmptyState.Root.ButtonTitle.v136" = "Inicia sesión en Sync";
@@ -23,7 +23,7 @@
 "Bookmarks.Menu.ClearTextFieldButtonA11yLabel.v139" = "Borrar";
 
 /* The title for the Delete Bookmark button, in the Edit Bookmark popup screen which is summoned from the main menu's Save submenu, which will delete the currently bookmarked site from the user's bookmarks. */
-"Bookmarks.Menu.DeleteBookmark.v132" = "Eliminar Marcador";
+"Bookmarks.Menu.DeleteBookmark.v132" = "Eliminar marcador";
 
 /* Label of toast displayed after a bookmark is deleted in the Bookmarks menu. %@ is the name of the bookmark. */
 "Bookmarks.Menu.DeletedBookmark.v131" = "Eliminado “%@”";

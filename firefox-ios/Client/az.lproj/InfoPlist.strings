@@ -4,8 +4,8 @@
 /* (No Comment) */
 "New Tab" = "Yeni Vərəq";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Bu sizə şəkil çəkmə və yükləmə imkanı verir.";
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "Firefox yadda saxlanmış parollarınıza və ödəniş üsullarınıza daxil olmaq üçün Face ID tələb edir.";
 
 /* Privacy - Location When In Use Usage Description */
 "NSLocationWhenInUseUsageDescription" = "Daxil olduğunuz saytlar sizin yerinizi soruşa bilərlər.";

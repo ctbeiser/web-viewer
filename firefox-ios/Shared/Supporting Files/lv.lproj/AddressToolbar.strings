@@ -1,0 +1,9 @@
+/* Accessibility label for the address field in the address toolbar. */
+"AddressToolbar.Location.A11y.Label.v128" = "Meklē vai ievadi adresi";
+
+/* Placeholder for the address field in the address toolbar. */
+"AddressToolbar.Location.Placeholder.v128" = "Meklē vai ievadi adresi";
+
+/* Accessibility label for the search engine icon in the address bar. %@ is the name of the search engine (e.g. Google). */
+"AddressToolbar.SearchEngine.A11y.Label.v128" = "Meklētājs: %@";
+

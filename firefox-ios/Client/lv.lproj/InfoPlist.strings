@@ -4,8 +4,8 @@
 /* (No Comment) */
 "New Tab" = "Jauna cilne";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Šis ļauj uzņemt un augšupielādēt foto.";
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "Firefox ir nepieciešams Face ID, lai piekļūtu saglabātajām parolēm un maksājumu veidiem.";
 
 /* Privacy - Location When In Use Usage Description */
 "NSLocationWhenInUseUsageDescription" = "Lapas, ko apmeklējat var prasīt jūsu atrašanās vietu.";

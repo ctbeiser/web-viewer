@@ -155,7 +155,7 @@
 "Onboarding.Modern.BrandRefresh.TermsOfUse.ManageLink.v148" = "Spravovať nastavenia";
 
 /* Agreement text for sending diagnostic and interaction data in the v148 brand refresh onboarding flow. %1$@ is the app name (e.g. Firefox), %2$@ is the company name (e.g. Mozilla), %3$@ is the manage settings link button that redirects the user to manage data collection preferences. */
-"Onboarding.Modern.BrandRefresh.TermsOfUse.ManagePreferenceAgreement.v148" = "Aby bolo možné prehliadač vylepšovať, %1$@ odosiela diagnostické údaje a údaje o interakciách spoločnosti %2$@. %3$@";
+"Onboarding.Modern.BrandRefresh.TermsOfUse.ManagePreferenceAgreement.v148" = "Aby bolo možné prehliadač vylepšovať, %1$@ odosiela diagnostické údaje a údaje o používaní spoločnosti %2$@. %3$@";
 
 /* Agreement text for Privacy Notice in the v148 brand refresh onboarding flow. %1$@ is the app name (e.g. Firefox), %2$@ is the Privacy Notice link button that redirects the user to the Privacy Notice page. */
 "Onboarding.Modern.BrandRefresh.TermsOfUse.PrivacyNoticeAgreement.v148" = "%1$@ sa stará o vaše súkromie. Podrobnosti nájdete v dokumente %2$@";
@@ -275,10 +275,10 @@
 "Onboarding.Modern.TermsOfService.ManageLink.v145" = "Spravovať nastavenia";
 
 /* Agreement text for sending diagnostic and interaction data to Mozilla in the Terms of Service screen. %1$@ is the app name (e.g. Firefox), %2$@ is company name (e.g. Mozilla), %3$@ is a Manage link button which redirect the user to another screen in order to manage the data collection preferences. */
-"Onboarding.Modern.TermsOfService.ManagePreferenceAgreement.v140" = "Aby bolo možné prehliadač vylepšovať, %1$@ odosiela diagnostické údaje a údaje o interakciách spoločnosti %2$@. %3$@";
+"Onboarding.Modern.TermsOfService.ManagePreferenceAgreement.v140" = "Aby bolo možné prehliadač vylepšovať, %1$@ odosiela diagnostické údaje a údaje o používaní spoločnosti %2$@. %3$@";
 
 /* Agreement text for sending data. %1$@ is the app name, %2$@ is the company name, %3$@ is the placeholder for the Manage settings link. */
-"Onboarding.Modern.TermsOfService.ManagePreferenceAgreement.v145" = "Aby bolo možné prehliadač vylepšovať, %1$@ odosiela diagnostické údaje a údaje o interakciách spoločnosti %2$@. %3$@";
+"Onboarding.Modern.TermsOfService.ManagePreferenceAgreement.v145" = "Aby bolo možné prehliadač vylepšovať, %1$@ odosiela diagnostické údaje a údaje o používaní spoločnosti %2$@. %3$@";
 
 /* Agreement text for Privacy Notice in the Terms of Service screen. %1$@ is the app name (e.g. Firefox), %2$@ is for the Privacy Notice link button that redirect the user to the Privacy Notice page. */
 "Onboarding.Modern.TermsOfService.PrivacyNoticeAgreement.v140" = "%1$@ sa stará o vaše súkromie. Podrobnosti nájdete v dokumente %2$@";
@@ -296,16 +296,16 @@
 "Onboarding.Modern.TermsOfService.PrivacyPreferences.LearnMore.v140" = "Ďalšie informácie";
 
 /* Description for the send crash reports switch option in Manage Privacy Preferences screen, where user can choose from the option to send data to Firefox or not. %@ is for the Learn more button link, to open a link where user can find more information about this send crash reports option. */
-"Onboarding.Modern.TermsOfService.PrivacyPreferences.SendCrashReportsDescription.v140" = "Správy o zlyhaní nám umožňujú diagnostikovať a opraviť problémy s prehliadačom. %@";
+"Onboarding.Modern.TermsOfService.PrivacyPreferences.SendCrashReportsDescription.v140" = "Hlásenia o zlyhaní nám umožňujú diagnostikovať a opraviť problémy s prehliadačom. %@";
 
 /* Title for the send crash reports switch option in Manage Privacy Preferences screen, where user can choose from the option to send data to Firefox or not. */
-"Onboarding.Modern.TermsOfService.PrivacyPreferences.SendCrashReportsTitle.v140" = "Automaticky odosielať správy o zlyhaní";
+"Onboarding.Modern.TermsOfService.PrivacyPreferences.SendCrashReportsTitle.v140" = "Automaticky odosielať hlásenia o zlyhaní";
 
 /* Description for the technical and interaction data switch option in Manage Privacy Preferences screen, where user can choose from the option to send data to Firefox or not. %1$@ is the app name (e.g. Firefox), %2$@ is for the Learn more button link, to open a link where user can find more information about this send technical and interaction data option. */
 "Onboarding.Modern.TermsOfService.PrivacyPreferences.SendTechnicalDataDescription.v140" = "Údaje o vašom zariadení, hardvérovej konfigurácii a spôsobe používania %1$@u pomáhajú zlepšovať funkcie, výkon a stabilitu pre každého. %2$@";
 
 /* Title for the send technical and interaction data switch option in Manage Privacy Preferences screen, where user can choose from the option to send data to Firefox or not. %@ is the company name (e.g. Mozilla). */
-"Onboarding.Modern.TermsOfService.PrivacyPreferences.SendTechnicalDataTitle.v140" = "Odosielať technické údaje a údaje o interakciách spoločnosti %@";
+"Onboarding.Modern.TermsOfService.PrivacyPreferences.SendTechnicalDataTitle.v140" = "Odosielať technické údaje a údaje o používaní spoločnosti %@";
 
 /* Title for the Manage Privacy Preferences screen, where user can choose from the option to send data to Firefox or not. Data like crash reports or technical and interaction data. %@ is the app name (e.g. Firefox). */
 "Onboarding.Modern.TermsOfService.PrivacyPreferences.Title.v140" = "Pomôžte nám zlepšiť %@";
@@ -389,7 +389,7 @@
 "Onboarding.TermsOfService.ManageLink.v135" = "Spravovať";
 
 /* Agreement text for sending diagnostic and interaction data to Mozilla in the Terms of Service screen. %1$@ is the app name (e.g. Firefox), %2$@ is company name (e.g. Mozilla), %3$@ is a Manage link button which redirect the user to another screen in order to manage the data collection preferences. */
-"Onboarding.TermsOfService.ManagePreferenceAgreement.v135" = "Aby bolo možné prehliadač vylepšovať, %1$@ odosiela diagnostické údaje a údaje o interakciách spoločnosti %2$@. %3$@";
+"Onboarding.TermsOfService.ManagePreferenceAgreement.v135" = "Aby bolo možné prehliadač vylepšovať, %1$@ odosiela diagnostické údaje a údaje o používaní spoločnosti %2$@. %3$@";
 
 /* Agreement text for Privacy Notice in the Terms of Service screen. %1$@ is the app name (e.g. Firefox), %2$@ is for the Privacy Notice link button that redirect the user to the Privacy Notice page. */
 "Onboarding.TermsOfService.PrivacyNoticeAgreement.v135" = "%1$@ sa stará o vaše súkromie. Podrobnosti nájdete v dokumente %2$@";
@@ -401,16 +401,16 @@
 "Onboarding.TermsOfService.PrivacyPreferences.LearnMore.v136" = "Ďalšie informácie";
 
 /* Description for the send crash reports switch option in Manage Privacy Preferences screen, where user can choose from the option to send data to Firefox or not. %@ is for the Learn more button link, to open a link where user can find more information about this send crash reports option. */
-"Onboarding.TermsOfService.PrivacyPreferences.SendCrashReportsDescription.v135" = "Správy o zlyhaní nám umožňujú diagnostikovať a opraviť problémy s prehliadačom. %@";
+"Onboarding.TermsOfService.PrivacyPreferences.SendCrashReportsDescription.v135" = "Hlásenia o zlyhaní nám umožňujú diagnostikovať a opraviť problémy s prehliadačom. %@";
 
 /* Title for the send crash reports switch option in Manage Privacy Preferences screen, where user can choose from the option to send data to Firefox or not. */
-"Onboarding.TermsOfService.PrivacyPreferences.SendCrashReportsTitle.v135" = "Automaticky odosielať správy o zlyhaní";
+"Onboarding.TermsOfService.PrivacyPreferences.SendCrashReportsTitle.v135" = "Automaticky odosielať hlásenia o zlyhaní";
 
 /* Description for the technical and interaction data switch option in Manage Privacy Preferences screen, where user can choose from the option to send data to Firefox or not. %1$@ is the app name (e.g. Firefox), %2$@ is for the Learn more button link, to open a link where user can find more information about this send technical and interaction data option. */
 "Onboarding.TermsOfService.PrivacyPreferences.SendTechnicalDataDescription.v135" = "Údaje o vašom zariadení, hardvérovej konfigurácii a spôsobe používania %1$@u pomáhajú zlepšovať funkcie, výkon a stabilitu pre každého. %2$@";
 
 /* Title for the send technical and interaction data switch option in Manage Privacy Preferences screen, where user can choose from the option to send data to Firefox or not. %@ is the company name (e.g. Mozilla). */
-"Onboarding.TermsOfService.PrivacyPreferences.SendTechnicalDataTitle.v135" = "Odosielať technické údaje a údaje o interakciách spoločnosti %@";
+"Onboarding.TermsOfService.PrivacyPreferences.SendTechnicalDataTitle.v135" = "Odosielať technické údaje a údaje o používaní spoločnosti %@";
 
 /* Title for the Manage Privacy Preferences screen, where user can choose from the option to send data to Firefox or not. Data like crash reports or technical and interaction data. %@ is the app name (e.g. Firefox). */
 "Onboarding.TermsOfService.PrivacyPreferences.Title.v135" = "Pomôžte nám zlepšiť %@";

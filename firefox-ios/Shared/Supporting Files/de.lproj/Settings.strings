@@ -74,9 +74,6 @@
 "Settings.AIControls.AIPoweredFeaturesSection.BlockedStatus.v151" = "Blockiert";
 
 /* In the AI Controls settings, in the AI powered features section, this is the text that what the blocked status means. The content between the ** ** is bolded. Please do not remove these in translation. */
-"Settings.AIControls.AIPoweredFeaturesSection.BlockedStatusDescription.v151" = "**Blockiert**: Sie werden die Funktion nicht sehen und können die Funktion nicht verwenden. Für die geräteinterne KI werden alle heruntergeladenen Modelle entfernt.";
-
-/* In the AI Controls settings, in the AI powered features section, this is the text that what the blocked status means. The content between the ** ** is bolded. Please do not remove these in translation. */
 "Settings.AIControls.AIPoweredFeaturesSection.BlockedStatusDescriptionV2.v151" = "**Blockiert**: Die Funktion wird nicht angezeigt und kann nicht verwendet werden. Für die geräteinterne KI werden alle heruntergeladenen Modelle entfernt.";
 
 /* In the AI Controls settings, in the AI powered features section, this is the message that describes the pages summaries feature */
@@ -104,7 +101,7 @@
 "Settings.AIControls.BlockAIEnhancementsTitle.v151" = "KI-Verbesserungen blockieren";
 
 /* In the AI Controls settings, this is the text that appears when you have turned on the Block AI Enhancements toggle */
-"Settings.AIControls.BlockedInformation.v151" = "Neue und aktuelle KI-Verbesserungen werden standardmäßig blockiert. Blockieren Sie im Folgenden bestimmte Funktionen.";
+"Settings.AIControls.BlockedInformation.v151" = "Neue und aktuelle KI-Verbesserungen werden standardmäßig blockiert. Heben Sie im Folgenden die Blockierung bestimmter Funktionen auf.";
 
 /* This is the text for the link in the Header Card under the AI Controls settings section that links to more information. */
 "Settings.AIControls.HeaderCard.Link.v151" = "Weitere Informationen";
@@ -296,7 +293,7 @@
 "Settings.Search.Suggest.ShowNonSponsoredSuggestions.Title.v124.v2" = "Vorschläge aus dem Internet";
 
 /* In the Search page of the Settings menu, the description for the setting to enable Suggestions from sponsors. %@ is the app name (e.g. Firefox). - Firefox. */
-"Settings.Search.Suggest.ShowSponsoredSuggestions.Description.v124" = "Unterstützen Sie %@ mit gelegentlich gesponserten Vorschlägen";
+"Settings.Search.Suggest.ShowSponsoredSuggestions.Description.v124" = "Unterstützen Sie %@ mit gelegentlichen gesponserten Vorschlägen";
 
 /* In the Search page of the Settings menu, the title for the setting to enable Suggestions from sponsors. */
 "Settings.Search.Suggest.ShowSponsoredSuggestions.Title.v124" = "Vorschläge von Sponsoren";
@@ -320,7 +317,7 @@
 "Settings.Studies.Title.v148" = "Funktionsstudien erlauben";
 
 /* This is the footer text for the setting that toggles the Summarize feature under the Summarize settings section. */
-"Settings.Summarize.FooterTitle.v142" = "Bietet Zugriff auf Zusammenfassungsseiten.";
+"Settings.Summarize.FooterTitle.v142" = "Bietet Zugriff auf das Zusammenfassen von Seiten.";
 
 /* This is the footer text for the gestures features under the Summarize settings section. */
 "Settings.Summarize.GesturesSection.FooterTitle.v142" = "Schütteln Sie Ihr Gerät von einer Seite zur anderen, um eine Seite zusammenzufassen.";
@@ -330,12 +327,6 @@
 
 /* This is the section title for the gestures features under the Summarize settings section. */
 "Settings.Summarize.GesturesSection.Title.v142" = "Gesten";
-
-/* The accessibility label for the language picker button in the Summarize settings. */
-"Settings.Summarize.LanguageSection.PickerButtonAccessibilityLabel.v149" = "Wählen Sie eine Sprache aus";
-
-/* The label for the picker option to select the preferred app language for the summarizer inside the Summarize settings. The preferred app language refers to the language that the user has selected to use for the app in the app settings. */
-"Settings.Summarize.LanguageSection.PreferredAppLanguageLabel.v149" = "Bevorzugte App-Sprache";
 
 /* The title for the language choose section for the summarizer inside the Summarize settings. */
 "Settings.Summarize.LanguageSection.Title.v149" = "Sprache";

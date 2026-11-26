@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Ny flik";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Firefox använder din kamera för att skanna QR-koder och ta foton och video.";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Firefox kräver Face ID för att komma åt dina sparade lösenord och betalningsmetoder.";
 
@@ -18,9 +15,6 @@
 
 /* Privacy - Photo Library Additions Usage Description */
 "NSPhotoLibraryAddUsageDescription" = "Detta gör det möjligt att spara bilder.";
-
-/* Privacy - Speech Recognition Usage Description */
-"NSSpeechRecognitionUsageDescription" = "Firefox använder taligenkänning för att konvertera din röst till text för röstsökning.";
 
 /* (No Comment) */
 "Scan QR Code" = "Skanna QR-kod";

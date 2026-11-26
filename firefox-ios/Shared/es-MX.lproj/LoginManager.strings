@@ -59,7 +59,7 @@
 "NoLoginsFound.Title.v122" = "No se encontraron contraseñas";
 
 /* Open and Fill website text selection menu item */
-"Open & Fill" = "Abrir & Llenar";
+"Open & Fill" = "Abrir y rellenar";
 
 /* Label displayed above the password row in Login Detail View. */
 "Password" = "Contraseña";
