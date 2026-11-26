@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Ivinell nevez";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Gant se e c’hallit kemer ha pellgas luc’hskeudennoù.";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Face ID a zo rekis evit ma c’hallfe kaout Firefox ho kerioù-tremen enrollet hag ho toareoù paeañ.";
 

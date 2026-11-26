@@ -74,9 +74,6 @@
 "Settings.AIControls.AIPoweredFeaturesSection.BlockedStatus.v151" = "Zablokowany";
 
 /* In the AI Controls settings, in the AI powered features section, this is the text that what the blocked status means. The content between the ** ** is bolded. Please do not remove these in translation. */
-"Settings.AIControls.AIPoweredFeaturesSection.BlockedStatusDescription.v151" = "**Zablokowany**: Njebudźeće funkciju widźeć a njemóžeće ju wužiwać. Za KI na graće so sćehnjene modele wotstronjeja.";
-
-/* In the AI Controls settings, in the AI powered features section, this is the text that what the blocked status means. The content between the ** ** is bolded. Please do not remove these in translation. */
 "Settings.AIControls.AIPoweredFeaturesSection.BlockedStatusDescriptionV2.v151" = "**Zablokowany**: Njebudźeće funkciju widźeć a njemóžeće ju wužiwać. Za KI na graće so sćehnjene modele wotstronjeja.";
 
 /* In the AI Controls settings, in the AI powered features section, this is the message that describes the pages summaries feature */
@@ -152,13 +149,13 @@
 "Settings.AutofillCreditCard.Title.v122" = "Płaćenske metody";
 
 /* In the settings menu, in the Autoplay customization section, this label indicates that selecting this will allow audio and video content to autoplay. */
-"Settings.Autoplay.AllowAudioAndVideo.v137" = "Awdio a widejo dowolić";
+"Settings.Autoplay.AllowAudioAndVideo.v137" = "Awdijo a widejo dowolić";
 
 /* In the settings menu, in the Autoplay customization section, this label indicates that selecting this will block audio from autoplaying. */
-"Settings.Autoplay.BlockAudio.v137" = "Awdio blokować";
+"Settings.Autoplay.BlockAudio.v137" = "Awdijo blokować";
 
 /* In the settings menu, in the Autoplay customization section, this label indicates that selecting this will block audio and video content from autoplaying. */
-"Settings.Autoplay.BlockAudioAndVideo.v137" = "Awdio a widejo blokować";
+"Settings.Autoplay.BlockAudioAndVideo.v137" = "Awdijo a widejo blokować";
 
 /* In the settings menu, in the Autoplay customization section, this label indicates that selecting this will block audio and video content from autoplaying. */
 "Settings.Autoplay.Footer.v137" = "Nastajenja awtomatiskeho wothraća so jenož na nowo wočinjene rajtarki nałožuja. Změny njedadźa so na eksistowace rajtarki nałožić, chibazo nałoženje so znowa startuje.";
@@ -330,12 +327,6 @@
 
 /* This is the section title for the gestures features under the Summarize settings section. */
 "Settings.Summarize.GesturesSection.Title.v142" = "Gesty";
-
-/* The accessibility label for the language picker button in the Summarize settings. */
-"Settings.Summarize.LanguageSection.PickerButtonAccessibilityLabel.v149" = "Wubjerće rěč";
-
-/* The label for the picker option to select the preferred app language for the summarizer inside the Summarize settings. The preferred app language refers to the language that the user has selected to use for the app in the app settings. */
-"Settings.Summarize.LanguageSection.PreferredAppLanguageLabel.v149" = "Preferowana rěč nałoženja";
 
 /* The title for the language choose section for the summarizer inside the Summarize settings. */
 "Settings.Summarize.LanguageSection.Title.v149" = "Rěč";

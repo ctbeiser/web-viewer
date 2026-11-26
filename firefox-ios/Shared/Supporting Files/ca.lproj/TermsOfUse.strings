@@ -4,8 +4,17 @@
 /* Label for the back button shown in the Terms of Use web view. */
 "TermsOfUse.BackButton.v142" = "Enrere";
 
+/* Label for the close button shown in the Terms of Use web view. */
+"TermsOfUse.CloseButton.v150" = "Tanca";
+
 /* Introductory message in the Terms of Use sheet that mentions updated Terms of Use and Privacy Notice. %@ will be replaced with the app name (e.g., Firefox). */
 "TermsOfUse.Description.v142" = "Hem afegit les condicions d’ús del %@ i hem actualitzat l’avís de privadesa.";
+
+/* Text shown in the Terms of Use bottom sheet for variants 1 and 2. %@ is replaced with the localized 'here' link text. */
+"TermsOfUse.LearnMoreHere.v147" = "Podeu trobar més informació %@.";
+
+/* Link text for 'here' in the phrase 'You can learn more here.' shown in the Terms of Use sheet for variants 1 and 2. */
+"TermsOfUse.Link.HereText.v147" = "aquí";
 
 /* Link shown in the Terms of Use sheet to direct users to more details about the update. */
 "TermsOfUse.Link.LearnMore.v142" = "Més informació";
@@ -14,7 +23,7 @@
 "TermsOfUse.Link.PrivacyNotice.v142" = "Avís de privadesa";
 
 /* Hyperlink label for the Terms of Use document. %@ is replaced with the app name (e.g., Firefox). */
-"TermsOfUse.Link.TermsOfUse.v142" = "Condicions d'ús del %@";
+"TermsOfUse.Link.TermsOfUse.v142" = "Condicions d’ús del %@";
 
 /* Label for the button that allows the user to postpone accepting the Terms of Use. */
 "TermsOfUse.RemindMeLaterButton.v142" = "Recorda-m’ho més tard";
@@ -23,8 +32,14 @@
 "TermsOfUse.ReviewAndAcceptText.v142" = "Dediqueu un moment per revisar-ho i acceptar-ho. Més informació";
 
 /* Accessibility notification that is triggered when the Terms of Use sheet is presented. */
-"TermsOfUse.TermsOfUseHasOpened.v142" = "Full de condicions d'ús obert";
+"TermsOfUse.TermsOfUseHasOpened.v142" = "Full de condicions d’ús obert";
 
 /* Title shown at the top of the Terms of Use bottom sheet, indicating that there is an update to terms of use. */
 "TermsOfUse.Title.v142" = "Hi ha una actualització";
+
+/* Title shown at the top of the Terms of Use bottom sheet for variant 1. */
+"TermsOfUse.TitleValue1.v147" = "Condicions d’ús";
+
+/* Title shown at the top of the Terms of Use bottom sheet for variant 2. %@ is replaced with the app name (e.g., Firefox). */
+"TermsOfUse.TitleValue2.v147" = "Un missatge del %@";
 

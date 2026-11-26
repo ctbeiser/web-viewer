@@ -74,9 +74,6 @@
 "Settings.AIControls.AIPoweredFeaturesSection.BlockedStatus.v151" = "Blokovaná";
 
 /* In the AI Controls settings, in the AI powered features section, this is the text that what the blocked status means. The content between the ** ** is bolded. Please do not remove these in translation. */
-"Settings.AIControls.AIPoweredFeaturesSection.BlockedStatusDescription.v151" = "**Blokovaná**: funkciu neuvidíte a nemôžete ju používať. V prípade umelej inteligencie v zariadení sa odstránia všetky stiahnuté modely.";
-
-/* In the AI Controls settings, in the AI powered features section, this is the text that what the blocked status means. The content between the ** ** is bolded. Please do not remove these in translation. */
 "Settings.AIControls.AIPoweredFeaturesSection.BlockedStatusDescriptionV2.v151" = "**Blokovaná**: funkciu neuvidíte a nemôžete ju používať. V prípade umelej inteligencie v zariadení sa odstránia všetky stiahnuté modely.";
 
 /* In the AI Controls settings, in the AI powered features section, this is the message that describes the pages summaries feature */
@@ -95,13 +92,13 @@
 "Settings.AIControls.AIPoweredFeaturesSection.TranslationSection.Title.v151" = "Preklad";
 
 /* This is the description for the setting that toggles whether to block AI enhancements under the AI Controls settings section. %@ is the app name (e.g. Firefox). */
-"Settings.AIControls.BlockAIEnhancementsDescription.v151" = "Blokovanie znamená, že vo %@e neuvidíte nové ani aktuálne vylepšenia pomocou umelej inteligencie, ani vyskakovacie okná o nich.";
+"Settings.AIControls.BlockAIEnhancementsDescription.v151" = "Ak zapnete blokovanie, %@ vám nebude zobrazovať existujúce ani nové funkcie využívajúce umelú inteligenciu. Nebudú sa zobrazovať ani kontextové okná, ktoré vás na tieto funkcie upozorňujú.";
 
 /* In the AI Controls settings, this is the text for the link that takes the user more information on AI features. */
 "Settings.AIControls.BlockAIEnhancementsLink.v151" = "Pozrite sa, čo je a čo nie je zahrnuté";
 
 /* This is the title for the setting that toggles whether to block AI enhancements under the AI Controls settings section. */
-"Settings.AIControls.BlockAIEnhancementsTitle.v151" = "Blokovať vylepšenia pomocou AI";
+"Settings.AIControls.BlockAIEnhancementsTitle.v151" = "Blokovať funkcie využívajúce umelú inteligenciu";
 
 /* In the AI Controls settings, this is the text that appears when you have turned on the Block AI Enhancements toggle */
 "Settings.AIControls.BlockedInformation.v151" = "Nové a aktuálne vylepšenia umelej inteligencie sú štandardne blokované. Nižšie nájdete možnosť odblokovania konkrétnych funkcií.";
@@ -116,7 +113,7 @@
 "Settings.AIControls.HeaderCard.Title.v151" = "Vo %@e máte vždy na výber";
 
 /* In the settings menu, in the General section, this is the title for the AI Controls settings section */
-"Settings.AIControls.Title.v150" = "Nastavenia AI";
+"Settings.AIControls.Title.v150" = "Umelá inteligencia";
 
 /* Section description in Appearance settings for middle button configuration of the bottom toolbar. */
 "Settings.Appearance.NavigationToolbar.Description.v145" = "Zmení tlačidlo v strede panela s nástrojmi.";
@@ -191,7 +188,7 @@
 "Settings.CrashReports.Message.v136" = "Toto nám pomáha diagnostikovať a riešiť problémy s prehliadačom.";
 
 /* On the Settings screen, this is the title text for a toggle which controls automatically sending crash reports. */
-"Settings.CrashReports.Title.v135" = "Automaticky odosielať správy o zlyhaní";
+"Settings.CrashReports.Title.v135" = "Automaticky odosielať hlásenia o zlyhaní";
 
 /* Title for a link that explains how Mozilla send daily usage ping. */
 "Settings.DailyUsagePing.Link.v136" = "Ďalšie informácie";
@@ -200,7 +197,7 @@
 "Settings.DailyUsagePing.Message.v135" = "Toto pomáha spoločnosti %@ odhadnúť počet aktívnych používateľov.";
 
 /* On the Settings screen, this is the title text for a toggle which controls automatically sending daily usage ping. */
-"Settings.DailyUsagePing.Title.v135" = "Ping denného používania";
+"Settings.DailyUsagePing.Title.v135" = "Denný signál o používaní";
 
 /* Title displayed in header of the FxA settings panel. */
 "Settings.FxA.Title.v119" = "Účet";
@@ -239,7 +236,7 @@
 "Settings.Rollouts.Message.v148" = "%@ vylepší funkcie, výkon a stabilitu medzi aktualizáciami. Zmeny sa aplikujú na diaľku.";
 
 /* Label used as a toggle item in Settings. When this is off, the user is opting out of all rollouts. */
-"Settings.Rollouts.Title.v148" = "Povoliť vzdialené vylepšenia";
+"Settings.Rollouts.Title.v148" = "Povoliť vylepšenia na diaľku";
 
 /* In the settings menu, in the General section, this is the title for the option that allows user to disable the autohide feature of the tab and address bar. */
 "Settings.ScrollToHideTabAndAddressBar.Title.v138" = "Karty a panel s adresou skrývať rolovaním";
@@ -331,12 +328,6 @@
 /* This is the section title for the gestures features under the Summarize settings section. */
 "Settings.Summarize.GesturesSection.Title.v142" = "Gestá";
 
-/* The accessibility label for the language picker button in the Summarize settings. */
-"Settings.Summarize.LanguageSection.PickerButtonAccessibilityLabel.v149" = "Vyberte jazyk";
-
-/* The label for the picker option to select the preferred app language for the summarizer inside the Summarize settings. The preferred app language refers to the language that the user has selected to use for the app in the app settings. */
-"Settings.Summarize.LanguageSection.PreferredAppLanguageLabel.v149" = "Preferovaný jazyk aplikácie";
-
 /* The title for the language choose section for the summarizer inside the Summarize settings. */
 "Settings.Summarize.LanguageSection.Title.v149" = "Jazyk";
 
@@ -356,7 +347,7 @@
 "Settings.TechnicalData.Message.v136" = "Údaje o vašom zariadení, konfigurácii hardvéru a používaní nám pomáhajú zlepšovať funkcie, výkon a stabilitu %@u.";
 
 /* On the Settings screen, this is the title text for a toggle which controls sending technical and interaction data. */
-"Settings.TechnicalData.Title.v136" = "Odosielať technické údaje a údaje o interakciách";
+"Settings.TechnicalData.Title.v136" = "Odosielať technické údaje a údaje o používaní";
 
 /* Terms of Use settings section title */
 "Settings.TermsOfUse.Title.v137" = "Podmienky používania";

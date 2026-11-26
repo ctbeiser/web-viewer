@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "New Tab";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "This lets you take and upload photos.";
-
 /* Privacy - Location When In Use Usage Description */
 "NSLocationWhenInUseUsageDescription" = "Websites you visit may request your location.";
 

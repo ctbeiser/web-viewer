@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "नयाँ ट्याब";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Firefox ले QR कोडहरू स्क्यान गर्न र फोटो र भिडियो खिच्न तपाईंको क्यामरा प्रयोग गर्दछ।";
-
 /* Privacy - Location When In Use Usage Description */
 "NSLocationWhenInUseUsageDescription" = "तपाईंले भ्रमण गर्ने वेबसाइटहरूले तपाईंको स्थान अनुरोध गर्न सक्छन् ।";
 

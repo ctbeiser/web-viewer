@@ -74,7 +74,7 @@
 "Settings.AIControls.AIPoweredFeaturesSection.BlockedStatus.v151" = "توسۇلغان";
 
 /* In the AI Controls settings, in the AI powered features section, this is the text that what the blocked status means. The content between the ** ** is bolded. Please do not remove these in translation. */
-"Settings.AIControls.AIPoweredFeaturesSection.BlockedStatusDescription.v151" = "**توسۇلغان**: بۇ ئىقتىدارنى كۆرەلمەيسىز ۋە ئىشلىتەلمەيسىز. ئۈسكۈنىگە چۈشۈرۈلگەن بارلىق سۈنئىي ئەقىل مودېلى ئۆچۈرۈلىدۇ.";
+"Settings.AIControls.AIPoweredFeaturesSection.BlockedStatusDescriptionV2.v151" = "**توسۇلغان**: بۇ ئىقتىدارنى كۆرەلمەيسىز ۋە ئىشلىتەلمەيسىز. ئۈسكۈنىگە چۈشۈرۈلگەن بارلىق سۈنئىي ئەقىل مودېلى ئۆچۈرۈلىدۇ.";
 
 /* In the AI Controls settings, in the AI powered features section, this is the message that describes the pages summaries feature */
 "Settings.AIControls.AIPoweredFeaturesSection.PageSummariesSection.Message.v151" = "بەت ۋە خۇلاسە ھەرگىز ساقلانمايدۇ.";
@@ -99,6 +99,9 @@
 
 /* This is the title for the setting that toggles whether to block AI enhancements under the AI Controls settings section. */
 "Settings.AIControls.BlockAIEnhancementsTitle.v151" = "سۈنئىي ئەقىلنىڭ كۈچەيتىلگەن ئىقتىدارىنى توسىدۇ";
+
+/* In the AI Controls settings, this is the text that appears when you have turned on the Block AI Enhancements toggle */
+"Settings.AIControls.BlockedInformation.v151" = "كۆڭۈلدىكى ئەھۋالدا يېڭى ۋە نۆۋەتتىكى سۇنئىي ئەقىلنىڭ كۈچەيتىلگەن ئىقتىدارى توسۇلدى. تۆۋەندە توسۇلغان ئىقتىدارنى قايتا ئاچقىلى بولىدۇ.";
 
 /* This is the text for the link in the Header Card under the AI Controls settings section that links to more information. */
 "Settings.AIControls.HeaderCard.Link.v151" = "تەپسىلاتى";
@@ -159,6 +162,12 @@
 
 /* In the settings menu, this label indicates that there is an option of customizing the Autoplay behaviour. */
 "Settings.Autoplay.SettingsTitle.v137" = "ئۆزلۈكىدىن قويۇش";
+
+/* Title for the Block Ads toggle in the Browsing settings page. When enabled, the app blocks advertisements. */
+"Settings.Browsing.BlockAds.Title.v153" = "ئېلاننى توسۇش";
+
+/* This is the title for the Content customization section under the Browsing settings page. */
+"Settings.Browsing.Content.v153" = "مەزمۇن";
 
 /* This is the title for Links customization under the Browsing settings section. */
 "Settings.Browsing.Links.v137" = "ئۇلانما";
@@ -319,12 +328,6 @@
 /* This is the section title for the gestures features under the Summarize settings section. */
 "Settings.Summarize.GesturesSection.Title.v142" = "قول ئىشارىتى";
 
-/* The accessibility label for the language picker button in the Summarize settings. */
-"Settings.Summarize.LanguageSection.PickerButtonAccessibilityLabel.v149" = "تىل تاللىنىدۇ";
-
-/* The label for the picker option to select the preferred app language for the summarizer inside the Summarize settings. The preferred app language refers to the language that the user has selected to use for the app in the app settings. */
-"Settings.Summarize.LanguageSection.PreferredAppLanguageLabel.v149" = "ئەپنىڭ تىل مايىللىقى";
-
 /* The title for the language choose section for the summarizer inside the Summarize settings. */
 "Settings.Summarize.LanguageSection.Title.v149" = "تىل";
 
@@ -393,6 +396,9 @@
 
 /* In the settings menu, in the General section, this is the title for the Translation settings section. */
 "Settings.Translation.Title.v145" = "تەرجىمە";
+
+/* Footer text below the enable toggle in the Translation settings screen. */
+"Settings.Translation.ToggleFooter.v151" = "بۇ تاللانما تاقالسا قورال بالداق ۋە تىزىملىكتىن تەرجىمىنى چىقىرىۋېتىدۇ.";
 
 /* This is the title for the setting that toggles the Translation feature that allows users to translate web pages under the Translation settings section. */
 "Settings.Translation.ToggleTitle.v145" = "تەرجىمىنى قوزغات";

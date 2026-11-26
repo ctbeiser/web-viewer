@@ -4,9 +4,6 @@
 /* (No Comment) */
 "New Tab" = "Nový panel";
 
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Firefox používá váš fotoaparát ke skenování QR kódů a pořizování fotografií a videí.";
-
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Firefox vyžaduje Face ID pro přístup k uloženým heslům a platebním metodám.";
 
@@ -18,9 +15,6 @@
 
 /* Privacy - Photo Library Additions Usage Description */
 "NSPhotoLibraryAddUsageDescription" = "Toto vám umožní ukládat fotografie.";
-
-/* Privacy - Speech Recognition Usage Description */
-"NSSpeechRecognitionUsageDescription" = "Firefox používá rozpoznávání řeči, aby převedl váš hlas na text pro hlasové vyhledávání.";
 
 /* (No Comment) */
 "Scan QR Code" = "Skenovat QR kód";
